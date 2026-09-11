@@ -1,0 +1,17 @@
+# Zugangsdaten — niemals einchecken
+.env
+*.env
+*token*
+*secret*
+
+# Rohdaten aus intervals.icu (Gesundheitsdaten: Puls, Gewicht, Schlaf, Krankheiten)
+activities*.json
+wellness*.json
+events*.json
+streams*.json
+proj*.json
+*.fit
+
+# Python
+__pycache__/
+*.pyc

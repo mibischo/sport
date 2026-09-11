@@ -1,0 +1,69 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>5-Minuten-Maximaltest</name>
+    <description>Maximaltest ueber 5 Minuten zur Bestimmung von MAP und VO2max.
+
+WICHTIG: Den Testabschnitt im SLOPE-/FREERIDE-Modus fahren, NICHT in ERG.
+Im ERG-Modus haelt der Trainer eine feste Leistung - ein Maximaltest ist dann unmoeglich.
+
+Setup: exakt wie beim 30-Min-Test am 05.09.2026 - gleiche Tageszeit, gleicher Luefter,
+gleiche Verpflegung, gleiches Rad.
+
+Pacing: Die ersten 45-60 Sekunden bewusst ueber dem Zielschnitt anfahren, damit die
+Sauerstoffaufnahme schnell hochkommt. Dann einpendeln. Letzte Minute alles geben.
+Ein zu vorsichtiger Start kostet 10-15 Watt.
+
+Erwartung: 300-320 W.
+
+Auswertung: Verhaeltnis 5-Minuten-Leistung zu FTP (271 W) bilden.
+  unter 1,15 = VO2max-limitiert, der Winterblock ist richtig
+  1,15-1,25  = ausgewogen
+  ueber 1,25 = schwellenlimitiert, Plan umbauen</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="Test"/>
+        <tag name="VO2max"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 45 % auf 65 % FTP (122 auf 176 W) -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65" pace="0">
+            <textevent timeoffset="10" message="Einfahren. 10 Minuten locker steigern."/>
+            <textevent timeoffset="300" message="Haelfte. Trittfrequenz 90-95."/>
+        </Warmup>
+
+        <!-- 5 min ruhig bei 65 % -->
+        <SteadyState Duration="300" Power="0.65" pace="0">
+            <textevent timeoffset="10" message="Gleichmaessig bei 176 W."/>
+        </SteadyState>
+
+        <!-- 2 Oeffner: je 1 min bei 110 % (298 W), 3 min locker -->
+        <IntervalsT Repeat="2" OnDuration="60" OffDuration="180"
+                    OnPower="1.10" OffPower="0.50" pace="0"/>
+
+        <!-- 5 min ruhig, letzte Sammlung vor dem Test -->
+        <SteadyState Duration="300" Power="0.55" pace="0">
+            <textevent timeoffset="10" message="Ruhig atmen. Gleich kommt der Test."/>
+            <textevent timeoffset="180" message="Noch 2 Minuten. JETZT auf SLOPE-Modus umstellen!"/>
+            <textevent timeoffset="270" message="30 Sekunden. Bereit machen."/>
+        </SteadyState>
+
+        <!-- DER TEST: 5 Minuten maximal, FreeRide damit keine Wattbremse greift -->
+        <FreeRide Duration="300" FlatRoad="1">
+            <textevent timeoffset="0" message="LOS! Erste Minute bewusst ueber dem Schnitt."/>
+            <textevent timeoffset="45" message="Jetzt einpendeln. Das Tempo halten."/>
+            <textevent timeoffset="120" message="2 Minuten gefahren. Gleichmaessig bleiben."/>
+            <textevent timeoffset="180" message="Noch 2 Minuten. Nicht nachlassen."/>
+            <textevent timeoffset="240" message="LETZTE MINUTE. Alles was da ist."/>
+            <textevent timeoffset="285" message="15 Sekunden!"/>
+        </FreeRide>
+
+        <!-- Ausfahren: 10 min ruhig, dann 10 min Rampe runter -->
+        <SteadyState Duration="600" Power="0.50" pace="0">
+            <textevent timeoffset="10" message="Geschafft. Locker ausfahren."/>
+            <textevent timeoffset="60" message="Notier dir den Schnittwert, solange er frisch ist."/>
+        </SteadyState>
+        <Cooldown Duration="600" PowerLow="0.50" PowerHigh="0.35" pace="0"/>
+
+    </workout>
+</workout_file>

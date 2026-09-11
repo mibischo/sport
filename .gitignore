@@ -15,3 +15,17 @@ proj*.json
 # Python
 __pycache__/
 *.pyc
+
+# Weitere aus intervals.icu abgerufene Daten (Eingaben der Diagramm-Skripte)
+chartdata.json
+pc_*.json
+pck_*.json
+profile.json
+ss_*.json
+recent.json
+carbs.json
+rw.json
+verify*.json
+chk*.json
+tsb.json
+full.json

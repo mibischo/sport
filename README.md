@@ -10,6 +10,7 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 | [`analyse.md`](analyse.md) | Saisonanalyse 2026, Befunde, Ötztaler-Rechnung, Roadmap, Verpflegung |
 | [`bericht/rennrad_analyse.html`](bericht/rennrad_analyse.html) | Vollständiger Bericht mit allen Diagrammen — herunterladen und im Browser öffnen |
 | [`workouts/`](workouts/) | Strukturierte Workouts für MyWhoosh (ZWO) |
+| [`werkzeug/`](werkzeug/) | Skripte: Plan erzeugen, als Markdown/HTML ausgeben, in intervals.icu eintragen |
 
 ## Die Eckdaten
 

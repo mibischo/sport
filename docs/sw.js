@@ -1,6 +1,6 @@
 // Offline-Cache für den Fueling-Rechner.
 // Bei jeder Änderung an den Dateien VERSION erhöhen, damit alte Caches verschwinden.
-const VERSION = 'v5';
+const VERSION = 'v6';
 const CACHE = `fueling-${VERSION}`;
 const ASSETS = [
   './',
@@ -20,8 +20,11 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', event => {
+  // Am Browser-Cache vorbei laden, damit eine neue Version nicht mit alten Dateien startet.
   event.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE)
+      .then(cache => cache.addAll(ASSETS.map(url => new Request(url, { cache: 'reload' }))))
+      .then(() => self.skipWaiting())
   );
 });
 

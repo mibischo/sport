@@ -13,7 +13,8 @@
   const INTERVALS = [15, 20, 30];
   const BOTTLE_SIZES = [500, 750, 1000];
   const FLASK_SIZES = [150, 300];
-  const MAX_BOTTLES = 3, MAX_FLASKS = 3, MAX_REFILLS = 8;
+  const MAX_BOTTLES = 3, MAX_FLASKS = 3, MAX_REFILLS = 8, MAX_BARS = 12;
+  const BAR_G_MIN = 5, BAR_G_MAX = 90;   // Gramm Kohlenhydrate je Riegel
 
   const NA_MG_PER_G_SALT = 393.4;   // mg Natrium in 1 g Kochsalz
   const CITRATE_PER_SALT = 1.678;   // g Trinatriumcitrat-Dihydrat mit dem Natrium von 1 g Kochsalz
@@ -27,6 +28,7 @@
     flasks: 'auto',   // 'auto' oder feste Zahl
     refills: 'auto',  // 'auto' oder feste Zahl
     manual: null,     // null = Vorschlag der Automatik, sonst Gramm je Behälter: { f0: 180, b0: 90, ... }
+    bars: { count: 0, carbs: 30 },   // Riegel: Stück und Gramm Kohlenhydrate je Riegel
     kit: { bottles: 2, flaskCount: 1, bottleSizes: [750, 750, 750], flaskSizes: [300, 300, 300], refillSizes: [] },
     mix: { fru: 0.8, salt: 1, saltType: 'nacl', de: 15 },
     limits: { flask: 0.6, bottleSolo: 0.15, bottleMax: 0.2, okMax: 0.15 }
@@ -71,6 +73,10 @@
     l.bottleMax = clamp(num(+l.bottleMax, 0.2), Math.max(0.1, l.bottleSolo), 0.3);
     l.okMax = clamp(num(+l.okMax, 0.15), 0.06, 0.2);
 
+    const bars = s.bars = s.bars && typeof s.bars === 'object' ? s.bars : {};
+    bars.count = clamp(Math.round(num(+bars.count, 0)), 0, MAX_BARS);
+    bars.carbs = clamp(Math.round(num(+bars.carbs, 30)), BAR_G_MIN, BAR_G_MAX);
+
     if (s.manual && typeof s.manual === 'object') {
       const clean = {};
       for (const [id, g] of Object.entries(s.manual)) {
@@ -97,7 +103,8 @@
       ...DEF, ...s,
       kit: { ...DEF.kit, ...(s.kit || {}) },
       mix: { ...DEF.mix, ...(s.mix || {}) },
-      limits: { ...DEF.limits, ...(s.limits || {}) }
+      limits: { ...DEF.limits, ...(s.limits || {}) },
+      bars: { ...DEF.bars, ...(s.bars || {}) }
     });
   }
   function save() {
@@ -117,8 +124,10 @@
     return mmol / waterKg;
   }
 
-  // Vorschlag der Automatik: erst Flask, der Rest nach Volumen auf Flaschen und Nachfüllungen
-  function suggest(S, hours, target, weather) {
+  // Vorschlag der Automatik: erst Flask, der Rest nach Volumen auf Flaschen und Nachfüllungen.
+  // target ist, was aus Flask und Flaschen kommen soll; solid sind die Gramm aus Riegeln,
+  // die zwar kein Wasser mitbringen, aber welches brauchen.
+  function suggest(S, hours, target, weather, solid) {
     const K = S.kit, L = S.limits;
     const sum = a => a.reduce((x, y) => x + y, 0);
 
@@ -139,7 +148,7 @@
         while (refills < MAX_REFILLS) {
           const next = rSize(K, refills);
           const forWeather = hours * weather.ml - vol >= next / 2;
-          const forConc = target / L.okMax - vol > next * 0.05;
+          const forConc = (target + solid) / L.okMax - vol > next * 0.05;
           if (!forWeather && !forConc) break;
           vol += next;
           refills += 1;
@@ -203,6 +212,7 @@
     const warnMax = Math.max(WARN_MAX, L.okMax + 0.03);
     const weather = WEATHER[S.weather];
     const manual = !!S.manual;
+    const barCarbs = S.bars.count * S.bars.carbs;   // Riegel sind fest gewählt und zählen zum Eingepackten
 
     let nFl, refills, gramsOf;
     if (manual) {
@@ -210,7 +220,7 @@
       refills = S.refills;
       gramsOf = id => S.manual[id] || 0;
     } else {
-      const p = suggest(S, hours, target, weather);
+      const p = suggest(S, hours, Math.max(0, target - barCarbs), weather, barCarbs);
       nFl = p.nFl;
       refills = p.refills;
       gramsOf = id => p.carbs[id] || 0;
@@ -220,8 +230,13 @@
     for (let i = 0; i < nFl; i++) cs.push({ id: 'f' + i, kind: 'flask', name: nFl > 1 ? `Flask ${i + 1}` : 'Flask', cap: fSize(K, i) });
     for (let i = 0; i < K.bottles; i++) cs.push({ id: 'b' + i, kind: 'bottle', name: `Flasche ${i + 1}`, cap: bSize(K, i) });
     for (let i = 0; i < refills; i++) cs.push({ id: 'r' + i, kind: 'refill', name: `Nachfüllen ${i + 1}`, cap: rSize(K, i) });
+    if (S.bars.count > 0) cs.push({ id: 'x', kind: 'bar', name: 'Riegel', cap: 0, count: S.bars.count, per: S.bars.carbs });
 
     for (const c of cs) {
+      if (c.kind === 'bar') {   // fest, ohne Mischung und ohne Flüssigkeit
+        Object.assign(c, { lim: 0, carbs: barCarbs, malto: 0, fru: 0, saltEq: 0, ml: 0, conc: 0, water: 0, osmo: 0 });
+        continue;
+      }
       c.lim = limOf(c.kind, c.cap, L);
       c.carbs = clamp(Math.round(gramsOf(c.id)), 0, c.lim);
       c.malto = Math.round(c.carbs / (1 + M.fru));
@@ -271,6 +286,7 @@
     const portions = [];
     for (const c of cs) {
       if (!c.carbs) continue;
+      if (c.kind === 'bar') { portions.push({ bar: true, per: c.per, pieces: dose / c.per }); continue; }
       const key = (c.kind === 'flask' ? 'f' : 'b' + c.cap + ':') + c.carbs;
       if (c.kind === 'flask' ? seen.has('f') : seen.has(key)) continue;
       seen.add(c.kind === 'flask' ? 'f' : key);
@@ -279,11 +295,11 @@
 
     return {
       hours, target, cs, planned, fluid, drinkMl, saltEq, conc, state, extraMl, fluidPerHour, warnMax, manual,
-      nFl, refills, hints, dose, portions, flaskCarbs,
+      nFl, refills, hints, dose, portions, flaskCarbs, barCarbs,
       drinkPerHour: drinkMl / hours,
       sodiumPerHour: saltEq * NA_MG_PER_G_SALT / hours,
       kcal: planned * 4,
-      osmoAll: osmolality(planned, saltEq, fluid, M)
+      osmoAll: osmolality(planned - barCarbs, saltEq, fluid, M)   // Riegel sind nicht gelöst
     };
   }
 
@@ -323,9 +339,37 @@
     return '';
   }
 
+  // Riegelstücke: der nächstliegende Bruch aus Halben, Dritteln und Vierteln
+  function pieces(x) {
+    let best;
+    for (const d of [1, 2, 3, 4]) {
+      const n = Math.max(1, Math.round(x * d));
+      const err = Math.abs(n / d - x);
+      if (!best || err < best.err - 1e-9) best = { n, d, err };
+    }
+    const frac = { '1/2': '½', '1/3': '⅓', '2/3': '⅔', '1/4': '¼', '3/4': '¾' }[`${best.n % best.d}/${best.d}`] || '';
+    return `${Math.floor(best.n / best.d) || ''}${frac}`;
+  }
+
   // Zeilen der Packliste: Gerüst nur neu bauen, wenn sich die Behälter ändern.
   // Sonst an Ort und Stelle auffrischen, damit Eingabefelder und Tasten erhalten bleiben.
   function rowTemplate(c) {
+    if (c.kind === 'bar') {
+      return `<li class="ct" data-id="x">
+      <span class="ct-ico carb">${ico('bar')}</span>
+      <div class="ct-top">
+        <span class="ct-name">Riegel</span>
+        <span class="ct-amt">
+          <span class="ct-g"><b class="ct-fix"></b><small>g</small></span>
+          <span class="mini ghost" aria-hidden="true"></span>
+        </span>
+      </div>
+      <div class="ct-body">
+        <p class="ct-rec"></p>
+        <p class="ct-meta"></p>
+      </div>
+    </li>`;
+    }
     const sizes = c.kind === 'flask' ? FLASK_SIZES : BOTTLE_SIZES;
     const icon = c.kind === 'flask' ? 'flask' : c.kind === 'refill' ? 'refill' : 'bottle';
     return `<li class="ct" data-id="${c.id}">
@@ -349,6 +393,12 @@
   function syncRow(li, c) {
     const L = S.limits;
     const q = sel => li.querySelector(sel);
+    if (c.kind === 'bar') {   // Stück und Gramm stehen oben bei den Anzahlen, hier nur das Ergebnis
+      q('.ct-fix').textContent = n0(c.carbs);
+      q('.ct-rec').textContent = `${c.count} × ${n0(c.per)} g Kohlenhydrate`;
+      q('.ct-meta').textContent = 'Riegel bringen kein Wasser mit. Die Trinkmenge unten rechnet sie mit ein.';
+      return;
+    }
     const carb = c.carbs > 0;
     q('.ct-ico').className = `ct-ico ${carb ? 'carb' : 'water'}`;
     q('.ct-name').textContent = c.name;
@@ -445,6 +495,13 @@
     $('bt-val').textContent = S.kit.bottles;
     $('fl-val').textContent = R.nFl;
     $('rf-val').textContent = R.refills;
+    $('bar-val').textContent = S.bars.count;
+    $('bar-g-row').hidden = S.bars.count === 0;
+    const barG = $('bar-g');
+    if (barG !== document.activeElement) barG.value = S.bars.carbs;
+    document.querySelectorAll('[data-act="bar-carbs"]').forEach(b => {
+      b.disabled = +b.dataset.d < 0 ? S.bars.carbs <= BAR_G_MIN : S.bars.carbs >= BAR_G_MAX;
+    });
     $('fl-auto').hidden = R.manual;
     $('rf-auto').hidden = R.manual;
     $('fl-auto').setAttribute('aria-pressed', String(S.flasks === 'auto'));
@@ -452,7 +509,8 @@
     const citrate = M.saltType === 'citrate';
     $('l-salt').textContent = `${citrate ? 'Natriumcitrat' : 'Salz'} je 90 g KH`;
     $('salt-val').textContent = M.salt > 0 ? `${nSalt(M.salt * (citrate ? CITRATE_PER_SALT : 1))} g` : 'ohne';
-    const range = { bottles: [S.kit.bottles, 1, MAX_BOTTLES], flasks: [R.nFl, 0, MAX_FLASKS], refills: [R.refills, 0, MAX_REFILLS] };
+    const range = { bottles: [S.kit.bottles, 1, MAX_BOTTLES], flasks: [R.nFl, 0, MAX_FLASKS], refills: [R.refills, 0, MAX_REFILLS],
+      bars: [S.bars.count, 0, MAX_BARS] };
     document.querySelectorAll('[data-act="step"]').forEach(b => {
       const [cur, min, max] = range[b.dataset.k];
       b.disabled = +b.dataset.d < 0 ? cur <= min : cur >= max;
@@ -506,17 +564,20 @@
     $('go-main').textContent = `Alle ${S.interval} Minuten eine Portion mit ${n0(R.dose)} g`;
     $('portions').innerHTML = R.portions.map(q => {
       if (q.flask) return `<li><b>${n0(r5(q.ml))} ml</b><span>aus der Flask</span></li>`;
+      if (q.bar) return `<li><b>${pieces(q.pieces)} Riegel</b><span>bei ${n0(q.per)} g je Riegel</span></li>`;
       const fr = fraction(q.ml / q.cap);
       return `<li><b>${n0(r10(q.ml))} ml</b><span>aus einer ${n0(q.cap)}-ml-Flasche mit ${n0(q.carbs)} g${fr ? ` – ${fr}` : ''}</span></li>`;
     }).join('');
     let note = `Erste Portion in den ersten 15 Minuten. Dazu Wasser nach Durst, über alles mindestens ${n0(r10(R.drinkPerHour))} ml pro Stunde.`;
     if (R.flaskCarbs > 0) note += ` ${R.nFl > 1 ? 'Die Flasks decken' : 'Die Flask deckt'} ${hm(R.flaskCarbs / S.rate * 60)} h.`;
+    if (R.barCarbs > 0) note += ` Die Riegel decken ${hm(R.barCarbs / S.rate * 60)} h.`;
     if (R.planned > 0 && diff >= NEAR) note += ` Eingepackt ist genug für ${hm(R.planned / S.rate * 60)} h.`;
     $('go-note').textContent = note;
 
     // Details
-    const rows = R.cs.filter(c => c.carbs > 0).map(c =>
-      `<tr><td>${c.name}</td><td>${n0(c.carbs)} g</td><td>${n2(c.conc)}</td><td>≈ ${n0(r10(c.osmo))}</td></tr>`);
+    const rows = R.cs.filter(c => c.carbs > 0).map(c => (c.kind === 'bar'
+      ? `<tr><td>Riegel</td><td>${n0(c.carbs)} g</td><td>–</td><td>–</td></tr>`
+      : `<tr><td>${c.name}</td><td>${n0(c.carbs)} g</td><td>${n2(c.conc)}</td><td>≈ ${n0(r10(c.osmo))}</td></tr>`));
     rows.push(`<tr><td>Alles zusammen</td><td>${n0(R.planned)} g</td><td>${n2(R.conc)}</td><td>≈ ${n0(r10(R.osmoAll))}</td></tr>`);
     $('osmo-rows').innerHTML = rows.join('');
     let energy = `Die eingepackten Kohlenhydrate liefern etwa ${n0(r10(R.kcal))} kcal.`;
@@ -531,6 +592,7 @@
       `Über alles: Kohlenhydrate geteilt durch die gesamte Flüssigkeit aus Flaschen, Nachfüllungen und Flask, also wenn du alles trinkst. Bis ${n2(L.okMax)} g/ml passt es, bis ${n2(R.warnMax)} ist es an der Grenze.`,
       'Mindestens trinken: der Wetter-Richtwert oder so viel, wie die Kohlenhydrate brauchen. Höchstens, was dabei ist, und nie weniger als die Flaschen, in denen Kohlenhydrate sind.',
       'Vorschlag: erst die Flask, der Rest auf Flaschen und Nachfüllungen. So viele Nachfüllungen, dass Wetter-Richtwert und Zielkonzentration erreicht werden.',
+      'Riegel: Stückzahl und Gramm gibst du vor, der Vorschlag verteilt nur den Rest. Bei g/ml zählen sie mit, weil sie Wasser brauchen; bei Osmolalität, Salz und Abwiegen nicht.',
       '1 g Kochsalz enthält 393 mg Natrium; 1,7 g Natriumcitrat liefern dieselbe Menge.'
     ].map(t => `<li>${t}</li>`).join('');
 
@@ -551,7 +613,7 @@
   function enterManual() {
     if (S.manual) return;
     S.manual = {};
-    R.cs.forEach(c => { S.manual[c.id] = c.carbs; });
+    R.cs.forEach(c => { if (c.kind !== 'bar') S.manual[c.id] = c.carbs; });
     S.flasks = R.nFl;
     S.refills = R.refills;
   }
@@ -577,6 +639,7 @@
       case 'auto': if (!S.manual) S[b.dataset.k] = 'auto'; break;
       case 'step': {
         const k = b.dataset.k;
+        if (k === 'bars') { S.bars.count = clamp(S.bars.count + d, 0, MAX_BARS); break; }
         if (k === 'bottles') S.kit.bottles = clamp(S.kit.bottles + d, 1, MAX_BOTTLES);
         else S[k] = clamp((k === 'flasks' ? R.nFl : R.refills) + d, 0, k === 'flasks' ? MAX_FLASKS : MAX_REFILLS);
         prune();
@@ -596,10 +659,12 @@
         S.manual[c.id] = clamp(c.carbs + d, 0, c.lim);
         break;
       }
+      case 'bar-carbs': S.bars.carbs = clamp(S.bars.carbs + d, BAR_G_MIN, BAR_G_MAX); break;
       case 'suggest': S.manual = null; S.flasks = 'auto'; S.refills = 'auto'; break;
       case 'clear':
         enterManual();
-        R.cs.forEach(c => { S.manual[c.id] = 0; });
+        R.cs.forEach(c => { if (c.kind !== 'bar') S.manual[c.id] = 0; });
+        S.bars.count = 0;
         break;
       case 'reset-all':
         if (!window.confirm('Alle Einstellungen und Eingaben zurücksetzen?')) return;
@@ -611,19 +676,24 @@
   });
 
   // Gramm direkt eintippen: sofort mitrechnen, das Feld selbst erst beim Verlassen glätten
-  const rowsEl = $('containers');
-  rowsEl.addEventListener('input', ev => {
+  const isGrams = el => el.classList && el.classList.contains('ct-in');
+  const typed = el => Math.round(parseFloat(String(el.value).replace(',', '.')) || 0);
+  document.addEventListener('input', ev => {
     const el = ev.target;
-    if (!el.classList.contains('ct-in')) return;
-    const c = R.cs.find(x => x.id === el.dataset.id);
-    if (!c) return;
-    enterManual();
-    S.manual[c.id] = clamp(Math.round(parseFloat(String(el.value).replace(',', '.')) || 0), 0, c.lim);
+    if (!isGrams(el)) return;
+    if (el.id === 'bar-g') {   // Gramm je Riegel: der Vorschlag bleibt und verteilt den Rest neu
+      S.bars.carbs = clamp(typed(el), BAR_G_MIN, BAR_G_MAX);
+    } else {
+      const c = R.cs.find(x => x.id === el.dataset.id);
+      if (!c) return;
+      enterManual();
+      S.manual[c.id] = clamp(typed(el), 0, c.lim);
+    }
     render();
   });
-  rowsEl.addEventListener('focusin', ev => { if (ev.target.classList.contains('ct-in')) ev.target.select(); });
-  rowsEl.addEventListener('focusout', ev => { if (ev.target.classList.contains('ct-in')) setTimeout(render, 0); });
-  rowsEl.addEventListener('keydown', ev => { if (ev.key === 'Enter' && ev.target.classList.contains('ct-in')) ev.target.blur(); });
+  document.addEventListener('focusin', ev => { if (isGrams(ev.target)) ev.target.select(); });
+  document.addEventListener('focusout', ev => { if (isGrams(ev.target)) setTimeout(render, 0); });
+  document.addEventListener('keydown', ev => { if (ev.key === 'Enter' && isGrams(ev.target)) ev.target.blur(); });
 
   document.addEventListener('change', ev => {
     const el = ev.target;

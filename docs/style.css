@@ -180,6 +180,9 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 .ct-amt { display: flex; align-items: center; gap: 4px; flex: none; }
 .ct-g { display: inline-flex; align-items: baseline; gap: 4px; margin: 0 2px; }
 .ct-g small { font-size: 13px; font-weight: 500; color: var(--ink-2); }
+/* feste Menge ohne Eingabefeld, in derselben Spalte wie die Felder darüber */
+.ct-fix { width: 60px; text-align: center; font-size: 17px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.ghost { visibility: hidden; }
 .sizes { display: inline-grid; margin: 2px 0 8px; }
 .chips.seg.tight.sizes .chip { min-height: 32px; padding: 0 10px; }
 .ct-body { grid-column: 2; min-width: 0; }
@@ -287,7 +290,7 @@ input.ct-in::-webkit-outer-spin-button, input.ct-in::-webkit-inner-spin-button {
   .chips.seg .chip { padding: 0 2px; font-size: 13px; }
   .chips.seg.stack { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mini { width: 34px; height: 34px; }
-  input.ct-in { width: 52px; }
+  input.ct-in, .ct-fix { width: 52px; }
   .ct { grid-template-columns: 34px minmax(0, 1fr); gap: 4px 10px; }
   .ct-ico { width: 34px; height: 34px; }
   .grid2 { grid-template-columns: minmax(0, 1fr); }

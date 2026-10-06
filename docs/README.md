@@ -12,10 +12,10 @@ auch ohne Netz.
 ## Was sie rechnet
 
 - **Bedarf:** Stunden × Gramm pro Stunde.
-- **Packliste:** Flaschen (500, 750 oder 1000 ml), Flasks (150 oder 300 ml) und Nachfüllungen. Die Automatik schlägt eine Verteilung vor; trägst du selbst Gramm ein, zeigt „Eingepackt“ laufend, wie viel vom Bedarf schon verteilt ist.
+- **Packliste:** Flaschen (500, 750 oder 1000 ml), Flasks (150 oder 300 ml), Nachfüllungen und Riegel mit frei wählbaren Gramm Kohlenhydraten. Die Automatik schlägt eine Verteilung vor; trägst du selbst Gramm ein, zeigt „Eingepackt“ laufend, wie viel vom Bedarf schon verteilt ist.
 - **Mischung:** Maltodextrin, Fruktose und Salz je Behälter, dazu die Summe zum Abwiegen.
 - **Konzentration:** Gramm Kohlenhydrate pro Milliliter über alles. Bis 0,15 passt es, bis 0,20 ist es an der Grenze.
-- **Unterwegs:** eine Portion je Takt, ausgedrückt in Millilitern aus Flask oder Flasche.
+- **Unterwegs:** eine Portion je Takt, ausgedrückt in Millilitern aus Flask oder Flasche oder als Stück vom Riegel.
 - **Details:** geschätzte Osmolalität je Behälter und Energie, auf Wunsch gegen die Arbeit in kJ.
 
 Alle Zahlen sind Richtwerte. Mischverhältnis, Natriumquelle und Grenzen stehen unter
@@ -65,7 +65,7 @@ Trainingsplan und Analyse entstehen aus den Markdown-Dateien im Hauptverzeichnis
 python export_app.py
 ```
 
-Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v5'` hochzählen. Installierte
+Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v6'` hochzählen. Installierte
 Geräte holen sich die neue Fassung beim nächsten Öffnen und zeigen sie beim übernächsten.
 
 ## Lokal ausprobieren

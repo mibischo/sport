@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fueling-Rechner</title>
+<meta name="description" content="Kohlenhydrate, Flaschen und Mischung für Radfahrten planen.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fueling">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-bottle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 2.75h4v2.5h-4z"/>
+    <path d="M8 9a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v9.75a2.5 2.5 0 0 1-2.5 2.5h-3a2.5 2.5 0 0 1-2.5-2.5z"/>
+    <path d="M8 12.5h8"/>
+  </symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.25 2.75h3.5v2.5h-3.5z"/>
+    <path d="M10.25 5.25 7.6 9.6a4 4 0 0 0-.6 2.1v6.05a3.5 3.5 0 0 0 3.5 3.5h3a3.5 3.5 0 0 0 3.5-3.5V11.7a4 4 0 0 0-.6-2.1l-2.65-4.35"/>
+    <path d="M9.5 14.5h5M9.5 17.5h5"/>
+  </symbol>
+  <symbol id="i-refill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19.5 12a7.5 7.5 0 0 1-13.1 5"/>
+    <path d="M4.5 12a7.5 7.5 0 0 1 13.1-5"/>
+    <path d="M17.9 3.5V7h-3.5M6.1 20.5V17h3.5"/>
+  </symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.7 2.7L16 9.6"/>
+  </symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3.5 21.5 20h-19z"/><path d="M12 10v4.5M12 17.2v.1"/>
+  </symbol>
+  <symbol id="i-bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/>
+  </symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <h1>Fueling-Rechner</h1>
+  <button type="button" class="chip" id="install" hidden>Installieren</button>
+</header>
+
+<main class="layout">
+  <div class="col col-a">
+
+    <section class="card" aria-labelledby="t-ride">
+      <h2 id="t-ride">Fahrt</h2>
+
+      <div class="field" role="group" aria-labelledby="l-dur">
+        <span class="label" id="l-dur">Dauer</span>
+        <div class="stepper">
+          <button type="button" class="round" data-act="dur" data-d="-15" aria-label="15 Minuten kürzer">−</button>
+          <output class="stepper-val" id="dur" aria-live="off"></output>
+          <button type="button" class="round" data-act="dur" data-d="15" aria-label="15 Minuten länger">+</button>
+        </div>
+        <div class="chips seg" id="dur-chips"></div>
+      </div>
+
+      <div class="field" role="group" aria-labelledby="l-rate">
+        <span class="label" id="l-rate">Kohlenhydrate pro Stunde</span>
+        <div class="stepper">
+          <button type="button" class="round" data-act="rate" data-d="-5" aria-label="5 Gramm pro Stunde weniger">−</button>
+          <output class="stepper-val" id="rate" aria-live="off"></output>
+          <button type="button" class="round" data-act="rate" data-d="5" aria-label="5 Gramm pro Stunde mehr">+</button>
+        </div>
+        <div class="chips seg stack" id="rate-chips"></div>
+      </div>
+
+      <div class="field" role="group" aria-labelledby="l-weather">
+        <span class="label" id="l-weather">Wetter</span>
+        <div class="chips seg" id="weather-chips"></div>
+        <p class="note" id="weather-note"></p>
+      </div>
+    </section>
+
+    <section class="card hero" aria-labelledby="t-sum">
+      <h2 class="label" id="t-sum">Kohlenhydrate gesamt</h2>
+      <p class="hero-val"><span id="total"></span><span class="unit">g</span></p>
+      <p class="hero-sub" id="total-sub"></p>
+      <p class="sr-only" id="sr-summary" aria-live="polite"></p>
+    </section>
+
+  </div>
+  <div class="col col-b">
+
+    <section class="card" aria-labelledby="t-pack">
+      <h2 id="t-pack">Packliste</h2>
+
+      <div class="packed" id="packed" data-state="ok">
+        <div class="packed-head">
+          <span class="label" id="l-packed">Eingepackt</span>
+          <span class="packed-num"><b id="packed-val"></b> von <span id="packed-target"></span> g</span>
+        </div>
+        <div class="meter" id="packed-bar" role="progressbar" aria-labelledby="l-packed" aria-valuemin="0">
+          <div class="meter-fill" id="packed-fill"></div>
+        </div>
+        <div class="packed-foot">
+          <p class="status" id="packed-status"></p>
+          <div class="packed-btns">
+            <button type="button" class="chip sm" data-act="suggest" id="btn-suggest">Vorschlag</button>
+            <button type="button" class="chip sm" data-act="clear">Leeren</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ctrls">
+        <div class="ctrl" role="group" aria-labelledby="l-bt">
+          <span class="label" id="l-bt">Flaschen</span>
+          <div class="ctrl-r">
+            <button type="button" class="mini" data-act="step" data-k="bottles" data-d="-1" aria-label="Eine Flasche weniger">−</button>
+            <output class="ctrl-val" id="bt-val"></output>
+            <button type="button" class="mini" data-act="step" data-k="bottles" data-d="1" aria-label="Eine Flasche mehr">+</button>
+          </div>
+        </div>
+        <div class="ctrl" role="group" aria-labelledby="l-fl">
+          <span class="label" id="l-fl">Flasks</span>
+          <div class="ctrl-r">
+            <button type="button" class="chip sm" data-act="auto" data-k="flasks" id="fl-auto">Auto</button>
+            <button type="button" class="mini" data-act="step" data-k="flasks" data-d="-1" aria-label="Eine Flask weniger">−</button>
+            <output class="ctrl-val" id="fl-val"></output>
+            <button type="button" class="mini" data-act="step" data-k="flasks" data-d="1" aria-label="Eine Flask mehr">+</button>
+          </div>
+        </div>
+        <div class="ctrl" role="group" aria-labelledby="l-rf">
+          <span class="label" id="l-rf">Nachfüllen unterwegs</span>
+          <div class="ctrl-r">
+            <button type="button" class="chip sm" data-act="auto" data-k="refills" id="rf-auto">Auto</button>
+            <button type="button" class="mini" data-act="step" data-k="refills" data-d="-1" aria-label="Eine Nachfüllung weniger">−</button>
+            <output class="ctrl-val" id="rf-val"></output>
+            <button type="button" class="mini" data-act="step" data-k="refills" data-d="1" aria-label="Eine Nachfüllung mehr">+</button>
+          </div>
+        </div>
+        <div class="ctrl" role="group" aria-labelledby="l-salt">
+          <span class="label" id="l-salt">Salz je 90 g KH</span>
+          <div class="ctrl-r">
+            <button type="button" class="mini" data-act="salt" data-d="-0.5" aria-label="Weniger Salz">−</button>
+            <output class="ctrl-val wide" id="salt-val"></output>
+            <button type="button" class="mini" data-act="salt" data-d="0.5" aria-label="Mehr Salz">+</button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="containers" id="containers"></ul>
+      <p class="sum-line" id="mix-total"></p>
+      <ul class="hints" id="hints"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="t-check">
+      <h2 id="t-check">Kontrolle</h2>
+
+      <div class="meter-block" id="meter-block" data-state="ok">
+        <div class="meter-head">
+          <span class="label">Konzentration, wenn du alles trinkst</span>
+          <span class="meter-num" id="conc-val"></span>
+        </div>
+        <div class="meter" id="meter" role="img">
+          <div class="meter-fill" id="meter-fill"></div>
+          <i class="meter-tick" id="tick-ok"></i>
+          <i class="meter-tick" id="tick-warn"></i>
+        </div>
+        <div class="meter-scale" aria-hidden="true">
+          <span id="scale-ok"></span>
+          <span id="scale-warn"></span>
+        </div>
+        <p class="status" id="status"></p>
+      </div>
+
+      <dl class="tiles">
+        <div><dt>Trinken mind.</dt><dd><span id="tile-fluid"></span> <small>ml/h</small></dd></div>
+        <div><dt>Natrium</dt><dd><span id="tile-na"></span> <small>mg/h</small></dd></div>
+        <div><dt>Energie</dt><dd><span id="tile-kcal"></span> <small>kcal</small></dd></div>
+      </dl>
+    </section>
+
+    <section class="card" aria-labelledby="t-go">
+      <h2 id="t-go">Unterwegs</h2>
+      <div class="ctrl" role="group" aria-labelledby="l-int">
+        <span class="label" id="l-int">Takt</span>
+        <div class="chips seg tight" id="int-chips"></div>
+      </div>
+      <p class="go-main" id="go-main"></p>
+      <ul class="portions" id="portions"></ul>
+      <p class="note" id="go-note"></p>
+    </section>
+
+    <details class="card fold" id="details">
+      <summary>Details</summary>
+      <div class="fold-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Behälter</th><th scope="col">Kohlenhydrate</th><th scope="col">g/ml</th><th scope="col">mOsm/kg</th></tr></thead>
+            <tbody id="osmo-rows"></tbody>
+          </table>
+        </div>
+        <p class="note">Osmolalität geschätzt aus Mischung und Salz. Richtwert während der Belastung: über alles unter etwa 500 mOsm/kg. Die Flask ist ein Konzentrat und zählt erst mit dem Wasser dazu.</p>
+
+        <div class="field split">
+          <label class="label" for="power">Ø Leistung der Fahrt in Watt (optional)</label>
+          <input type="number" id="power" inputmode="numeric" min="50" max="500" step="5" placeholder="z. B. 180">
+        </div>
+        <p class="note" id="energy-note"></p>
+
+        <h3>So wird gerechnet</h3>
+        <ul class="bullets" id="rules"></ul>
+      </div>
+    </details>
+
+    <details class="card fold" id="settings">
+      <summary>Einstellungen</summary>
+      <div class="fold-body">
+        <h3>Ausrüstung</h3>
+        <div class="grid2">
+          <label class="set wide"><span class="label">Flasks vorhanden (für den Vorschlag)</span><input type="number" data-set="kit.flaskCount" min="0" max="3" step="1" inputmode="numeric"></label>
+        </div>
+
+        <h3>Mischung</h3>
+        <div class="grid2">
+          <label class="set"><span class="label">Fruktose je Teil Malto</span><input type="number" data-set="mix.fru" min="0" max="1.25" step="0.05" inputmode="decimal"></label>
+          <label class="set"><span class="label">Maltodextrin-Typ</span>
+            <select data-set="mix.de">
+              <option value="15">weiß ich nicht</option>
+              <option value="6">DE 6</option>
+              <option value="12">DE 12</option>
+              <option value="19">DE 19</option>
+            </select>
+          </label>
+          <label class="set wide"><span class="label">Natriumquelle</span>
+            <select data-set="mix.saltType">
+              <option value="nacl">Kochsalz</option>
+              <option value="citrate">Natriumcitrat (gleiches Natrium, weniger Teilchen)</option>
+            </select>
+          </label>
+        </div>
+
+        <h3>Richtwerte</h3>
+        <div class="grid2">
+          <label class="set"><span class="label">Flask (g/ml)</span><input type="number" data-set="limits.flask" min="0.3" max="0.7" step="0.05" inputmode="decimal"></label>
+          <label class="set"><span class="label">Flasche allein, max. (g/ml)</span><input type="number" data-set="limits.bottleSolo" min="0.06" max="0.2" step="0.01" inputmode="decimal"></label>
+          <label class="set"><span class="label">Flasche neben Wasser, max. (g/ml)</span><input type="number" data-set="limits.bottleMax" min="0.1" max="0.3" step="0.01" inputmode="decimal"></label>
+          <label class="set"><span class="label">Über alles, Ziel bis (g/ml)</span><input type="number" data-set="limits.okMax" min="0.06" max="0.2" step="0.01" inputmode="decimal"></label>
+        </div>
+
+        <p class="note">Alle Angaben bleiben nur auf diesem Gerät gespeichert. Installieren: in Chrome über das Menü, am iPhone über Teilen und „Zum Home-Bildschirm“.</p>
+        <button type="button" class="chip" data-act="reset-all">Alles zurücksetzen</button>
+      </div>
+    </details>
+
+  </div>
+</main>
+
+<footer class="foot">Richtwerte zum Planen und Mischen. Verträglichkeit ist individuell – Neues im Training testen, nicht im Rennen.</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

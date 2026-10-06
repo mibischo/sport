@@ -16,6 +16,9 @@ proj*.json
 __pycache__/
 *.pyc
 
+# Lokale Werkzeug-Einstellungen
+.claude/
+
 # Weitere aus intervals.icu abgerufene Daten (Eingaben der Diagramm-Skripte)
 chartdata.json
 pc_*.json

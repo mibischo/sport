@@ -1,7 +1,7 @@
 {
   "name": "Fueling-Rechner",
   "short_name": "Fueling",
-  "description": "Kohlenhydrate, Flaschen und Mischung für Radfahrten planen.",
+  "description": "Verpflegung für Radfahrten planen, dazu Trainingsplan und Saisonanalyse.",
   "lang": "de",
   "dir": "ltr",
   "start_url": "./",
@@ -10,6 +10,10 @@
   "background_color": "#f9f9f7",
   "theme_color": "#f9f9f7",
   "categories": ["sports", "health", "utilities"],
+  "shortcuts": [
+    { "name": "Trainingsplan", "url": "plan.html" },
+    { "name": "Analyse", "url": "analyse.html" }
+  ],
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },

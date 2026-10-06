@@ -645,25 +645,4 @@
   buildStatic();
   render();
   window.FuelingRechner = { compute, get state() { return S; }, defaults: DEF };
-
-  // ---------- PWA ----------
-  const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
-  if ('serviceWorker' in navigator && (location.protocol === 'https:' || local)) {
-    window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
-  }
-  let installEvent = null;
-  const installBtn = $('install');
-  window.addEventListener('beforeinstallprompt', ev => {
-    ev.preventDefault();
-    installEvent = ev;
-    installBtn.hidden = false;
-  });
-  installBtn.addEventListener('click', async () => {
-    if (!installEvent) return;
-    installEvent.prompt();
-    try { await installEvent.userChoice; } catch (e) { /* abgebrochen */ }
-    installEvent = null;
-    installBtn.hidden = true;
-  });
-  window.addEventListener('appinstalled', () => { installBtn.hidden = true; });
 })();

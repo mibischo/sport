@@ -58,10 +58,17 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
 /* Rahmen */
 .top {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 12px;
   max-width: 560px; margin: 0 auto; padding: 14px 16px 4px; min-height: 58px;
 }
-.top h1 { font-size: 18px; font-weight: 650; letter-spacing: -0.01em; }
+.tabs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; flex: 1 1 260px; min-width: 0; }
+.tab {
+  display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 8px;
+  border-radius: 999px; background: var(--ctl); color: inherit; text-decoration: none;
+  font-size: 14px; font-weight: 500; white-space: nowrap;
+}
+.tab:hover { background: var(--ctl-hover); }
+.tab[aria-current="page"] { background: var(--ink); color: var(--surface); }
 .layout { display: grid; gap: 12px; max-width: 560px; margin: 0 auto; padding: 8px 16px 20px; }
 .col { display: grid; gap: 12px; align-content: start; min-width: 0; }
 .foot { max-width: 560px; margin: 0 auto; padding: 0 16px 28px; font-size: 13px; color: var(--ink-2); }
@@ -220,6 +227,41 @@ th:first-child, td:first-child { text-align: left; }
 th:last-child, td:last-child { padding-right: 0; }
 thead th { font-size: 13px; font-weight: 500; color: var(--ink-2); }
 tbody tr:last-child td { font-weight: 650; border-bottom: 0; }
+
+/* Dokumentseiten: Trainingsplan und Analyse */
+.doc { display: grid; gap: 12px; max-width: 560px; margin: 0 auto; padding: 8px 16px 20px; }
+.doc .card { scroll-margin-top: 12px; }
+.doc h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+.doc .card > h2 { font-size: 18px; font-weight: 650; letter-spacing: -0.01em; margin-bottom: 0; }
+.doc h2 small { font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--ink-2); margin-left: 4px; }
+.doc h3 { font-size: 15px; margin: 20px 0 0; }
+.doc p, .doc ul { margin-top: 10px; font-size: 15px; }
+.doc ul { list-style: disc; padding-left: 20px; }
+.doc li + li { margin-top: 6px; }
+.doc blockquote { margin: 12px 0 0; padding: 2px 0 2px 12px; border-left: 3px solid var(--hair); color: var(--ink-2); }
+.doc blockquote p { margin-top: 0; }
+.doc code, .foot code { font: 13px ui-monospace, Consolas, monospace; background: var(--ctl); padding: 1px 5px; border-radius: 5px; }
+.doc a { color: var(--accent); }
+.doc .table-wrap { margin-top: 12px; }
+.doc th, .doc td { text-align: left; white-space: normal; vertical-align: top; font-variant-numeric: normal; }
+.doc th.num, .doc td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.doc table.wide th, .doc table.wide td { white-space: nowrap; }
+.doc tbody tr:last-child td { font-weight: 400; }
+.doc tbody td:first-child, .doc tbody tr:last-child td:first-child { font-weight: 500; }
+.doc details { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--hair); }
+.doc summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.doc .chip { margin-top: 4px; }
+.pill {
+  display: inline-block; margin-left: 6px; padding: 2px 9px; border-radius: 999px; vertical-align: 2px;
+  background: var(--ctl); color: var(--ink-2); font-size: 12px; font-weight: 600; letter-spacing: 0; white-space: nowrap;
+}
+.now-pill { background: var(--ink); color: var(--surface); }
+.week.now { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.week.past > h2 { color: var(--ink-2); }
+@media (min-width: 920px) {
+  .doc { max-width: 860px; gap: 16px; }
+  .doc ~ .foot, body:has(.doc) .top { max-width: 860px; }
+}
 
 .bullets { padding-left: 18px; list-style: disc; font-size: 14px; color: var(--ink-2); }
 .bullets li + li { margin-top: 6px; }

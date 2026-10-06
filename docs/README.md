@@ -1,8 +1,13 @@
 # Fueling-Rechner
 
-Kleine Web-App zum Planen der Verpflegung auf dem Rad: Dauer und Gramm pro Stunde eingeben,
-heraus kommen Packliste, Mischung je Behälter und der Takt für unterwegs. Läuft ohne Server,
-ohne Konto und nach dem ersten Öffnen auch ohne Netz.
+Kleine Web-App mit drei Reitern. Sie läuft ohne Server, ohne Konto und nach dem ersten Öffnen
+auch ohne Netz.
+
+- **Fueling** (Startseite): Dauer und Gramm pro Stunde eingeben, heraus kommen Packliste,
+  Mischung je Behälter und der Takt für unterwegs.
+- **Trainingsplan:** der Wochenplan aus `trainingsplan.md`. Die aktuelle Woche ist markiert,
+  die Seite springt beim Öffnen dorthin.
+- **Analyse:** die Saisonanalyse aus `analyse.md`.
 
 ## Was sie rechnet
 
@@ -20,13 +25,17 @@ Alle Zahlen sind Richtwerte. Mischverhältnis, Natriumquelle und Grenzen stehen 
 
 Die App wird aus diesem Repository über GitHub Pages ausgeliefert: <https://mibischo.github.io/sport/>
 
-GitHub Pages liefert den Ordner `docs/` des Branches `main` direkt aus. Der Rest des
-Repositories wird nicht als Webseite veröffentlicht. Der Ordner heißt `docs`, weil Pages neben
-dem Hauptverzeichnis nur diesen Namen anbietet.
+GitHub Pages liefert die App aus dem Branch `main` aus. Unter **Settings → Pages** steht bei
+„Build and deployment“ die Quelle **Deploy from a branch**; für den Ordner gibt es zwei
+Möglichkeiten:
 
-Einmalig nötig: im Repository unter **Settings → Pages** bei „Build and deployment“ als
-Quelle **Deploy from a branch** wählen, Branch `main`, Ordner `/docs`. Danach genügt ein
-Push; nach ein bis zwei Minuten ist die neue Fassung online.
+- **`/docs`** (empfohlen): Nur die App wird als Webseite veröffentlicht, die Adresse ist
+  <https://mibischo.github.io/sport/>.
+- **`/ (root)`**: Das ganze Repository wird als Webseite ausgeliefert, auch der Bericht unter
+  `bericht/`. Die App liegt dann unter `…/sport/docs/`; die `index.html` im Hauptverzeichnis
+  leitet von der Startadresse dorthin weiter.
+
+Nach einem Push ist die neue Fassung in ein bis zwei Minuten online.
 
 Die leere Datei `.nojekyll` sorgt dafür, dass GitHub die Dateien unverändert ausliefert. Die
 App nutzt nur relative Pfade und läuft deshalb unter jeder Adresse.
@@ -41,13 +50,22 @@ App nutzt nur relative Pfade und läuft deshalb unter jeder Adresse.
 
 | Datei | Inhalt |
 |---|---|
-| `index.html` | Aufbau der Seite |
-| `style.css` | Aussehen, hell und dunkel |
-| `app.js` | Rechnung und Bedienung; Vorgaben stehen oben in `DEF` |
-| `sw.js` | Offline-Cache |
+| `index.html` | Fueling-Rechner, Aufbau der Seite |
+| `app.js` | Rechnung und Bedienung des Rechners; Vorgaben stehen oben in `DEF` |
+| `plan.html`, `analyse.html` | Trainingsplan und Analyse — **erzeugt**, nicht von Hand ändern |
+| `doc.js` | markiert im Trainingsplan die aktuelle Woche |
+| `style.css` | Aussehen aller Seiten, hell und dunkel |
+| `pwa.js`, `sw.js` | Installieren-Taste und Offline-Cache |
 | `manifest.webmanifest`, `icons/` | Name, Farben und Symbole der installierten App |
 
-Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v2'` hochzählen. Installierte
+Trainingsplan und Analyse entstehen aus den Markdown-Dateien im Hauptverzeichnis. Nach einer
+Änderung an `trainingsplan.md` oder `analyse.md` im Ordner `werkzeug/` neu erzeugen:
+
+```bash
+python export_app.py
+```
+
+Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v4'` hochzählen. Installierte
 Geräte holen sich die neue Fassung beim nächsten Öffnen und zeigen sie beim übernächsten.
 
 ## Lokal ausprobieren

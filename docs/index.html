@@ -50,11 +50,16 @@
 </svg>
 
 <header class="top">
-  <h1>Fueling-Rechner</h1>
+  <nav class="tabs" aria-label="Bereiche">
+    <a class="tab" href="./" aria-current="page">Fueling</a>
+    <a class="tab" href="plan.html">Trainingsplan</a>
+    <a class="tab" href="analyse.html">Analyse</a>
+  </nav>
   <button type="button" class="chip" id="install" hidden>Installieren</button>
 </header>
 
 <main class="layout">
+  <h1 class="sr-only">Fueling-Rechner</h1>
   <div class="col col-a">
 
     <section class="card" aria-labelledby="t-ride">
@@ -264,6 +269,7 @@
 
 <footer class="foot">Richtwerte zum Planen und Mischen. Verträglichkeit ist individuell – Neues im Training testen, nicht im Rennen.</footer>
 
+<script src="pwa.js" defer></script>
 <script src="app.js" defer></script>
 </body>
 </html>

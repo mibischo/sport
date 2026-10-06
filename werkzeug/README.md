@@ -12,6 +12,7 @@ Alle Wochen und Einheiten stehen in **`plan2.py`**. Dort ändern, dann der Reihe
 |---|---|---|
 | 1 | `python plan2.py` | `plan_data.json` — der Plan als Daten |
 | 2 | `python export_md.py` | `../trainingsplan.md` |
+| 2a | `python export_app.py` | `../docs/plan.html` und `../docs/analyse.html` — die Reiter der App |
 | 3 | `python render_plan.py` | `_plan.json` — Plantabelle für den Bericht |
 | 4 | `python assemble.py` | `../bericht/rennrad_analyse.html` |
 | 5 | `python push_events.py --dry` | zeigt, was in intervals.icu passieren würde |

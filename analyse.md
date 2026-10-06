@@ -101,7 +101,8 @@ Stand 05.10.2026. Die vorige Fassung zählte auch die kurzen Wege zum Bahnhof mi
 
 - **334 W über 5 Minuten** (12.09., indoor) = 4,37 W/kg. Eher eine Untergrenze: Der Start kam 57 s verspätet, der Endspurt lag bei 405 W
 - Verhältnis zur FTP je nach Bezugswert **1,20–1,27**. „VO2max-limitiert" (unter 1,15) ist damit widerlegt. Ob das Profil ausgewogen oder schwellenlimitiert ist, lässt ein einzelner Test nicht entscheiden
-- VO2-Vorgaben für den Winter deshalb bei **295–305 W**, nicht bei 317 W. Den Plan erst nach einem Wiederholungstest unter gleichen Bedingungen umbauen
+- VO2-Einheiten im Winter als **30/15**: 30 s bei 330–340 W, 15 s bei 165 W, aufgebaut von 2 × 10 auf 3 × 13 Wiederholungen. Lange Intervalle bei **295–305 W**, nicht bei 317 W, kommen im Jänner und Februar dazu
+- Den Plan darüber hinaus erst nach einem Wiederholungstest unter gleichen Bedingungen umbauen
 - Was bleibt: nur **4,7 Stunden Z5** im ganzen Jahr 2026 (am 07.09.: 4,3). Der Reiz ganz oben fehlt weiterhin
 - Trainingsumfang der letzten 90 Tage auf Perzentil 76 — der Fleiß ist da
 

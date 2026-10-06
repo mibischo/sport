@@ -15,8 +15,8 @@ Alle Wochen und Einheiten stehen in **`plan2.py`**. Dort ändern, dann der Reihe
 | 2a | `python export_app.py` | `../docs/plan.html` und `../docs/analyse.html` — die Reiter der App |
 | 3 | `python render_plan.py` | `_plan.json` — Plantabelle für den Bericht |
 | 4 | `python assemble.py` | `../bericht/rennrad_analyse.html` |
-| 5 | `python push_events.py --dry` | zeigt, was in intervals.icu passieren würde |
-| 6 | `python push_events.py` | trägt den Plan in intervals.icu ein |
+| 5 | `python push_events.py --sync --dry` | zeigt, welche Termine sich in intervals.icu ändern würden |
+| 6 | `python push_events.py --sync` | zieht nur die geänderten Termine nach |
 
 ## Zugangsdaten für intervals.icu
 
@@ -32,9 +32,15 @@ Den Key findest du in intervals.icu unter Settings → Developer Settings. **`.e
 
 ## Was `push_events.py` genau tut
 
-Vor dem Anlegen **löscht** es alle Einträge, deren `external_id` mit `claude-winter-` beginnt,
-im Zeitraum 01.09.2026 bis 31.12.2027 — und legt den aktuellen Plan neu an. Eigene Einträge
-ohne dieses Präfix bleiben unberührt. Deshalb immer zuerst `--dry`.
+Mit `--sync` vergleicht es jeden künftigen Termin des Plans mit dem Eintrag in intervals.icu
+(gleiche `external_id`) und ändert nur, was abweicht. Es löscht nichts; vergangene Termine
+und von Hand verschobene Tage bleiben, wie sie sind. Das ist der normale Weg nach einer
+Planänderung.
+
+Ohne `--sync` **löscht** es alle Einträge, deren `external_id` mit `claude-winter-` beginnt,
+im Zeitraum 01.09.2026 bis 31.12.2027 — und legt den aktuellen Plan neu an. Dabei gehen auch
+die Verknüpfungen zu schon gefahrenen Einheiten verloren. Eigene Einträge ohne dieses Präfix
+bleiben unberührt. Deshalb immer zuerst `--dry`.
 
 Die Wochentage verteilt es nach festem Muster: Kraft Mo/Fr, Key-Sessions Di/Do, Langfahrt Sa,
 Rest auf Mi und So. Einheiten mit `tag=` in `plan2.py` (Tests, Rennen, Kursbesichtigung) sind

@@ -14,6 +14,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, '..')
 DOCS = os.path.join(ROOT, 'docs')
 
+RAW = 'https://github.com/mibischo/sport/raw/main'
+
 TABS = [('./', 'Fueling', 'index'), ('plan.html', 'Trainingsplan', 'plan'), ('analyse.html', 'Analyse', 'analyse')]
 
 PAGE = """<!doctype html>
@@ -66,6 +68,8 @@ def inline(text):
     s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
     s = re.sub(r'(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?![*\w])', r'<em>\1</em>', s)
     s = re.sub(r'\[([^\]]+)\]\(([^)\s]+)\)', r'<a href="\2">\1</a>', s)
+    # Workout-Dateien liegen ausserhalb von docs/ und werden deshalb auf GitHub verlinkt
+    s = re.sub(r'\bworkouts/([\w.\-]+\.zwo)', r'<a href="' + RAW + r'/workouts/\1">\1</a>', s)
     return s
 
 

@@ -162,18 +162,18 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 3x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 2x10 | 1:15 | 97 | **KEY** |
 | Sweetspot 2x20 min | 1:10 | 84 | **KEY** |
 | Long Endurance 2:30 | 2:30 | 122 |  |
 | Recovery | 1:00 | 30 |  |
 | Krafttraining | 0:55 | 28 |  |
 | Krafttraining | 0:55 | 28 |  |
 
-> Blockstart mit zwei Qualitätseinheiten. VO2-Dosis bewusst klein — es geht um den Reiz, nicht um den Block. Ab hier gilt: vier Radtage pro Woche, nie weniger.
+> Blockstart mit zwei Qualitätseinheiten. VO2-Dosis bewusst klein — es geht um den Reiz, nicht um den Block. Die VO2-Einheiten laufen ab jetzt als 30/15 nach Rønnestad. Ab hier gilt: vier Radtage pro Woche, nie weniger.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 3x4 min** — Einfahren 20 min. 3x4 min bei 106 % FTP (287 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 2x10** — Einfahren 20 min. 2 Sätze mit je 10 Wiederholungen: 30 s bei 320-330 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_2x10.zwo
 
 **Sweetspot 2x20 min** — Einfahren 20 min. 2x20 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6.
 
@@ -185,18 +185,18 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x10 | 1:15 | 97 | **KEY** |
 | Sweetspot 3x15 min | 1:20 | 96 | **KEY** |
 | Long Endurance 2:45 | 2:45 | 135 |  |
 | Recovery | 1:00 | 30 |  |
 | Krafttraining | 0:55 | 28 |  |
 | Krafttraining | 0:55 | 28 |  |
 
-> Langfahrt wächst um 15 min pro Woche.
+> Ein Satz mehr bei den 30/15. Langfahrt wächst um 15 min pro Woche.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x4 min** — Einfahren 20 min. 4x4 min bei 106 % FTP (287 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x10** — Einfahren 20 min. 3 Sätze mit je 10 Wiederholungen: 30 s bei 330-340 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x10.zwo
 
 **Sweetspot 3x15 min** — Einfahren 20 min. 3x15 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6.
 
@@ -208,7 +208,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Sweetspot 3x20 min | 1:35 | 114 | **KEY** |
 | Long Endurance 3:00 | 3:00 | 147 |  |
 | Recovery | 1:00 | 30 |  |
@@ -219,7 +219,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x4 min** — Einfahren 20 min. 4x4 min bei 108 % FTP (292 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 330-340 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Sweetspot 3x20 min** — Einfahren 20 min. 3x20 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6.
 
@@ -251,7 +251,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Sweetspot 3x20 min | 1:35 | 114 | **KEY** |
 | Long Endurance 3:00 | 3:00 | 147 |  |
 | Recovery | 1:00 | 30 |  |
@@ -262,7 +262,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x4 min** — Einfahren 20 min. 4x4 min bei 108 % FTP (292 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 330-340 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Sweetspot 3x20 min** — Einfahren 20 min. 3x20 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6.
 
@@ -274,18 +274,18 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x5 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Schwelle 3x12 min | 1:11 | 90 | **KEY** |
 | Long Endurance 3:15 | 3:15 | 159 |  |
 | Recovery | 1:00 | 30 |  |
 | Krafttraining | 0:55 | 28 |  |
 | Krafttraining | 0:55 | 28 |  |
 
-> VO2-Intervalle werden länger, Key 2 wechselt von Sweetspot auf Schwelle.
+> 30/15: Umfang halten, Zielwatt um 5 W anheben. Key 2 wechselt von Sweetspot auf Schwelle.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x5 min** — Einfahren 20 min. 4x5 min bei 105 % FTP (284 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 335-345 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
 
@@ -297,7 +297,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x5 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Schwelle 3x12 min | 1:11 | 90 | **KEY** |
 | Long Endurance 3:30 | 3:30 | 171 |  |
 | Recovery | 1:00 | 30 |  |
@@ -308,7 +308,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x5 min** — Einfahren 20 min. 4x5 min bei 105 % FTP (284 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 335-345 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
 
@@ -320,7 +320,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Schwelle 3x12 min | 1:11 | 90 | **KEY** |
 | Long Endurance 3:00 | 3:00 | 147 |  |
 | Recovery | 1:00 | 30 |  |
@@ -331,7 +331,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x4 min** — Einfahren 20 min. 4x4 min bei 106 % FTP (287 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 335-345 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
 
@@ -384,18 +384,18 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Schwelle 3x12 min | 1:11 | 90 | **KEY** |
 | Long Endurance 2:30 | 2:30 | 122 |  |
 | Z2 Grundlage | 1:00 | 46 |  |
 | Recovery | 0:50 | 25 |  |
 | Krafttraining | 0:45 | 14 |  |
 
-> VO2-Block. Zielwatt aus dem 5-Min-Test, nicht aus der Tabelle. Pause 1:1, locker rollen statt stehen.
+> VO2-Block. Die 30/15 bleiben das Hauptformat. Zielwatt nur anheben, wenn in der Woche davor alle Wiederholungen sauber waren.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x4 min** — Einfahren 20 min. 4x4 min bei 106-110 % FTP (287-298 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
 
@@ -407,18 +407,18 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 5x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Schwelle 3x12 min | 1:11 | 90 | **KEY** |
 | Long Endurance 2:30 | 2:30 | 122 |  |
 | Z2 Grundlage | 1:00 | 46 |  |
 | Recovery | 0:50 | 25 |  |
 | Krafttraining | 0:45 | 14 |  |
 
-> Ein Intervall mehr. Wenn das letzte nicht mehr auf Zielwatt geht, war die Vorgabe zu hoch.
+> Gleiche Einheit wie in KW01. Wenn der letzte Satz nicht mehr auf Zielwatt geht, war die Vorgabe zu hoch.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 5x4 min** — Einfahren 20 min. 5x4 min bei 106-110 % FTP (287-298 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
 
@@ -430,20 +430,20 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 4x5 min | 1:15 | 97 | **KEY** |
-| VO2max 4x4 min | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
+| VO2max 5x4 min | 1:15 | 97 | **KEY** |
 | Long Endurance 2:45 | 2:45 | 135 |  |
 | Z2 Grundlage | 1:00 | 46 |  |
 | Recovery | 0:50 | 25 |  |
 | Krafttraining | 0:45 | 14 |  |
 
-> Beide Keys jetzt VO2 — die härteste Woche des Blocks.
+> Beide Keys jetzt VO2 — die härteste Woche des Blocks. Eine Einheit 30/15, eine mit langen Intervallen: die liegen näher am 5-Min-Test und zeigen den Fortschritt direkter.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 4x5 min** — Einfahren 20 min. 4x5 min bei 105-108 % FTP (284-292 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
-**VO2max 4x4 min** — Einfahren 20 min. 4x4 min bei 106-110 % FTP (287-298 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 5x4 min** — Einfahren 20 min. 5x4 min bei 295-305 W, Pause 1:1 locker rollend. Ausfahren 10 min. Kadenz 95-105. Die Zielwatt stammen aus dem 5-Min-Test vom 12.09. (334 W).
 
 </details>
 
@@ -473,18 +473,18 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 30/15 2x10 | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | Schwelle 3x15 min | 1:20 | 101 | **KEY** |
 | Long Endurance 2:45 | 2:45 | 135 |  |
 | Z2 Grundlage | 1:00 | 46 |  |
 | Recovery | 0:50 | 25 |  |
 | Krafttraining | 0:45 | 14 |  |
 
-> Umstellung auf 30/15 nach Rønnestad: höhere Watt, gleiche Zeit über Schwelle, subjektiv leichter.
+> Nach der Entlastung wieder 30/15, die Schwelle wächst auf 3x15 min.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 2x10** — Einfahren 20 min. 2 Sätze a 10 Wiederholungen: 30 s bei 115 % FTP (312 W), 15 s locker. 4 min Pause zwischen den Sätzen. Ausfahren 10 min.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Schwelle 3x15 min** — Einfahren 20 min. 3x15 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
 
@@ -496,7 +496,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 30/15 3x11 | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
 | VO2max 5x4 min | 1:15 | 97 | **KEY** |
 | Long Endurance 2:45 | 2:45 | 135 |  |
 | Z2 Grundlage | 1:00 | 46 |  |
@@ -507,9 +507,9 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x11** — Einfahren 20 min. 3 Sätze a 11 Wiederholungen: 30 s bei 115 % FTP (312 W), 15 s locker. 4 min Pause zwischen den Sätzen. Ausfahren 10 min.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
-**VO2max 5x4 min** — Einfahren 20 min. 5x4 min bei 106-110 % FTP (287-298 W), Pause 1:1 locker rollend. Ausfahren 10 min. Zielwatt nach dem 5-Min-Test anpassen.
+**VO2max 5x4 min** — Einfahren 20 min. 5x4 min bei 295-305 W, Pause 1:1 locker rollend. Ausfahren 10 min. Kadenz 95-105. Die Zielwatt stammen aus dem 5-Min-Test vom 12.09. (334 W).
 
 </details>
 
@@ -530,7 +530,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze a 13 Wiederholungen: 30 s bei 115 % FTP (312 W), 15 s locker. 4 min Pause zwischen den Sätzen. Ausfahren 10 min.
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz zu Ende. Im ERG-Modus reagiert die Rolle oft zu träge - dann im freien Modus fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
 
 **Schwelle 3x15 min** — Einfahren 20 min. 3x15 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
 
@@ -552,7 +552,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**5-Minuten-Retest** — Gleiches Setup, gleiche Tageszeit, Openers am Vortag. Ziel: +15-25 W gegenüber Oktober.
+**5-Minuten-Retest** — Gleiches Setup, gleiche Tageszeit, Openers am Vortag. Ziel: +15-25 W gegenüber dem Test vom 12.09. (334 W).
 
 </details>
 

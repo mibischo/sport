@@ -9,7 +9,7 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 | [`trainingsplan.md`](trainingsplan.md) | **Der Plan**, Woche für Woche bis zur Dolomitenradrundfahrt am 13.06.2027 |
 | [`analyse.md`](analyse.md) | Saisonanalyse 2026, Stand 06.10.2026: Befunde, Ötztaler-Rechnung, Roadmap, Verpflegung |
 | [`bericht/rennrad_analyse.html`](bericht/rennrad_analyse.html) | Vollständiger Bericht mit allen Diagrammen, Stand 11.09.2026 — herunterladen und im Browser öffnen |
-| [`workouts/`](workouts/) | Strukturierte Workouts für MyWhoosh (ZWO) |
+| [`workouts/`](workouts/) | Strukturierte Workouts für MyWhoosh (ZWO): 5-Minuten-Test und die 30/15-Einheiten |
 | [`werkzeug/`](werkzeug/) | Skripte: Plan erzeugen, als Markdown/HTML ausgeben, in intervals.icu eintragen |
 | [`docs/`](docs/) | **Die App** — Fueling-Rechner als Startseite, dazu Trainingsplan und Analyse als eigene Reiter; online unter <https://mibischo.github.io/sport/> |
 
@@ -27,7 +27,7 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 
 | Termin | Test | Zweck |
 |---|---|---|
-| Sa 12.09.2026 | 5 min maximal | **Erledigt: 334 W.** VO2-Vorgaben für den Winter damit 295–305 W |
+| Sa 12.09.2026 | 5 min maximal | **Erledigt: 334 W.** Vorgaben für den Winter: 30/15 bei 330–340 W, lange Intervalle bei 295–305 W |
 | Di 29.12.2026 | 2 × 20 min all-out | Unabhängige FTP-Bestätigung vor dem VO2-Block |
 | KW 8/2027 | 5 min erneut | Misst den Ertrag des VO2-Blocks |
 | KW 13/2027 | 20 min outdoor | Prüft, ob die Trainer-FTP nach draußen überträgt |

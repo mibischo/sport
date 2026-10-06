@@ -1,0 +1,65 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>VO2max 30/15 - 2x10</name>
+    <description>30/15-Intervalle nach Roennestad: 2 Saetze mit je 10 Wiederholungen.
+30 Sekunden bei 325 W, dann 15 Sekunden bei 165 W weitertreten - nicht ausrollen.
+3 Minuten Pause zwischen den Saetzen. Gesamtdauer 48 Minuten.
+
+Die Wattwerte gelten fuer eine FTP von 271 W. Die Vorgabe orientiert sich an der
+5-Minuten-Bestleistung (334 W am 12.09.2026), nicht an der FTP.
+
+ERG-Modus: Viele Rollen regeln fuer 30/15 zu langsam nach. Wenn die Leistung hinterherhinkt,
+im freien Modus (Slope) fahren und selbst schalten.
+
+Ausfuehrung: Trittfrequenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst,
+ist der Satz zu Ende. Steigern erst, wenn alle Wiederholungen sauber waren - dann 5 W mehr.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="VO2max"/>
+        <tag name="30-15"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 45 % auf 70 % FTP (122 auf 190 W) -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.70" pace="0">
+            <textevent timeoffset="10" message="Einfahren. 10 Minuten locker steigern."/>
+            <textevent timeoffset="300" message="Haelfte. Trittfrequenz 90-95."/>
+        </Warmup>
+
+        <!-- 4 min ruhig bei 70 % -->
+        <SteadyState Duration="240" Power="0.70" pace="0">
+            <textevent timeoffset="10" message="Gleichmaessig bei 190 W."/>
+        </SteadyState>
+
+        <!-- 3 Oeffner: je 30 s bei 110 % (298 W), 60 s locker -->
+        <IntervalsT Repeat="3" OnDuration="30" OffDuration="60"
+                    OnPower="1.10" OffPower="0.50" pace="0"/>
+
+        <!-- 90 s ruhig, Sammlung vor dem ersten Satz -->
+        <SteadyState Duration="90" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="Gleich Satz 1: 10 x 30/15 bei 325 W. Trittfrequenz 95-105."/>
+            <textevent timeoffset="75" message="15 Sekunden. In den Pausen weitertreten."/>
+        </SteadyState>
+
+        <!-- Satz 1: 10 x 30 s bei 325 W / 15 s bei 165 W -->
+        <IntervalsT Repeat="10" OnDuration="30" OffDuration="15"
+                    OnPower="1.20" OffPower="0.61" pace="0"/>
+
+        <!-- Satzpause 3 min -->
+        <SteadyState Duration="180" Power="0.45" pace="0">
+            <textevent timeoffset="5" message="Satz 1 geschafft. 3 Minuten locker rollen."/>
+            <textevent timeoffset="120" message="Noch 1 Minute. Trinken."/>
+            <textevent timeoffset="165" message="Gleich Satz 2: 10 x 30/15 bei 325 W."/>
+        </SteadyState>
+
+        <!-- Satz 2: 10 x 30 s bei 325 W / 15 s bei 165 W -->
+        <IntervalsT Repeat="10" OnDuration="30" OffDuration="15"
+                    OnPower="1.20" OffPower="0.61" pace="0"/>
+
+        <!-- Ausfahren: 10 min -->
+        <Cooldown Duration="600" PowerLow="0.60" PowerHigh="0.40" pace="0">
+            <textevent timeoffset="5" message="Geschafft. 10 Minuten locker ausfahren."/>
+        </Cooldown>
+
+    </workout>
+</workout_file>

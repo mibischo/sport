@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 """Legt den Wochenplan als geplante Workouts in intervals.icu an.
 Alle Events bekommen external_id "claude-winter-..." und lassen sich damit
-jederzeit geschlossen wieder entfernen."""
+jederzeit geschlossen wieder entfernen.
+
+  python push_events.py --dry          zeigt nur, was passieren wuerde
+  python push_events.py                loescht alle Plan-Events und legt sie neu an
+  python push_events.py --sync         aendert nur, was sich im Plan geaendert hat:
+                                       nichts wird geloescht, Vergangenes und von Hand
+                                       verschobene Termine bleiben, wie sie sind
+  python push_events.py --sync --dry   zeigt die Aenderungen, ohne sie zu schreiben"""
 import json, io, sys, time, base64, urllib.request, urllib.error
 from datetime import date, timedelta
 
@@ -10,6 +17,7 @@ ATH, KEY = ENV['ATHLETE'], ENV['KEY']
 BASE = "https://intervals.icu/api/v1/athlete/%s" % ATH
 AUTH = base64.b64encode(("API_KEY:%s" % KEY).encode()).decode()
 DRY = "--dry" in sys.argv
+SYNC = "--sync" in sys.argv
 
 W = json.load(open('plan_data.json', encoding='utf-8'))
 
@@ -91,20 +99,7 @@ def req(method, url, payload=None):
         return resp.status, (json.loads(body) if body.strip() else None)
 
 
-# --- 1. alte claude-winter-Events entfernen (Idempotenz) ---
-st, alt = req("GET", BASE + "/events?oldest=2026-09-01&newest=2027-12-31")
-weg = [e for e in (alt or []) if str(e.get('external_id', '')).startswith('claude-winter-')]
-if weg and not DRY:
-    for e in weg:
-        try:
-            req("DELETE", "%s/events/%s" % (BASE, e['id']))
-        except Exception:
-            pass
-    print("%d vorhandene claude-winter-Events entfernt" % len(weg))
-elif weg:
-    print("[dry] %d vorhandene claude-winter-Events wuerden entfernt" % len(weg))
-
-# --- 2. neue Events bauen ---
+# --- 0. Events aus dem Plan bauen ---
 events = []
 for y, w, ph, sess, fok in W:
     for tag, s in belege(sess):
@@ -126,6 +121,54 @@ for y, w, ph, sess, fok in W:
 
 print("Zu erstellen: %d Events, %s bis %s"
       % (len(events), events[0]['start_date_local'][:10], events[-1]['start_date_local'][:10]))
+
+# --- 1. vorhandene Plan-Events holen ---
+st, alt = req("GET", BASE + "/events?oldest=2026-09-01&newest=2027-12-31")
+
+# --- 1a. --sync: nur Geaendertes nachziehen, nichts loeschen ---
+if SYNC:
+    def norm(v):
+        return " ".join(v.split()) if isinstance(v, str) else v
+    FELDER = ("name", "description", "moving_time", "icu_training_load", "type")
+    heute = date.today().isoformat()
+    vorhanden = {e.get("external_id"): e for e in (alt or [])
+                 if str(e.get("external_id", "")).startswith("claude-winter-")}
+    neu = geaendert = gleich = 0
+    for e in events:
+        if e["start_date_local"][:10] < heute:
+            continue
+        v = vorhanden.get(e["external_id"])
+        if v is None:
+            neu += 1
+            print("  + %s  %s" % (e["start_date_local"][:10], e["name"]))
+            if not DRY:
+                req("POST", BASE + "/events", e)
+                time.sleep(0.06)
+            continue
+        diff = [k for k in FELDER if norm(v.get(k)) != norm(e[k])]
+        if not diff:
+            gleich += 1
+            continue
+        geaendert += 1
+        print("  ~ %s  %s  ->  %s  (%s)" % (v["start_date_local"][:10], v.get("name"), e["name"], ", ".join(diff)))
+        if not DRY:
+            req("PUT", "%s/events/%s" % (BASE, v["id"]), dict((k, e[k]) for k in FELDER))
+            time.sleep(0.06)
+    print("%s%d geaendert, %d neu, %d unveraendert (ab %s)"
+          % ("[dry] " if DRY else "", geaendert, neu, gleich, heute))
+    raise SystemExit(0)
+
+# --- 2. alte claude-winter-Events entfernen (Idempotenz) ---
+weg = [e for e in (alt or []) if str(e.get('external_id', '')).startswith('claude-winter-')]
+if weg and not DRY:
+    for e in weg:
+        try:
+            req("DELETE", "%s/events/%s" % (BASE, e['id']))
+        except Exception:
+            pass
+    print("%d vorhandene claude-winter-Events entfernt" % len(weg))
+elif weg:
+    print("[dry] %d vorhandene claude-winter-Events wuerden entfernt" % len(weg))
 
 if DRY:
     print("\n--- Beispielwoche KW46 ---")

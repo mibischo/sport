@@ -1,6 +1,6 @@
 // Offline-Cache für den Fueling-Rechner.
 // Bei jeder Änderung an den Dateien VERSION erhöhen, damit alte Caches verschwinden.
-const VERSION = 'v4';
+const VERSION = 'v5';
 const CACHE = `fueling-${VERSION}`;
 const ASSETS = [
   './',

@@ -9,7 +9,7 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 | [`trainingsplan.md`](trainingsplan.md) | **Der Plan**, Woche für Woche bis zur Dolomitenradrundfahrt am 13.06.2027 |
 | [`analyse.md`](analyse.md) | Saisonanalyse 2026, Stand 06.10.2026: Befunde, Ötztaler-Rechnung, Roadmap, Verpflegung |
 | [`bericht/rennrad_analyse.html`](bericht/rennrad_analyse.html) | Vollständiger Bericht mit allen Diagrammen, Stand 11.09.2026 — herunterladen und im Browser öffnen |
-| [`workouts/`](workouts/) | Strukturierte Workouts für MyWhoosh (ZWO): 5-Minuten-Test und die 30/15-Einheiten |
+| [`workouts/`](workouts/) | Strukturierte Workouts für MyWhoosh (ZWO): 5-Minuten-Test, die 30/15-Einheiten und ein ERG-Test für die Rolle |
 | [`werkzeug/`](werkzeug/) | Skripte: Plan erzeugen, als Markdown/HTML ausgeben, in intervals.icu eintragen |
 | [`docs/`](docs/) | **Die App** — Fueling-Rechner als Startseite, dazu Trainingsplan und Analyse als eigene Reiter; online unter <https://mibischo.github.io/sport/> |
 

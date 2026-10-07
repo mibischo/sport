@@ -1,0 +1,71 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>Rolle: ERG-Test 30/15</name>
+    <description>Lockere Einheit mit zwei kurzen Testbloecken: 6 x 30/15 mit ERG, dann 6 x 30/15 ohne ERG.
+30 Sekunden bei 250 W, 15 Sekunden bei 150 W - bewusst weit unter den spaeteren 325 W.
+Gesamtdauer 50 Minuten, sonst alles bei 150-160 W.
+
+Vorher: in der Wahoo-App die ERG-Glaettung (ERG Mode Power Smoothing) ausschalten, in
+MyWhoosh Gradient Feel auf 0 % stellen (Settings - Equipment) und den Edge mit dem
+Powermeter mitlaufen lassen.
+
+Test A (ab Minute 18): ERG an, kleines Blatt, Trittfrequenz 95-100. Achte darauf, wie viele
+Sekunden die Rolle bis zur Vorgabe braucht.
+Danach ERG von Hand ausschalten (Menue unten in der Mitte) und einen Gang suchen, der bei
+etwa 100 Umdrehungen 250 W ergibt. Die Vorgaben bleiben am Bildschirm stehen.
+Test B (ab Minute 27:30): ohne ERG, die Vorgabe selbst treten. Selber Gang mit 100 und 85
+Umdrehungen, oder einmal schalten. Aendert sich der Widerstand an Wellen, wirkt Gradient
+Feel nicht.
+Danach ERG wieder einschalten.
+
+Die Wattwerte gelten fuer eine FTP von 271 W.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="Test"/>
+        <tag name="30-15"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 45 % auf 60 % FTP (122 auf 163 W) -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.60" pace="0">
+            <textevent timeoffset="10" message="Einfahren. Laeuft der Edge mit? Luefter an?"/>
+            <textevent timeoffset="300" message="Haelfte. Trittfrequenz 85-95."/>
+        </Warmup>
+
+        <!-- 8 min ruhig bei 59 % (160 W) -->
+        <SteadyState Duration="480" Power="0.59" pace="0">
+            <textevent timeoffset="10" message="Gleichmaessig bei 160 W."/>
+            <textevent timeoffset="420" message="In 1 Minute Test A mit ERG: 6 x 30/15 bei 250 und 150 W. Kleines Blatt."/>
+            <textevent timeoffset="465" message="15 Sekunden. Trittfrequenz 95-100."/>
+        </SteadyState>
+
+        <!-- Test A mit ERG: 6 x 30 s bei 250 W / 15 s bei 150 W -->
+        <IntervalsT Repeat="6" OnDuration="30" OffDuration="15"
+                    OnPower="0.92" OffPower="0.55" pace="0"/>
+
+        <!-- 5 min ruhig bei 55 % (150 W): ERG von Hand aus, Gang suchen -->
+        <SteadyState Duration="300" Power="0.55" pace="0">
+            <textevent timeoffset="5" message="Test A fertig. Jetzt ERG ausschalten (Menue unten Mitte)."/>
+            <textevent timeoffset="60" message="Gang suchen: 250 W bei etwa 100 Umdrehungen. Dann wieder locker."/>
+            <textevent timeoffset="240" message="In 1 Minute Test B ohne ERG: 30 s bei 250 W, 15 s bei 150 W."/>
+            <textevent timeoffset="285" message="15 Sekunden. Selber Gang, 100 und 85 Umdrehungen."/>
+        </SteadyState>
+
+        <!-- Test B ohne ERG: 6 x 30 s bei 250 W / 15 s bei 150 W, Vorgabe bleibt sichtbar -->
+        <IntervalsT Repeat="6" OnDuration="30" OffDuration="15"
+                    OnPower="0.92" OffPower="0.55" pace="0"/>
+
+        <!-- 12 min ruhig bei 59 % (160 W) -->
+        <SteadyState Duration="720" Power="0.59" pace="0">
+            <textevent timeoffset="5" message="Test B fertig. ERG wieder einschalten."/>
+            <textevent timeoffset="60" message="Locker weiter bei 160 W."/>
+            <textevent timeoffset="360" message="Noch 6 Minuten, dann ausfahren."/>
+        </SteadyState>
+
+        <!-- Ausfahren: 6 min -->
+        <Cooldown Duration="360" PowerLow="0.55" PowerHigh="0.40" pace="0">
+            <textevent timeoffset="5" message="Ausfahren. Morgen ist die Langfahrt."/>
+        </Cooldown>
+
+    </workout>
+</workout_file>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Krafttraining · Sport</title>
+<meta name="description" content="Krafteinheiten mitschreiben, als Notiz kopieren und den Verlauf sehen.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.7 2.7L16 9.6"/>
+  </symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3.5 21.5 20h-19z"/><path d="M12 10v4.5M12 17.2v.1"/>
+  </symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <nav class="tabs" aria-label="Bereiche">
+    <a class="tab" href="./">Fueling</a>
+    <a class="tab" href="kraft.html" aria-current="page">Kraft</a>
+    <a class="tab" href="plan.html">Plan</a>
+    <a class="tab" href="analyse.html">Analyse</a>
+  </nav>
+  <button type="button" class="chip" id="install" hidden>Installieren</button>
+</header>
+
+<main class="layout">
+  <h1 class="sr-only">Krafttraining</h1>
+  <div class="col col-a">
+
+    <section class="card" aria-labelledby="t-unit">
+      <h2 id="t-unit">Einheit</h2>
+
+      <div class="ctrl">
+        <label class="label" for="date">Datum</label>
+        <input type="date" id="date" class="date-in">
+      </div>
+      <p class="note" id="unit-note"></p>
+
+      <ul class="exs" id="exs"></ul>
+
+      <div class="field split">
+        <label class="label" for="note">Notiz (optional)</label>
+        <textarea id="note" rows="2" placeholder="z. B. Muskelkater, Knie, Schlaf"></textarea>
+      </div>
+
+      <button type="button" class="btn-main" data-act="save">Speichern &amp; kopieren</button>
+      <p class="status" id="save-status" role="status" hidden></p>
+      <textarea id="copy-fallback" class="copy-fallback" rows="6" readonly hidden aria-label="Notiz zum Kopieren"></textarea>
+    </section>
+
+  </div>
+  <div class="col col-b">
+
+    <section class="card" aria-labelledby="t-trend">
+      <h2 id="t-trend">Verlauf</h2>
+      <div class="tile-grid" id="tiles"></div>
+      <p class="note" id="tiles-empty" hidden>Noch kein Verlauf. Nach der ersten gespeicherten Einheit steht hier je Übung der letzte Wert, ab der zweiten die Entwicklung.</p>
+    </section>
+
+    <section class="card" aria-labelledby="t-hist">
+      <h2 id="t-hist">Einheiten</h2>
+      <ul class="sessions" id="sessions"></ul>
+      <p class="note" id="sessions-empty" hidden>Noch keine Einheit gespeichert.</p>
+      <button type="button" class="chip sm" id="more" data-act="more" hidden></button>
+    </section>
+
+    <details class="card fold" id="manage">
+      <summary>Übungen</summary>
+      <div class="fold-body">
+        <ul class="manage" id="manage-list"></ul>
+        <h3>Neue Übung</h3>
+        <div class="grid2">
+          <label class="set"><span class="label">Name</span>
+            <input type="text" id="new-name" maxlength="40" autocomplete="off"></label>
+          <label class="set"><span class="label">Art</span>
+            <select id="new-type">
+              <option value="kg">mit Gewicht</option>
+              <option value="bw">ohne Gewicht</option>
+              <option value="time">auf Zeit</option>
+            </select></label>
+        </div>
+        <button type="button" class="chip" data-act="add-ex">Hinzufügen</button>
+        <p class="note">Entfernte Übungen bleiben in den gespeicherten Einheiten stehen.</p>
+      </div>
+    </details>
+
+    <details class="card fold" id="data">
+      <summary>Sichern und einfügen</summary>
+      <div class="fold-body">
+        <p class="note first">Die Einheiten liegen nur im Browser dieses Geräts. Mit „Alles kopieren“ sicherst du sie als Text, etwa in einer Notiz. Derselbe Text lässt sich hier wieder einfügen, auch auf einem anderen Gerät.</p>
+        <button type="button" class="chip" data-act="export">Alles kopieren</button>
+        <h3>Einheiten einfügen</h3>
+        <label class="set"><span class="label">Je Einheit eine Zeile mit dem Datum, darunter die Übungen</span>
+          <textarea id="import-text" rows="7" placeholder="07.10.2026&#10;Squat 55 3x10&#10;RDL 55 3x10&#10;Squat einbeinig -&#10;Liegestütz 3x12&#10;Plank 3x1min"></textarea></label>
+        <button type="button" class="chip" data-act="import">Einfügen</button>
+        <p class="status" id="data-status" role="status" hidden></p>
+      </div>
+    </details>
+
+  </div>
+</main>
+
+<footer class="foot">Gespeichert wird nur in diesem Browser.</footer>
+
+<script src="pwa.js" defer></script>
+<script src="kraft.js" defer></script>
+</body>
+</html>

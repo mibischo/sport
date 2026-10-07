@@ -1,7 +1,7 @@
 {
-  "name": "Fueling-Rechner",
-  "short_name": "Fueling",
-  "description": "Verpflegung für Radfahrten planen, dazu Trainingsplan und Saisonanalyse.",
+  "name": "Sport",
+  "short_name": "Sport",
+  "description": "Verpflegung für Radfahrten planen und Krafteinheiten mitschreiben, dazu Trainingsplan und Saisonanalyse.",
   "lang": "de",
   "dir": "ltr",
   "start_url": "./",
@@ -11,6 +11,7 @@
   "theme_color": "#f9f9f7",
   "categories": ["sports", "health", "utilities"],
   "shortcuts": [
+    { "name": "Krafttraining", "url": "kraft.html" },
     { "name": "Trainingsplan", "url": "plan.html" },
     { "name": "Analyse", "url": "analyse.html" }
   ],

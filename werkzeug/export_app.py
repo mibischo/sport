@@ -16,14 +16,16 @@ DOCS = os.path.join(ROOT, 'docs')
 
 RAW = 'https://github.com/mibischo/sport/raw/main'
 
-TABS = [('./', 'Fueling', 'index'), ('plan.html', 'Trainingsplan', 'plan'), ('analyse.html', 'Analyse', 'analyse')]
+# Reiter wie in docs/index.html und docs/kraft.html (die beiden sind von Hand geschrieben)
+TABS = [('./', 'Fueling', 'index'), ('kraft.html', 'Kraft', 'kraft'), ('plan.html', 'Plan', 'plan'),
+        ('analyse.html', 'Analyse', 'analyse')]
 
 PAGE = """<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{title} · Fueling-Rechner</title>
+<title>{title} · Sport</title>
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">

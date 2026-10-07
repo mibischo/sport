@@ -1,15 +1,18 @@
-# Fueling-Rechner
+# Sport
 
-Kleine Web-App mit drei Reitern. Sie läuft ohne Server, ohne Konto und nach dem ersten Öffnen
+Kleine Web-App mit vier Reitern. Sie läuft ohne Server, ohne Konto und nach dem ersten Öffnen
 auch ohne Netz.
 
 - **Fueling** (Startseite): Dauer und Gramm pro Stunde eingeben, heraus kommen Packliste,
   Mischung je Behälter und der Takt für unterwegs.
-- **Trainingsplan:** der Wochenplan aus `trainingsplan.md`. Die aktuelle Woche ist markiert,
+- **Kraft:** Krafteinheiten mitschreiben. Je Übung Gewicht, Sätze und Wiederholungen, ein Knopf
+  speichert die Einheit und kopiert sie als Notiz für intervals.icu. Darunter der Verlauf je
+  Übung und die Liste der Einheiten.
+- **Plan:** der Wochenplan aus `trainingsplan.md`. Die aktuelle Woche ist markiert,
   die Seite springt beim Öffnen dorthin.
 - **Analyse:** die Saisonanalyse aus `analyse.md`.
 
-## Was sie rechnet
+## Fueling-Rechner
 
 - **Bedarf:** Stunden × Gramm pro Stunde.
 - **Packliste:** Flaschen (500, 750 oder 1000 ml), Flasks (150 oder 300 ml), Nachfüllungen und Riegel mit frei wählbaren Gramm Kohlenhydraten. Die Automatik schlägt eine Verteilung vor; trägst du selbst Gramm ein, zeigt „Eingepackt“ laufend, wie viel vom Bedarf schon verteilt ist.
@@ -20,6 +23,20 @@ auch ohne Netz.
 
 Alle Zahlen sind Richtwerte. Mischverhältnis, Natriumquelle und Grenzen stehen unter
 „Einstellungen“; gespeichert wird nur im Browser des Geräts.
+
+## Krafttraining
+
+- **Einheit:** Die Werte der letzten Einheit sind vorbelegt. Eine Übung antippen, um Gewicht,
+  Sätze und Wiederholungen zu ändern; „Sätze einzeln“ erlaubt unterschiedliche Wiederholungen,
+  „Auslassen“ schreibt die Übung mit Strich in die Notiz.
+- **Notiz:** „Speichern & kopieren“ legt den Text in die Zwischenablage, eine Zeile je Übung:
+  `Squat 55 3x10`, `Liegestütz 3x12`, `Plank 3x1min`, `Squat einbeinig -`.
+- **Verlauf:** je Übung der letzte Wert, die Veränderung seit der ersten gezeigten Einheit und
+  eine Kurve über die letzten zwölf Einheiten. Antippen zeigt die einzelne Einheit.
+- **Übungen:** hinzufügen, umbenennen, entfernen; drei Arten (mit Gewicht, ohne Gewicht, auf Zeit).
+- **Sichern und einfügen:** Die Einheiten liegen nur im Browser des Geräts. „Alles kopieren“
+  gibt sie als Text aus; derselbe Text, oder alte Notizen mit einer Datumszeile davor, lässt
+  sich wieder einfügen.
 
 ## Veröffentlichung
 
@@ -52,6 +69,7 @@ App nutzt nur relative Pfade und läuft deshalb unter jeder Adresse.
 |---|---|
 | `index.html` | Fueling-Rechner, Aufbau der Seite |
 | `app.js` | Rechnung und Bedienung des Rechners; Vorgaben stehen oben in `DEF` |
+| `kraft.html`, `kraft.js` | Krafttraining; die Übungen für den ersten Start stehen oben in `DEF_EX` |
 | `plan.html`, `analyse.html` | Trainingsplan und Analyse — **erzeugt**, nicht von Hand ändern |
 | `doc.js` | markiert im Trainingsplan die aktuelle Woche |
 | `style.css` | Aussehen aller Seiten, hell und dunkel |
@@ -65,7 +83,7 @@ Trainingsplan und Analyse entstehen aus den Markdown-Dateien im Hauptverzeichnis
 python export_app.py
 ```
 
-Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v6'` hochzählen. Installierte
+Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v7'` hochzählen. Installierte
 Geräte holen sich die neue Fassung beim nächsten Öffnen und zeigen sie beim übernächsten.
 
 ## Lokal ausprobieren

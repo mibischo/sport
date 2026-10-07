@@ -1,14 +1,17 @@
-// Offline-Cache für den Fueling-Rechner.
+// Offline-Cache der App.
 // Bei jeder Änderung an den Dateien VERSION erhöhen, damit alte Caches verschwinden.
-const VERSION = 'v6';
+// Der Cache heißt weiter „fueling-…“, damit Geräte mit der alten Fassung ihre Caches aufräumen.
+const VERSION = 'v7';
 const CACHE = `fueling-${VERSION}`;
 const ASSETS = [
   './',
   'index.html',
+  'kraft.html',
   'plan.html',
   'analyse.html',
   'style.css',
   'app.js',
+  'kraft.js',
   'doc.js',
   'pwa.js',
   'manifest.webmanifest',

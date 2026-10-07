@@ -11,7 +11,7 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 | [`bericht/rennrad_analyse.html`](bericht/rennrad_analyse.html) | Vollständiger Bericht mit allen Diagrammen, Stand 11.09.2026 — herunterladen und im Browser öffnen |
 | [`workouts/`](workouts/) | Strukturierte Workouts für MyWhoosh (ZWO): 5-Minuten-Test, die 30/15-Einheiten und ein ERG-Test für die Rolle |
 | [`werkzeug/`](werkzeug/) | Skripte: Plan erzeugen, als Markdown/HTML ausgeben, in intervals.icu eintragen |
-| [`docs/`](docs/) | **Die App** — Fueling-Rechner als Startseite, dazu Trainingsplan und Analyse als eigene Reiter; online unter <https://mibischo.github.io/sport/> |
+| [`docs/`](docs/) | **Die App „Sport“** — Fueling-Rechner als Startseite, dazu Krafttraining, Trainingsplan und Analyse als eigene Reiter; online unter <https://mibischo.github.io/sport/> |
 
 ## Die Eckdaten
 

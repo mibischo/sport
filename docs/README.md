@@ -83,7 +83,7 @@ Trainingsplan und Analyse entstehen aus den Markdown-Dateien im Hauptverzeichnis
 python export_app.py
 ```
 
-Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v7'` hochzählen. Installierte
+Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v8'` hochzählen. Installierte
 Geräte holen sich die neue Fassung beim nächsten Öffnen und zeigen sie beim übernächsten.
 
 ## Lokal ausprobieren

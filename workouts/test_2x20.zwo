@@ -1,0 +1,77 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>Test 2x20 all-out</name>
+    <description>Zwei Maximalversuche ueber 20 Minuten mit 10 Minuten lockerer Pause.
+Die beiden Testabschnitte sind Free Ride: MyWhoosh schaltet ERG dort selbst aus und
+zeigt keine Vorgabe. Vorher "Gradient Feel" auf 0 % stellen, dann bleibt der
+Widerstand gleichmaessig.
+
+Gleichmaessig anfangen: Das erste Intervall soll nicht schneller sein als das zweite.
+Erwartung 285-300 W im Intervall. FTP = Schnitt des besseren Intervalls x 0,95 bis 0,97.
+Gleiches Setup wie beim 5-Minuten-Test: Tageszeit, Luefter, Verpflegung.
+
+Gesamtdauer 90 min. Die Wattwerte gelten fuer eine FTP von 271 W in MyWhoosh.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="Test"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 122 auf 176 W -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.65" pace="0">
+            <textevent timeoffset="10" message="Einfahren. 10 Minuten locker steigern."/>
+        </Warmup>
+
+        <!-- 3 min bei 176 W -->
+        <SteadyState Duration="180" Power="0.65" pace="0">
+            <textevent timeoffset="10" message="Gleichmaessig bei 176 W."/>
+        </SteadyState>
+
+        <!-- 2 x 1 min bei 285 W / 1:30 min bei 136 W -->
+        <IntervalsT Repeat="2" OnDuration="60" OffDuration="90"
+                    OnPower="1.05" OffPower="0.50" pace="0"/>
+
+        <!-- 2 min bei 136 W -->
+        <SteadyState Duration="120" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="Gleich Test 1. Der Abschnitt ist Free Ride: ERG geht von selbst aus."/>
+            <textevent timeoffset="60" message="Gang waehlen, in dem 285 W bei 90 Umdrehungen gehen."/>
+            <textevent timeoffset="105" message="15 Sekunden."/>
+        </SteadyState>
+
+        <!-- 20 min Free Ride, ERG aus -->
+        <FreeRide Duration="1200" FlatRoad="1">
+            <textevent timeoffset="1" message="TEST 1 von 2. Start bei 280-285 W, nicht schneller."/>
+            <textevent timeoffset="300" message="5 Minuten. Ruhig bleiben, gleichmaessig."/>
+            <textevent timeoffset="600" message="Halbzeit. Halten oder leicht steigern."/>
+            <textevent timeoffset="900" message="Noch 5 Minuten."/>
+            <textevent timeoffset="1080" message="Noch 2 Minuten. Alles, was da ist."/>
+            <textevent timeoffset="1170" message="30 Sekunden!"/>
+        </FreeRide>
+
+        <!-- 10 min bei 122 W -->
+        <SteadyState Duration="600" Power="0.45" pace="0">
+            <textevent timeoffset="5" message="10 Minuten locker. Trinken. Den Schnitt merken."/>
+            <textevent timeoffset="480" message="Noch 2 Minuten, dann Test 2 als Free Ride."/>
+            <textevent timeoffset="585" message="15 Sekunden."/>
+        </SteadyState>
+
+        <!-- 20 min Free Ride, ERG aus -->
+        <FreeRide Duration="1200" FlatRoad="1">
+            <textevent timeoffset="1" message="TEST 2 von 2. Starte wie beim ersten oder 3-5 W darunter."/>
+            <textevent timeoffset="300" message="5 Minuten. Ruhig bleiben, gleichmaessig."/>
+            <textevent timeoffset="600" message="Halbzeit. Halten oder leicht steigern."/>
+            <textevent timeoffset="900" message="Noch 5 Minuten."/>
+            <textevent timeoffset="1080" message="Noch 2 Minuten. Alles, was da ist."/>
+            <textevent timeoffset="1170" message="30 Sekunden!"/>
+        </FreeRide>
+
+        <!-- 10 min bei 136 W -->
+        <SteadyState Duration="600" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="Geschafft. Beide Schnittwerte notieren."/>
+        </SteadyState>
+
+        <!-- Ausfahren: 10 min Rampe 136 auf 95 W -->
+        <Cooldown Duration="600" PowerLow="0.50" PowerHigh="0.35" pace="0"/>
+
+    </workout>
+</workout_file>

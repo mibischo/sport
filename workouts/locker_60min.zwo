@@ -1,0 +1,50 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>Locker 60 min</name>
+    <description>Lockere Einheit in Z1 bei 141 W. Im ERG-Modus, einfach treten.
+Alle 10 Minuten eine Minute mit hoher Trittfrequenz.
+
+Gesamtdauer 60 min. Die Wattwerte gelten fuer eine FTP von 271 W in MyWhoosh.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="Recovery"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 5 min Rampe 108 auf 141 W -->
+        <Warmup Duration="300" PowerLow="0.40" PowerHigh="0.52" pace="0">
+            <textevent timeoffset="10" message="Locker. Kein Druck auf dem Pedal."/>
+        </Warmup>
+
+        <!-- 10 min bei 141 W -->
+        <SteadyState Duration="600" Power="0.52" pace="0">
+            <textevent timeoffset="300" message="1 Minute mit 100 Umdrehungen, dann wieder normal."/>
+        </SteadyState>
+
+        <!-- 10 min bei 141 W -->
+        <SteadyState Duration="600" Power="0.52" pace="0">
+            <textevent timeoffset="300" message="1 Minute mit 100 Umdrehungen, dann wieder normal."/>
+        </SteadyState>
+
+        <!-- 10 min bei 141 W -->
+        <SteadyState Duration="600" Power="0.52" pace="0">
+            <textevent timeoffset="300" message="1 Minute mit 100 Umdrehungen, dann wieder normal."/>
+        </SteadyState>
+
+        <!-- 10 min bei 141 W -->
+        <SteadyState Duration="600" Power="0.52" pace="0">
+            <textevent timeoffset="300" message="1 Minute mit 100 Umdrehungen, dann wieder normal."/>
+        </SteadyState>
+
+        <!-- 10 min bei 141 W -->
+        <SteadyState Duration="600" Power="0.52" pace="0">
+            <textevent timeoffset="300" message="1 Minute mit 100 Umdrehungen, dann wieder normal."/>
+        </SteadyState>
+
+        <!-- Ausfahren: 5 min Rampe 136 auf 108 W -->
+        <Cooldown Duration="300" PowerLow="0.50" PowerHigh="0.40" pace="0">
+            <textevent timeoffset="5" message="Ausrollen."/>
+        </Cooldown>
+
+    </workout>
+</workout_file>

@@ -1,0 +1,57 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>Z2 Grundlage 90 min</name>
+    <description>Grundlage in Z2: 10-Minuten-Bloecke bei 168 und 176 W im Wechsel, damit es nicht
+eintoenig wird. Im ERG-Modus, Trittfrequenz 85-95. Der Schnitt bleibt unter 175 W.
+
+Gesamtdauer 90 min. Die Wattwerte gelten fuer eine FTP von 271 W in MyWhoosh.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="Z2"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 122 auf 168 W -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.62" pace="0">
+            <textevent timeoffset="10" message="Einfahren, dann Z2 gleichmaessig. Trittfrequenz 85-95."/>
+        </Warmup>
+
+        <!-- 10 min bei 168 W -->
+        <SteadyState Duration="600" Power="0.62" pace="0"/>
+
+        <!-- 10 min bei 176 W -->
+        <SteadyState Duration="600" Power="0.65" pace="0">
+            <textevent timeoffset="5" message="Trinken."/>
+        </SteadyState>
+
+        <!-- 10 min bei 168 W -->
+        <SteadyState Duration="600" Power="0.62" pace="0"/>
+
+        <!-- 10 min bei 176 W -->
+        <SteadyState Duration="600" Power="0.65" pace="0">
+            <textevent timeoffset="5" message="Trinken."/>
+        </SteadyState>
+
+        <!-- 10 min bei 168 W -->
+        <SteadyState Duration="600" Power="0.62" pace="0"/>
+
+        <!-- 10 min bei 176 W -->
+        <SteadyState Duration="600" Power="0.65" pace="0">
+            <textevent timeoffset="5" message="Trinken."/>
+        </SteadyState>
+
+        <!-- 10 min bei 168 W -->
+        <SteadyState Duration="600" Power="0.62" pace="0"/>
+
+        <!-- 5 min bei 176 W -->
+        <SteadyState Duration="300" Power="0.65" pace="0">
+            <textevent timeoffset="5" message="Trinken."/>
+        </SteadyState>
+
+        <!-- Ausfahren: 5 min Rampe 163 auf 122 W -->
+        <Cooldown Duration="300" PowerLow="0.60" PowerHigh="0.45" pace="0">
+            <textevent timeoffset="5" message="Ausfahren."/>
+        </Cooldown>
+
+    </workout>
+</workout_file>

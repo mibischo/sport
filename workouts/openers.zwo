@@ -1,0 +1,35 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>Oeffner vor dem Test</name>
+    <description>Am Vortag eines Tests: 30 Minuten locker, dann 3 x 1 Minute bei 298 W mit je 3 Minuten
+Pause. Macht die Beine wach, ohne zu ermueden. Im ERG-Modus.
+
+Gesamtdauer 50 min. Die Wattwerte gelten fuer eine FTP von 271 W in MyWhoosh.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="Test"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 122 auf 163 W -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.60" pace="0">
+            <textevent timeoffset="10" message="Einfahren. Morgen ist der Test."/>
+        </Warmup>
+
+        <!-- 20 min bei 163 W -->
+        <SteadyState Duration="1200" Power="0.60" pace="0">
+            <textevent timeoffset="10" message="20 Minuten locker bei 163 W."/>
+            <textevent timeoffset="1140" message="In 1 Minute: 3 x 1 min bei 298 W, je 3 min Pause."/>
+        </SteadyState>
+
+        <!-- 3 x 1 min bei 298 W / 3 min bei 136 W -->
+        <IntervalsT Repeat="3" OnDuration="60" OffDuration="180"
+                    OnPower="1.10" OffPower="0.50" pace="0"/>
+
+        <!-- Ausfahren: 8 min Rampe 149 auf 108 W -->
+        <Cooldown Duration="480" PowerLow="0.55" PowerHigh="0.40" pace="0">
+            <textevent timeoffset="5" message="Das war es. Locker ausfahren, frueh ins Bett."/>
+        </Cooldown>
+
+    </workout>
+</workout_file>

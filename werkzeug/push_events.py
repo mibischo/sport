@@ -7,7 +7,10 @@ jederzeit geschlossen wieder entfernen.
   python push_events.py                loescht alle Plan-Events und legt sie neu an
   python push_events.py --sync         aendert nur, was sich im Plan geaendert hat:
                                        nichts wird geloescht, Vergangenes und von Hand
-                                       verschobene Termine bleiben, wie sie sind
+                                       verschobene Termine bleiben, wie sie sind.
+                                       Termine, die im Kalender fehlen, werden nur gemeldet -
+                                       wer sie geloescht hat, will sie nicht zurueck
+  python push_events.py --sync --neu   legt fehlende Termine zusaetzlich wieder an
   python push_events.py --sync --dry   zeigt die Aenderungen, ohne sie zu schreiben"""
 import json, io, sys, time, base64, urllib.request, urllib.error
 from datetime import date, timedelta
@@ -18,6 +21,7 @@ BASE = "https://intervals.icu/api/v1/athlete/%s" % ATH
 AUTH = base64.b64encode(("API_KEY:%s" % KEY).encode()).decode()
 DRY = "--dry" in sys.argv
 SYNC = "--sync" in sys.argv
+NEU = "--neu" in sys.argv
 
 W = json.load(open('plan_data.json', encoding='utf-8'))
 
@@ -140,12 +144,16 @@ if SYNC:
         v = vorhanden.get(e["external_id"])
         if v is None:
             neu += 1
-            print("  + %s  %s" % (e["start_date_local"][:10], e["name"]))
-            if not DRY:
+            print("  %s %s  %s" % ("+" if NEU else "?", e["start_date_local"][:10], e["name"]))
+            if NEU and not DRY:
                 req("POST", BASE + "/events", e)
                 time.sleep(0.06)
             continue
         diff = [k for k in FELDER if norm(v.get(k)) != norm(e[k])]
+        if (v.get("workout_doc") or {}).get("steps"):
+            # Der Termin traegt strukturierte Schritte (z. B. fuer MyWhoosh): Beschreibung und
+            # die daraus berechnete Dauer und Last gehoeren dann dem Kalender, nicht dem Plan
+            diff = [k for k in diff if k not in ("description", "moving_time", "icu_training_load")]
         if not diff:
             gleich += 1
             continue
@@ -154,8 +162,9 @@ if SYNC:
         if not DRY:
             req("PUT", "%s/events/%s" % (BASE, v["id"]), dict((k, e[k]) for k in FELDER))
             time.sleep(0.06)
-    print("%s%d geaendert, %d neu, %d unveraendert (ab %s)"
-          % ("[dry] " if DRY else "", geaendert, neu, gleich, heute))
+    print("%s%d geaendert, %d %s, %d unveraendert (ab %s)"
+          % ("[dry] " if DRY else "", geaendert, neu,
+             "neu" if NEU else "fehlen im Kalender und bleiben weg (--neu legt sie an)", gleich, heute))
     raise SystemExit(0)
 
 # --- 2. alte claude-winter-Events entfernen (Idempotenz) ---

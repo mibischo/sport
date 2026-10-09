@@ -18,6 +18,14 @@ Alle Wochen und Einheiten stehen in **`plan2.py`**. Dort ändern, dann der Reihe
 | 5 | `python push_events.py --sync --dry` | zeigt, welche Termine sich in intervals.icu ändern würden |
 | 6 | `python push_events.py --sync` | zieht nur die geänderten Termine nach |
 
+## Workouts für die Rolle
+
+`python make_workouts.py` schreibt die ZWO-Dateien für MyWhoosh nach `../workouts/` und dazu
+die Übersicht `../workouts/README.md`. Oben im Skript steht die FTP; sie muss zu dem Wert
+passen, der in MyWhoosh eingestellt ist. `plan2.py` hängt in den Rollenwochen (KW 44 bis
+KW 12) an jede Radeinheit den Namen der passenden Datei — also zuerst die Workouts erzeugen,
+dann den Plan.
+
 ## Zugangsdaten für intervals.icu
 
 `push_events.py` liest eine Datei `.env` in diesem Ordner:
@@ -34,8 +42,9 @@ Den Key findest du in intervals.icu unter Settings → Developer Settings. **`.e
 
 Mit `--sync` vergleicht es jeden künftigen Termin des Plans mit dem Eintrag in intervals.icu
 (gleiche `external_id`) und ändert nur, was abweicht. Es löscht nichts; vergangene Termine
-und von Hand verschobene Tage bleiben, wie sie sind. Das ist der normale Weg nach einer
-Planänderung.
+und von Hand verschobene Tage bleiben, wie sie sind. Termine, die im Kalender fehlen, meldet
+es nur: Wer einen Termin gelöscht hat, will ihn nicht zurück. `--sync --neu` legt sie wieder
+an. Das ist der normale Weg nach einer Planänderung.
 
 Ohne `--sync` **löscht** es alle Einträge, deren `external_id` mit `claude-winter-` beginnt,
 im Zeitraum 01.09.2026 bis 31.12.2027 — und legt den aktuellen Plan neu an. Dabei gehen auch

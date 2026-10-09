@@ -1,7 +1,7 @@
 // Offline-Cache der App.
 // Bei jeder Änderung an den Dateien VERSION erhöhen, damit alte Caches verschwinden.
 // Der Cache heißt weiter „fueling-…“, damit Geräte mit der alten Fassung ihre Caches aufräumen.
-const VERSION = 'v7';
+const VERSION = 'v8';
 const CACHE = `fueling-${VERSION}`;
 const ASSETS = [
   './',

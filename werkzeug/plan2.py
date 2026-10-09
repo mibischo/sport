@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Wochenplan KW38/2026 - KW13/2027 als strukturierte Daten.
 Eine Quelle fuer (a) die HTML-Tabelle und (b) die intervals.icu-Events."""
-import json, io
+import json, io, os, re
 from datetime import date, timedelta
 
 FTP = 271
@@ -64,13 +64,14 @@ LANG_W = (295, 305)   # 4- bis 5-Minuten-Intervalle
 
 
 def r3015(saetze, wdh, watt=(330, 340), mins=75):
+    mitte = (watt[0] + watt[1]) // 2      # 325, 335, 340 oder 345 W
+    datei = "vo2max_30-15_%dx%d%s" % (saetze, wdh, "_%dw" % mitte if mitte > 336 else "")
     return S("VO2max 30/15 %dx%d" % (saetze, wdh), mins, 0.88,
              "Einfahren 20 min. %d Saetze mit je %d Wiederholungen: 30 s bei %d-%d W, dann 15 s "
              "bei 165 W weitertreten. 3 min Pause zwischen den Saetzen. Ausfahren 10 min. "
-             "Kadenz 95-105. Wenn du die Vorgabe zweimal hintereinander verfehlst, ist der Satz "
-             "zu Ende. Im ERG-Modus reagiert die Rolle oft zu traege - dann im freien Modus "
-             "fahren und selbst schalten. Workout-Datei: workouts/vo2max_30-15_%dx%d.zwo"
-             % (saetze, wdh, watt[0], watt[1], saetze, wdh), key=True)
+             "Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 faellt "
+             "und du sie nicht mehr hochbekommst. Workout-Datei: workouts/%s.zwo"
+             % (saetze, wdh, watt[0], watt[1], datei), key=True)
 
 
 def ss(reps, dauer, mins=None):
@@ -103,7 +104,37 @@ K_ERH = "Erhalt: 3 Saetze x 4-5 Wdh., 85 %. Reduzieren, nicht weglassen."
 W = []  # (isoyear, week, phase, [sessions], fokus)
 
 
+ROLLE = ((2026, 44), (2027, 12))   # Wochen, in denen auf der Rolle gefahren wird
+WORKOUTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "workouts")
+
+
+def rolle_datei(s):
+    """Name der Workout-Datei aus make_workouts.py zu einer Einheit, sonst None."""
+    n = s["name"]
+    m = re.match(r"(Sweetspot|Schwelle) (\d+)x(\d+) min$", n)
+    if m:
+        return "%s_%sx%s" % (m.group(1).lower(), m.group(2), m.group(3))
+    m = re.match(r"VO2max (\d+)x(\d+) min$", n)
+    if m:
+        return "vo2max_%sx%s" % (m.group(1), m.group(2))
+    m = re.match(r"Long Endurance (\d+):(\d\d)$", n)
+    if m:
+        return "lang_%sh%s" % (m.group(1), m.group(2))
+    if n == "Z2 Grundlage":
+        return "z2_%dmin" % s["min"]
+    if n == "Recovery":
+        return "locker_%dmin" % s["min"]
+    return {"Openers": "openers", "TEST 2x20 min all-out": "test_2x20",
+            "5-Minuten-Retest": "5min_maximaltest"}.get(n)
+
+
 def add(y, w, ph, sess, fokus):
+    if ROLLE[0] <= (y, w) <= ROLLE[1]:
+        for s in sess:   # im Winter steht bei jeder Radeinheit, welche Datei auf die Rolle gehoert
+            d = rolle_datei(s) if s["type"] == "Ride" and ".zwo" not in s["desc"] else None
+            if d and os.path.exists(os.path.join(WORKOUTS, d + ".zwo")):
+                vor = "Auf der Rolle" if d.startswith("lang_") else "Workout-Datei"
+                s["desc"] += " %s: workouts/%s.zwo" % (vor, d)
     W.append((y, w, ph, sess, fokus))
 
 

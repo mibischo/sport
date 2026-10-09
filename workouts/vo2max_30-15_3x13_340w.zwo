@@ -1,8 +1,8 @@
 <workout_file>
     <author>Trainingsplan</author>
-    <name>VO2max 30/15 3x13, 336 W</name>
+    <name>VO2max 30/15 3x13, 340 W</name>
     <description>30/15-Intervalle nach Roennestad: 3 Saetze mit je 13 Wiederholungen.
-30 Sekunden bei 336 W, dann 15 Sekunden bei 165 W weitertreten, nicht ausrollen.
+30 Sekunden bei 340 W, dann 15 Sekunden bei 165 W weitertreten, nicht ausrollen.
 3 Minuten Pause zwischen den Saetzen.
 
 Im ERG-Modus fahren, Trittfrequenz 95-105. Die Rolle braucht rund 3 Sekunden
@@ -39,35 +39,35 @@ Gesamtdauer 65:15 min. Die Wattwerte gelten fuer eine FTP von 271 W in MyWhoosh.
 
         <!-- 1:30 min bei 136 W -->
         <SteadyState Duration="90" Power="0.50" pace="0">
-            <textevent timeoffset="5" message="Gleich Satz 1: 13 x 30/15 bei 336 W. Trittfrequenz 95-105."/>
+            <textevent timeoffset="5" message="Gleich Satz 1: 13 x 30/15 bei 340 W. Trittfrequenz 95-105."/>
             <textevent timeoffset="75" message="15 Sekunden. In den Pausen weitertreten."/>
         </SteadyState>
 
-        <!-- 13 x 30 s bei 336 W / 15 s bei 165 W -->
+        <!-- 13 x 30 s bei 340 W / 15 s bei 165 W -->
         <IntervalsT Repeat="13" OnDuration="30" OffDuration="15"
-                    OnPower="1.24" OffPower="0.609" pace="0"/>
+                    OnPower="1.255" OffPower="0.609" pace="0"/>
 
         <!-- 3 min bei 122 W -->
         <SteadyState Duration="180" Power="0.45" pace="0">
             <textevent timeoffset="5" message="Satz 1 geschafft. 3 Minuten locker."/>
             <textevent timeoffset="120" message="Noch 1 Minute. Trinken."/>
-            <textevent timeoffset="165" message="Gleich Satz 2: 13 x 30/15 bei 336 W."/>
+            <textevent timeoffset="165" message="Gleich Satz 2: 13 x 30/15 bei 340 W."/>
         </SteadyState>
 
-        <!-- 13 x 30 s bei 336 W / 15 s bei 165 W -->
+        <!-- 13 x 30 s bei 340 W / 15 s bei 165 W -->
         <IntervalsT Repeat="13" OnDuration="30" OffDuration="15"
-                    OnPower="1.24" OffPower="0.609" pace="0"/>
+                    OnPower="1.255" OffPower="0.609" pace="0"/>
 
         <!-- 3 min bei 122 W -->
         <SteadyState Duration="180" Power="0.45" pace="0">
             <textevent timeoffset="5" message="Satz 2 geschafft. 3 Minuten locker."/>
             <textevent timeoffset="120" message="Noch 1 Minute. Trinken."/>
-            <textevent timeoffset="165" message="Gleich Satz 3: 13 x 30/15 bei 336 W."/>
+            <textevent timeoffset="165" message="Gleich Satz 3: 13 x 30/15 bei 340 W."/>
         </SteadyState>
 
-        <!-- 13 x 30 s bei 336 W / 15 s bei 165 W -->
+        <!-- 13 x 30 s bei 340 W / 15 s bei 165 W -->
         <IntervalsT Repeat="13" OnDuration="30" OffDuration="15"
-                    OnPower="1.24" OffPower="0.609" pace="0"/>
+                    OnPower="1.255" OffPower="0.609" pace="0"/>
 
         <!-- Ausfahren: 10 min Rampe 163 auf 108 W -->
         <Cooldown Duration="600" PowerLow="0.60" PowerHigh="0.40" pace="0">

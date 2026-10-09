@@ -1,0 +1,103 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>VO2max 5x4</name>
+    <description>VO2max mit langen Intervallen: 5 x 4 Minuten bei 300 W, Pause gleich lang und locker.
+Im ERG-Modus, Trittfrequenz 95-105. Die erste Haelfte fuehlt sich machbar an, die
+zweite zaehlt. Faellt die Kadenz unter 85 und kommt nicht mehr hoch, ist Schluss.
+Flasche mit 40-60 g Kohlenhydraten.
+
+Gesamtdauer 66 min. Die Wattwerte gelten fuer eine FTP von 271 W in MyWhoosh.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="VO2max"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 122 auf 190 W -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.70" pace="0">
+            <textevent timeoffset="10" message="Einfahren. 10 Minuten locker steigern."/>
+            <textevent timeoffset="300" message="Haelfte. Trittfrequenz 90-95."/>
+        </Warmup>
+
+        <!-- 4 min bei 190 W -->
+        <SteadyState Duration="240" Power="0.70" pace="0">
+            <textevent timeoffset="10" message="Gleichmaessig bei 190 W."/>
+            <textevent timeoffset="120" message="Ab jetzt regelmaessig aus der Flasche trinken."/>
+        </SteadyState>
+
+        <!-- 3 x 30 s bei 298 W / 1 min bei 136 W -->
+        <IntervalsT Repeat="3" OnDuration="30" OffDuration="60"
+                    OnPower="1.10" OffPower="0.50" pace="0"/>
+
+        <!-- 1:30 min bei 136 W -->
+        <SteadyState Duration="90" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="Gleich Intervall 1/5: 4 min bei 300 W."/>
+            <textevent timeoffset="75" message="15 Sekunden."/>
+        </SteadyState>
+
+        <!-- 4 min bei 300 W -->
+        <SteadyState Duration="240" Power="1.107" pace="0">
+            <textevent timeoffset="5" message="Intervall 1/5: 4 min bei 300 W. Trittfrequenz 95-105."/>
+            <textevent timeoffset="120" message="Haelfte."/>
+            <textevent timeoffset="180" message="Noch 1 Minute."/>
+        </SteadyState>
+
+        <!-- 4 min bei 136 W -->
+        <SteadyState Duration="240" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="4 Minuten locker. Trinken."/>
+            <textevent timeoffset="180" message="Noch 1 Minute, dann Intervall 2/5."/>
+        </SteadyState>
+
+        <!-- 4 min bei 300 W -->
+        <SteadyState Duration="240" Power="1.107" pace="0">
+            <textevent timeoffset="5" message="Intervall 2/5: 4 min bei 300 W. Trittfrequenz 95-105."/>
+            <textevent timeoffset="120" message="Haelfte."/>
+            <textevent timeoffset="180" message="Noch 1 Minute."/>
+        </SteadyState>
+
+        <!-- 4 min bei 136 W -->
+        <SteadyState Duration="240" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="4 Minuten locker. Trinken."/>
+            <textevent timeoffset="180" message="Noch 1 Minute, dann Intervall 3/5."/>
+        </SteadyState>
+
+        <!-- 4 min bei 300 W -->
+        <SteadyState Duration="240" Power="1.107" pace="0">
+            <textevent timeoffset="5" message="Intervall 3/5: 4 min bei 300 W. Trittfrequenz 95-105."/>
+            <textevent timeoffset="120" message="Haelfte."/>
+            <textevent timeoffset="180" message="Noch 1 Minute."/>
+        </SteadyState>
+
+        <!-- 4 min bei 136 W -->
+        <SteadyState Duration="240" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="4 Minuten locker. Trinken."/>
+            <textevent timeoffset="180" message="Noch 1 Minute, dann Intervall 4/5."/>
+        </SteadyState>
+
+        <!-- 4 min bei 300 W -->
+        <SteadyState Duration="240" Power="1.107" pace="0">
+            <textevent timeoffset="5" message="Intervall 4/5: 4 min bei 300 W. Trittfrequenz 95-105."/>
+            <textevent timeoffset="120" message="Haelfte."/>
+            <textevent timeoffset="180" message="Noch 1 Minute."/>
+        </SteadyState>
+
+        <!-- 4 min bei 136 W -->
+        <SteadyState Duration="240" Power="0.50" pace="0">
+            <textevent timeoffset="5" message="4 Minuten locker. Trinken."/>
+            <textevent timeoffset="180" message="Noch 1 Minute, dann Intervall 5/5."/>
+        </SteadyState>
+
+        <!-- 4 min bei 300 W -->
+        <SteadyState Duration="240" Power="1.107" pace="0">
+            <textevent timeoffset="5" message="Intervall 5/5: 4 min bei 300 W. Trittfrequenz 95-105."/>
+            <textevent timeoffset="120" message="Haelfte."/>
+            <textevent timeoffset="180" message="Noch 1 Minute."/>
+        </SteadyState>
+
+        <!-- Ausfahren: 10 min Rampe 149 auf 108 W -->
+        <Cooldown Duration="600" PowerLow="0.55" PowerHigh="0.40" pace="0">
+            <textevent timeoffset="5" message="Geschafft. Locker ausfahren."/>
+        </Cooldown>
+
+    </workout>
+</workout_file>

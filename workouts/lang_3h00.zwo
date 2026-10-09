@@ -1,0 +1,108 @@
+<workout_file>
+    <author>Trainingsplan</author>
+    <name>Lang Z2 3:00</name>
+    <description>Lange Fahrt in Z2 fuer Tage, an denen es draussen nicht geht: 171 W, alle 20 Minuten
+fuenf Minuten bei 179 W. Im ERG-Modus. Der Schnitt bleibt unter 175 W.
+Verpflegung 90 g Kohlenhydrate pro Stunde: erste Portion nach 15 Minuten, dann alle
+20 Minuten 30 g. Die Hinweise im Workout erinnern daran. Luefter an, Handtuch bereit.
+
+Gesamtdauer 180 min. Die Wattwerte gelten fuer eine FTP von 271 W in MyWhoosh.</description>
+    <sportType>bike</sportType>
+    <tags>
+        <tag name="Z2"/>
+        <tag name="Lang"/>
+    </tags>
+    <workout>
+
+        <!-- Einfahren: 10 min Rampe 122 auf 171 W -->
+        <Warmup Duration="600" PowerLow="0.45" PowerHigh="0.63" pace="0">
+            <textevent timeoffset="10" message="Einfahren, dann lange Z2. Flasche und Flask bereit?"/>
+        </Warmup>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- 15 min bei 171 W -->
+        <SteadyState Duration="900" Power="0.63" pace="0">
+            <textevent timeoffset="300" message="Portion: 30 g Kohlenhydrate."/>
+        </SteadyState>
+
+        <!-- 5 min bei 179 W -->
+        <SteadyState Duration="300" Power="0.66" pace="0">
+            <textevent timeoffset="5" message="30 Sekunden aus dem Sattel, dann 5 Minuten etwas mehr."/>
+        </SteadyState>
+
+        <!-- Ausfahren: 10 min Rampe 163 auf 114 W -->
+        <Cooldown Duration="600" PowerLow="0.60" PowerHigh="0.42" pace="0">
+            <textevent timeoffset="5" message="Geschafft. 10 Minuten ausfahren."/>
+        </Cooldown>
+
+    </workout>
+</workout_file>

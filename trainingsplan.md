@@ -10,7 +10,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Wochen | Einheiten | Radstunden | Kraftstunden | TSS |
 |---|---|---|---|---|
-| 40 | 213 | 299 h | 38 h | 16836 |
+| 40 | 210 | 293 h | 36 h | 16394 |
 
 ## KW 37/2026 · 7.9.–13.9.
 
@@ -135,47 +135,48 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 </details>
 
-## KW 43/2026 · 19.10.–25.10.
+## KW 43/2026 · 19.10.–25.10. · Entlastung
 
-*Aufbau* — Rad 8:37 h · Kraft 1:40 h · **491 TSS**
+*Aufbau* — Rad 2:25 h · Kraft — · **75 TSS**
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| Schwelle 3x12 min | 1:11 | 90 | **KEY** |
-| Long Endurance 3:30 | 3:30 | 171 |  |
-| Pendeln Z2 (Abendheimfahrt) | 1:58 | 86 |  |
-| Pendeln Z2 | 1:58 | 88 |  |
-| Krafttraining | 0:50 | 28 |  |
-| Krafttraining | 0:50 | 28 |  |
+| Wiedereinstieg locker | 0:40 | 22 | (Fr) |
+| Locker auf der Rolle | 0:45 | 23 | (Sa) |
+| Locker auf der Rolle | 1:00 | 30 | (So) |
 
-> Letzte Woche mit Abendlicht - am 25.10. ist Zeitumstellung, danach fällt die Heimfahrt weg. Nutz sie aus. Ab KW44 läuft der Winterblock indoor, und die Rolle muss dann stehen und getestet sein.
+> Umgebaut nach einem Infekt. Montag bis Donnerstag Pause, Freitag bis Sonntag drei lockere Fahrten auf der Rolle, keine Kraft, keine Schwelle, keine Langfahrt. Erst nach diesen drei Fahrten ohne Rückschlag kommt wieder Intensität. Jede Einheit nur, wenn der Morgen passt: Ruhepuls nicht über 52, du fühlst dich klar gut, kein Fieber. Am 25.10. ist Zeitumstellung, ab KW44 läuft der Winter auf der Rolle.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min.
+**Wiedereinstieg locker** — Erste Fahrt nach dem Infekt, auf der Rolle. 40 min unter 70 % FTP (unter 190 W), Kadenz frei. Nur fahren, wenn am Morgen alles passt: Ruhepuls nicht über 52, du fühlst dich klar gut, kein Druck in Stirn oder Wangen, kein Fieber. Sonst weiter Pause.
+
+**Locker auf der Rolle** — Lockere Fahrt nach dem Infekt, 45 min in Z1, einfach treten. Nur wenn der Morgen passt: Ruhepuls nicht über 52, du fühlst dich klar gut, kein Fieber. Sonst Pause. Workout-Datei: workouts/locker_45min.zwo
+
+**Locker auf der Rolle** — Lockere Fahrt nach dem Infekt, 60 min in Z1, einfach treten. Nur wenn der Morgen passt: Ruhepuls nicht über 52, du fühlst dich klar gut, kein Fieber. Sonst Pause. Workout-Datei: workouts/locker_60min.zwo
 
 </details>
 
 ## KW 44/2026 · 26.10.–1.11.
 
-*Grundlage, Kraft und erste VO2-Reize* — Rad 5:55 h · Kraft 1:50 h · **389 TSS**
+*Grundlage, Kraft und erste VO2-Reize* — Rad 5:45 h · Kraft 1:20 h · **363 TSS**
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
+| Sweetspot 2x15 min | 1:00 | 72 | **KEY** |
 | VO2max 30/15 2x10 | 1:15 | 97 | **KEY** |
-| Sweetspot 2x20 min | 1:10 | 84 | **KEY** |
 | Long Endurance 2:30 | 2:30 | 122 |  |
 | Recovery | 1:00 | 30 |  |
-| Krafttraining | 0:55 | 28 |  |
-| Krafttraining | 0:55 | 28 |  |
+| Krafttraining | 0:30 | 14 |  |
+| Krafttraining | 0:50 | 28 |  |
 
-> Blockstart mit zwei Qualitätseinheiten. VO2-Dosis bewusst klein — es geht um den Reiz, nicht um den Block. Die VO2-Einheiten laufen ab jetzt als 30/15 nach Rønnestad. Ab hier gilt: vier Radtage pro Woche, nie weniger.
+> Blockstart nach dem Infekt. Erst Sweetspot, die 30/15 erst als zweite Key-Einheit und nur, wenn sich der Sweetspot normal angefühlt hat - sonst wird daraus eine Stunde Z2. VO2-Dosis bewusst klein. Kraft: die erste Einheit leicht, die zweite als Übergang, Maximalkraft ab KW45. Ab hier gilt: vier Radtage pro Woche.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 2x10** — Einfahren 20 min. 2 Sätze mit je 10 Wiederholungen: 30 s bei 325 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_2x10_325w.zwo
+**Sweetspot 2x15 min** — Einfahren 20 min. 2x15 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6. Workout-Datei: workouts/sweetspot_2x15.zwo
 
-**Sweetspot 2x20 min** — Einfahren 20 min. 2x20 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6. Workout-Datei: workouts/sweetspot_2x20.zwo
+**VO2max 30/15 2x10** — Einfahren 20 min. 2 Sätze mit je 10 Wiederholungen: 30 s bei 325 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_2x10_325w.zwo
 
 </details>
 

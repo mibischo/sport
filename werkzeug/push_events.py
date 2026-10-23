@@ -11,8 +11,12 @@ jederzeit geschlossen wieder entfernen.
                                        Termine, die im Kalender fehlen, werden nur gemeldet -
                                        wer sie geloescht hat, will sie nicht zurueck
   python push_events.py --sync --neu   legt fehlende Termine zusaetzlich wieder an
-  python push_events.py --sync --dry   zeigt die Aenderungen, ohne sie zu schreiben"""
-import json, io, sys, time, base64, urllib.request, urllib.error
+  python push_events.py --sync --dry   zeigt die Aenderungen, ohne sie zu schreiben
+  python push_events.py --sync --kw=43,44   nur diese Kalenderwochen abgleichen
+
+Indoor-Einheiten (die Beschreibung nennt workouts/<datei>.zwo) bekommen die Schritte aus
+make_workouts.py; MyWhoosh holt sie ueber die Verbindung zu intervals.icu."""
+import json, io, re, sys, time, base64, urllib.request, urllib.error
 from datetime import date, timedelta
 
 ENV = dict(l.strip().split('=', 1) for l in io.open('.env', encoding='utf-8') if '=' in l)
@@ -22,8 +26,14 @@ AUTH = base64.b64encode(("API_KEY:%s" % KEY).encode()).decode()
 DRY = "--dry" in sys.argv
 SYNC = "--sync" in sys.argv
 NEU = "--neu" in sys.argv
+KW = set(int(x) for a in sys.argv if a.startswith("--kw=") for x in a[5:].split(",") if x)
 
 W = json.load(open('plan_data.json', encoding='utf-8'))
+
+# Indoor-Einheiten bekommen die Schritte ihrer Workout-Datei in die Beschreibung, damit
+# MyWhoosh sie aus dem intervals.icu-Kalender starten kann (Tests mit Free Ride ausgenommen)
+import make_workouts
+SCHRITTE = make_workouts.kalender()
 
 # Mo=1 ... So=7
 SLOT_KRAFT = [2, 5]   # Di, Fr: 48 h vor der naechsten Key-Session
@@ -87,7 +97,7 @@ def belege(sess):
         plan.append((nimm(SLOT_KRAFT), x))
     for x in rest:
         plan.append((nimm(SLOT_REST), x))
-    return sorted(plan)
+    return sorted(plan, key=lambda p: p[0])   # gleicher Tag: Reihenfolge aus plan2.py
 
 
 def req(method, url, payload=None):
@@ -105,13 +115,22 @@ def req(method, url, payload=None):
 
 # --- 0. Events aus dem Plan bauen ---
 events = []
+ids = set()
 for y, w, ph, sess, fok in W:
     for tag, s in belege(sess):
         d = date.fromisocalendar(y, w, tag)
         desc = s['desc']
-        if s['type'] == 'Ride' and s['if']:
+        m = re.search(r"workouts/([\w-]+)\.zwo", desc) if s['type'] == 'Ride' else None
+        schritte = SCHRITTE.get(m.group(1)) if m else None
+        if schritte:
+            desc += "\n\n" + schritte + "\n"   # Leerzeile, damit die Kennung kein Schritt wird
+        elif s['type'] == 'Ride' and s['if']:
             desc += "\n\nGeplant: %d min, IF %.2f, %d TSS." % (s['min'], s['if'], s['tss'])
         desc += "\n[Winterplan KW%02d]" % w
+        xid = "claude-winter-%dw%02d-%d" % (y, w, tag)
+        while xid in ids:   # zwei Einheiten am selben Tag: die zweite bekommt ein b
+            xid += "b"
+        ids.add(xid)
         events.append({
             "category": "WORKOUT",
             "start_date_local": d.isoformat() + "T00:00:00",
@@ -120,8 +139,10 @@ for y, w, ph, sess, fok in W:
             "description": desc,
             "moving_time": s['min'] * 60,
             "icu_training_load": s['tss'],
-            "external_id": "claude-winter-%dw%02d-%d" % (y, w, tag),
+            "external_id": xid,
         })
+        if schritte:   # Dauer und Last rechnet intervals.icu aus den Schritten
+            del events[-1]["moving_time"], events[-1]["icu_training_load"]
 
 print("Zu erstellen: %d Events, %s bis %s"
       % (len(events), events[0]['start_date_local'][:10], events[-1]['start_date_local'][:10]))
@@ -141,6 +162,8 @@ if SYNC:
     for e in events:
         if e["start_date_local"][:10] < heute:
             continue
+        if KW and int(e["external_id"].split("w")[-1].split("-")[0]) not in KW:
+            continue
         v = vorhanden.get(e["external_id"])
         if v is None:
             neu += 1
@@ -149,10 +172,10 @@ if SYNC:
                 req("POST", BASE + "/events", e)
                 time.sleep(0.06)
             continue
-        diff = [k for k in FELDER if norm(v.get(k)) != norm(e[k])]
-        if (v.get("workout_doc") or {}).get("steps"):
-            # Der Termin traegt strukturierte Schritte (z. B. fuer MyWhoosh): Beschreibung und
-            # die daraus berechnete Dauer und Last gehoeren dann dem Kalender, nicht dem Plan
+        diff = [k for k in FELDER if k in e and norm(v.get(k)) != norm(e[k])]
+        if (v.get("workout_doc") or {}).get("steps") and "moving_time" in e:
+            # Der Termin traegt von Hand eingetragene Schritte, der Plan aber keine: Beschreibung
+            # und die daraus berechnete Dauer und Last gehoeren dann dem Kalender, nicht dem Plan
             diff = [k for k in diff if k not in ("description", "moving_time", "icu_training_load")]
         if not diff:
             gleich += 1
@@ -160,7 +183,7 @@ if SYNC:
         geaendert += 1
         print("  ~ %s  %s  ->  %s  (%s)" % (v["start_date_local"][:10], v.get("name"), e["name"], ", ".join(diff)))
         if not DRY:
-            req("PUT", "%s/events/%s" % (BASE, v["id"]), dict((k, e[k]) for k in FELDER))
+            req("PUT", "%s/events/%s" % (BASE, v["id"]), dict((k, e[k]) for k in FELDER if k in e))
             time.sleep(0.06)
     print("%s%d geaendert, %d %s, %d unveraendert (ab %s)"
           % ("[dry] " if DRY else "", geaendert, neu,

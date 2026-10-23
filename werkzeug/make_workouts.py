@@ -265,7 +265,7 @@ def alle():
         sweetspot(2, 12), sweetspot(2, 15), sweetspot(2, 20), sweetspot(3, 15), sweetspot(3, 20),
         schwelle(3, 12), schwelle(3, 15), schwelle(2, 20),
         grundlage(60), grundlage(75), grundlage(90),
-        locker(50), locker(60),
+        locker(45), locker(50), locker(60),
         lang(2, 30), lang(2, 45), lang(3, 0), lang(3, 15), lang(3, 30),
         oeffner(), test_2x20(),
     ]
@@ -416,6 +416,66 @@ Schwelle und Grundlage wandern mit, wenn du die FTP in MyWhoosh änderst. Die 30
 langen VO2max-Intervalle und die Öffner haben feste Wattzahlen: Nach einer FTP-Änderung in
 `make_workouts.py` oben `FTP` anpassen, neu erzeugen und diese Dateien neu laden.
 """
+
+
+# ---------- Schritte für den intervals.icu-Kalender ----------
+# MyWhoosh holt geplante Einheiten mit Schritten aus intervals.icu. Ziele stehen in % der FTP,
+# weil MyWhoosh Wattziele nicht zuverlässig übernimmt. Die Schrittnamen enthalten keine Zahlen
+# und keine Zonennamen, damit der Parser von intervals.icu sie nicht als Vorgabe liest.
+def icu_dauer(s):
+    m, r = divmod(s, 60)
+    if not m:
+        return '%ds' % r
+    return '%dm%02d' % (m, r) if r else '%dm' % m
+
+
+def icu_prozent(p):
+    return '%d%%' % round(p * 100)
+
+
+def icu_name(p):
+    if p >= 1.0:
+        return 'Hart'
+    if p >= 0.95:
+        return 'Schwelle'
+    if p >= 0.85:
+        return 'Sweetspot'
+    if p >= 0.6:
+        return 'Grundlage'
+    return 'Locker'
+
+
+def icu_text(wk):
+    """Workout-Text im Format von intervals.icu, aus denselben Schritten wie die ZWO-Datei."""
+    assert not any(s['t'] == 'frei' for s in wk['schritte']), 'Free Ride hat keine Entsprechung'
+    zeilen, teil = [], None
+    for s in wk['schritte']:
+        neu = s['art'] if s['t'] == 'rampe' else 'Main Set'
+        if neu == 'Warmup' and teil == 'Main Set':
+            neu = 'Main Set'
+        if neu != teil:
+            zeilen += (['', neu] if zeilen else [neu])
+            teil = neu
+        if s['t'] == 'rampe':
+            name = 'Einfahren' if s['art'] == 'Warmup' else 'Ausfahren'
+            zeilen.append('- %s %s ramp %s-%s' % (name, icu_dauer(s['dauer']), icu_prozent(s['von']), icu_prozent(s['bis'])))
+        elif s['t'] == 'halten':
+            zeilen.append('- %s %s %s' % (icu_name(s['p']), icu_dauer(s['dauer']), icu_prozent(s['p'])))
+        else:
+            zeilen += ['', '%dx' % s['n'],
+                       '- %s %s %s' % (icu_name(s['p_an']), icu_dauer(s['an']), icu_prozent(s['p_an'])),
+                       '- %s %s %s' % ('Weitertreten' if s['p_aus'] >= 0.55 else 'Locker', icu_dauer(s['aus']),
+                                       icu_prozent(s['p_aus'])), '']
+    text = '\n'.join(zeilen)
+    while '\n\n\n' in text:
+        text = text.replace('\n\n\n', '\n\n')
+    return text.strip()
+
+
+def kalender():
+    """Datei -> Schritttext für alle Einheiten ohne Free Ride (die Tests bleiben Datei)."""
+    return dict((wk['datei'], icu_text(wk)) for wk in alle()
+                if not any(s['t'] == 'frei' for s in wk['schritte']))
 
 
 def main():

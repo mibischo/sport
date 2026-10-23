@@ -28,6 +28,7 @@ geschrieben, alle anderen erzeugt `werkzeug/make_workouts.py` — dort ändern, 
 | Z2 Grundlage (60 min) | `z2_60min.zwo` | 60 min | 168–176 W im Wechsel | 38 |
 | Z2 Grundlage (75 min) | `z2_75min.zwo` | 75 min | 168–176 W im Wechsel | 48 |
 | Z2 Grundlage (90 min) | `z2_90min.zwo` | 90 min | 168–176 W im Wechsel | 58 |
+| Recovery (45 min) | `locker_45min.zwo` | 45 min | 141 W | 19 |
 | Recovery (50 min) | `locker_50min.zwo` | 50 min | 141 W | 22 |
 | Recovery (60 min) | `locker_60min.zwo` | 60 min | 141 W | 26 |
 | Long Endurance 2:30 | `lang_2h30.zwo` | 150 min | 171 W, alle 20 min 5 min bei 179 W | 98 |

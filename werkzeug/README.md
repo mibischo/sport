@@ -26,6 +26,11 @@ passen, der in MyWhoosh eingestellt ist. `plan2.py` hängt in den Rollenwochen (
 KW 12) an jede Radeinheit den Namen der passenden Datei — also zuerst die Workouts erzeugen,
 dann den Plan.
 
+`push_events.py` hängt an jeden Termin, der eine Datei nennt, dieselben Schritte im Format von
+intervals.icu (`make_workouts.kalender()`, Ziele in % der FTP). MyWhoosh holt diese Termine
+über die Verbindung zu intervals.icu, die Einheit lässt sich dann direkt aus dem Kalender
+starten — Dateien hochladen ist nicht mehr nötig. Ausnahme sind die Tests mit Free Ride.
+
 ## Zugangsdaten für intervals.icu
 
 `push_events.py` liest eine Datei `.env` in diesem Ordner:
@@ -44,7 +49,8 @@ Mit `--sync` vergleicht es jeden künftigen Termin des Plans mit dem Eintrag in 
 (gleiche `external_id`) und ändert nur, was abweicht. Es löscht nichts; vergangene Termine
 und von Hand verschobene Tage bleiben, wie sie sind. Termine, die im Kalender fehlen, meldet
 es nur: Wer einen Termin gelöscht hat, will ihn nicht zurück. `--sync --neu` legt sie wieder
-an. Das ist der normale Weg nach einer Planänderung.
+an. `--kw=43,44` gleicht nur diese Kalenderwochen ab. Das ist der normale Weg nach einer
+Planänderung.
 
 Ohne `--sync` **löscht** es alle Einträge, deren `external_id` mit `claude-winter-` beginnt,
 im Zeitraum 01.09.2026 bis 31.12.2027 — und legt den aktuellen Plan neu an. Dabei gehen auch

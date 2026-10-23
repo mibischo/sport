@@ -204,18 +204,36 @@ add(2026, 42, "rec", [
     "Entlastung nach vier Aufbauwochen - jetzt ist sie verdient. Rund 65 % der "
     "Belastungswoche, keine harte Einheit.")
 
-add(2026, 43, "auf", [
-    schwelle(3, 12), lang(3, 30, carbs=80), abend(), pz2h(), KRAFT(50, K_MAX), KRAFT(50, K_MAX)],
-    "Letzte Woche mit Abendlicht - am 25.10. ist Zeitumstellung, danach faellt die "
-    "Heimfahrt weg. Nutz sie aus. Ab KW44 laeuft der Winterblock indoor, und die Rolle "
-    "muss dann stehen und getestet sein.")
+# KW43 umgebaut am 19./21./23.10.2026 nach einem Infekt: Mo-Do Pause, Fr-So drei lockere Fahrten.
+# Erste Kraft nach dem Infekt erst am Dienstag der KW44: Muskelkater nach knapp drei Wochen
+# ohne Kniebeugen soll nicht den ersten Sweetspot am Montag treffen
+KRAFT_LEICHT = KRAFT(30, "Erste Kraft nach dem Infekt, bewusst leicht: 2 Saetze x 10 Wdh. bei "
+                     "rund 80 % der letzten Last (Squat und RDL 45 kg statt 55), einbeinig leicht, "
+                     "Rumpf. Nichts bis zum Anschlag, Pausen lang. Liegestuetz und Plank wie gewohnt. "
+                     "Muskelkater in den naechsten zwei Tagen ist nach der Pause normal.")
+
+
+def rolle_locker(mins, tag):
+    return S("Locker auf der Rolle", mins, 0.55,
+             "Lockere Fahrt nach dem Infekt, %d min in Z1, einfach treten. Nur wenn der Morgen "
+             "passt: Ruhepuls nicht ueber 52, du fuehlst dich klar gut, kein Fieber. Sonst Pause. "
+             "Workout-Datei: workouts/locker_%dmin.zwo" % (mins, mins), tag=tag)
+
+
+add(2026, 43, "rec", [
+    S("Wiedereinstieg locker", 40, 0.58,
+      "Erste Fahrt nach dem Infekt, auf der Rolle. 40 min unter 70 % FTP (unter 190 W), Kadenz "
+      "frei. Nur fahren, wenn am Morgen alles passt: Ruhepuls nicht ueber 52, du fuehlst dich "
+      "klar gut, kein Druck in Stirn oder Wangen, kein Fieber. Sonst weiter Pause.", tag=5),
+    rolle_locker(45, 6), rolle_locker(60, 7)],
+    "Umgebaut nach einem Infekt. Montag bis Donnerstag Pause, Freitag bis Sonntag drei lockere "
+    "Fahrten auf der Rolle, keine Kraft, keine Schwelle, keine Langfahrt. "
+    "Erst nach diesen drei Fahrten ohne Rueckschlag kommt wieder Intensitaet. Jede Einheit nur, "
+    "wenn der Morgen passt: Ruhepuls nicht ueber 52, du fuehlst dich klar gut, kein Fieber. "
+    "Am 25.10. ist Zeitumstellung, ab KW44 laeuft der Winter auf der Rolle.")
 
 # ---------- Phase 2: Grundlage, 2 Keys ----------
-GR = [(44, r3015(2, 10, 325), ss(2, 20), lang(2, 30),
-       "Blockstart mit zwei Qualitaetseinheiten. VO2-Dosis bewusst klein — es geht um den Reiz, "
-       "nicht um den Block. Die VO2-Einheiten laufen ab jetzt als 30/15 nach Roennestad. "
-       "Ab hier gilt: vier Radtage pro Woche, nie weniger."),
-      (45, r3015(2, 10, 312), ss(3, 15), lang(2, 45),
+GR = [(45, r3015(2, 10, 312), ss(3, 15), lang(2, 45),
        "Nach der Krankheit (10.-22.10.) war 2x10 bei 325 W am 29.10. nach 18 Wiederholungen zu Ende, RPE 10. "
        "Deshalb erst 2x10 bei 312 W sauber durchfahren, dann die Wiederholungen steigern und erst danach "
        "die Leistung. Langfahrt waechst um 15 min pro Woche."),
@@ -229,6 +247,14 @@ GR = [(44, r3015(2, 10, 325), ss(2, 20), lang(2, 30),
        "30/15: Umfang halten, Zielwatt um 5 W anheben. Key 2 wechselt von Sweetspot auf Schwelle."),
       (50, r3015(3, 13, 322), schwelle(3, 12), lang(3, 30),
        "Historische Bruchstelle: letztes Jahr endete hier die Saison. Diese Woche wird nicht verhandelt.")]
+# KW44 nach dem Infekt (Stand 19.10.2026): erst Sweetspot, dann die 30/15,
+# Kraft noch als Uebergang statt Maximalkraft
+add(2026, 44, "grund", [ss(2, 15), r3015(2, 10, 325), lang(2, 30), locker(60),
+                        KRAFT_LEICHT, KRAFT(50, K_UE)],
+    "Blockstart nach dem Infekt. Erst Sweetspot, die 30/15 erst als zweite Key-Einheit "
+    "und nur, wenn sich der Sweetspot normal angefuehlt hat - sonst wird daraus eine "
+    "Stunde Z2. VO2-Dosis bewusst klein. Kraft: die erste Einheit leicht, die zweite als "
+    "Uebergang, Maximalkraft ab KW45. Ab hier gilt: vier Radtage pro Woche.")
 for w, k1, k2, lg, fok in GR:
     add(2026, w, "grund", [k1, k2, lg, locker(60), KRAFT(55, K_MAX), KRAFT(55, K_MAX)], fok)
 add(2026, 47, "rec", [ss(2, 12), z2(90), z2(75), locker(60), KRAFT(45, K_MAX)],

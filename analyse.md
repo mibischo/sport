@@ -1,20 +1,20 @@
 # Saisonanalyse 2026 und Weg zum Ötztaler
 
-Stand: 6. Oktober 2026 · Datenbasis: intervals.icu, 628 Aktivitäten (2013–2026, davon 247 mit Messdaten ab 2023), Ruhepuls und Schlaf seit August 2025 · vorige Fassung: 11. September 2026
+Stand: 28. Oktober 2026 · Datenbasis: intervals.icu, Aktivitäten 2013–2026 (Messdaten ab 2023), Ruhepuls und Schlaf seit August 2025 · vorige Fassungen: 6. Oktober und 11. September 2026
 
 ---
 
 ## Seit der letzten Fassung
 
-Seit dem Datenstand der vorigen Fassung (7. September) kamen 17 Fahrten mit 34,7 Stunden, 1.005 km und 7.925 hm dazu, außerdem der 5-Minuten-Test und die ersten fünf Krafteinheiten. Fünf Aussagen von damals gelten so nicht mehr:
+Seit dem 6. Oktober kamen 7 Fahrten mit 7,2 Stunden dazu, alle bis auf die Schwelleneinheit am 06.10. auf der Rolle, außerdem zwei Krafteinheiten. Dazwischen lagen **13 Tage krankheitsbedingt ohne Training (10.–22.10.)**. Seit 23.10. läuft der Wiedereinstieg auf der Rolle.
 
-| Am 11. September | Heute |
+| Am 6. Oktober | Heute |
 |---|---|
-| 5-Minuten-Leistung unbekannt, die Kurve zeigte 288 W | Test am 12.09.: **334 W** = 4,37 W/kg. Das aerobe Dach ist nicht der Engpass |
-| Kein harter Effort im ermüdeten Zustand | 04.10.: **61 Minuten bei 246 W** am Nassfeld, begonnen nach 2:37 h und 1.600 kJ |
-| Längste Fahrt 3,6 h, größte 2.120 kJ | 3:59 h, **2.658 kJ**, 1.883 hm (04.10.) |
-| Die Saison endet im September | September 2026: 18 Fahrten und 30,9 h — fast doppelt so viel wie 2025 (10 Fahrten, 16,0 h) |
-| Kein Krafttraining | 5 Einheiten seit 18.09. |
+| CTL 64,3 | **CTL 43,1** — rund ein Drittel der Fitness ist weg, die Ermüdung (ATL 20,7) aber auch |
+| Rolle seit dem 5-Minuten-Test nicht benutzt | Rolle steht und läuft: 30/15-Probe am 09.10., seit 23.10. fünf Einheiten in sechs Tagen |
+| Schwelle 3 × 12 min bei 250–260 W, Puls 167–169 (06.10., draußen) | Sweetspot 2 × 15 min bei 246 W, Puls **170 und 175**, max. 180, RPE 7 (26.10., Rolle) |
+| Puls bei rund 137 W locker | 24.10.: 145 · 25.10.: 137 · 28.10.: 139, Entkopplung −0,7 % — die Grundlage kommt schnell zurück |
+| Kraft: 5 Einheiten seit 18.09. | 7 Einheiten; die Pause hat die Kraftsteigerung ebenfalls unterbrochen |
 
 ---
 
@@ -25,12 +25,14 @@ Seit dem Datenstand der vorigen Fassung (7. September) kamen 17 Fahrten mit 34,7
 | FTP | **271 W** — 30-Min-Test am 05.09.2026, MyWhoosh indoor. Auf der Straße eher 260–270 W |
 | Gewicht | 76,5 kg — letzte Messung am 05.09.2026 (Mai: 81,0 kg) |
 | Leistung | **3,54 W/kg** |
-| Fitness | CTL 64,3 · Peak 73,0 am 30.08.2026 |
+| Fitness | CTL **43,1** (06.10.: 64,3) · Peak 73,0 am 30.08.2026 |
 | VO2max | 55,3 (intervals.icu, aus der 5-Minuten-Leistung) · 47 (Garmin) |
-| Ruhepuls | 53,8 im Mittel der letzten 28 Tage (Juli bis September: 52,8) |
+| Ruhepuls | 52,9 im Mittel der letzten 28 Tage, 53,4 der letzten 7 — keine Auffälligkeit |
 | Alter | 35 (Jahrgang 1990) |
 
-**Trainingsjahr 2026 bis 05.10.:** 208 Radstunden, 5.655 km, 39.235 hm, 113 Fahrten ab 20 Minuten. 2025 zum Vergleich: 78 h, 1.811 km.
+FTP und Bestwerte stammen von vor der Pause. Nach 13 freien Tagen liegt die tatsächliche Schwelle vermutlich einige Prozent darunter; der Sweetspot am 26.10. war nach Leistung 91 % der FTP, nach Puls schon nahe der Schwelle (177). Nach einer Erkrankung lohnt ein neuer Test erst nach zwei bis drei Wochen Wiedereinstieg — der 29.12. bleibt der Termin.
+
+**Trainingsjahr 2026 bis 28.10.:** 211 Radstunden, 5.761 km, 40.158 hm, 120 Fahrten ab 20 Minuten. 2025 zum Vergleich: 78 h, 1.811 km.
 
 **Bestwerte der Saison gegen das Vorjahr:**
 
@@ -93,7 +95,9 @@ Stand 05.10.2026. Die vorige Fassung zählte auch die kurzen Wege zum Bahnhof mi
 
 **Neu im Herbst 2026:** Seit Mitte September ist der Arbeitsweg umgedreht — morgens mit dem Zug, nachmittags mit dem Rad heim. Zehn der zwölf Fahrten seit 14.09. begannen nach Mittag; im Juli starteten 17 von 20 vor 9 Uhr. Das hat den September zu einem vollen Trainingsmonat gemacht. Mit der Zeitumstellung am **25.10.** endet dieses Fenster.
 
-**Offen:** Seit dem 5-Minuten-Test am 12.09. gab es keine Einheit auf der Rolle. Der 90-Minuten-Test der Rolle aus KW 40 steht noch aus.
+**Rolle seit Oktober:** Am 09.10. die erste Probe (30/15 bei 240–244 W), nach der Pause ab 23.10. fünf Rolleneinheiten in sechs Tagen. Der Übergang aufs Indoor-System hat geklappt, bevor das Pendelfenster zuging — ein 90-Minuten-Lauf steht noch aus, die Langeinheit am 01.11. (2:30 h) übernimmt das.
+
+**Die Pause 10.–22.10.:** 13 Tage krank, CTL von 61,9 auf 45,4. Der Unterschied zum letzten Winter: Die Rolle stand schon, und der Wiedereinstieg kam nach knapp zwei Wochen, nicht nach 107 Tagen.
 
 **Folgerung:** Die Winterlösung braucht dieselben Eigenschaften wie das Pendeln — feste Zeitfenster, kein Aufbauaufwand, keine tägliche Entscheidung. Mindeststandard über Frequenz (vier Radtage), nicht über Stunden.
 
@@ -132,6 +136,7 @@ Bei identischer Form (350 W, 70 kg) reicht die modellierte Ötztaler-Zeit von **
 - 25.–27.09.: Ruhepuls im 7-Tage-Mittel 1,7–2,2 Schläge über dem 28-Tage-Mittel, Schlafwerte in den 70ern. Die Langfahrt blieb aus, am Montag ging es normal weiter — die richtige Reaktion
 - **Ampel:** ab +1,5 Schlägen keine Key-Session und keine Langfahrt
 - Puls bei 185 W auf flachen, gleichmäßigen Abschnitten: im Juni und Juli rund 152, seit September **145–149**. Die Basis hält
+- **Nach der Pause:** Ruhepuls und Schlaf unauffällig, die lockeren Einheiten entkoppeln nicht. Der Rückstand zeigt sich nur oben: 246 W kosten jetzt 170–175 Schläge statt 167–169 — nach einer Erkrankung eher Nachwirkung als Formverlust. Bis der Sweetspot-Puls wieder unter 170 liegt, die VO2-Vorgaben am unteren Rand fahren (30 s bei 310–320 W statt 320–330)
 
 ### 8. Was sich verbessert hat
 
@@ -148,6 +153,8 @@ Bei identischer Form (350 W, 70 kg) reicht die modellierte Ötztaler-Zeit von **
 | Scheinbarer Befund | Tatsächlich |
 |---|---|
 | eFTP fällt von 269 auf 265 | Das Modell klingt ohne Maximalbelastung ab — kein Formverlust |
+| CTL fällt von 64,3 auf 43,1 (06.–28.10.) | Echter Fitnessverlust durch 13 freie Tage, aber kleiner als die Zahl wirkt: Die CTL bildet die Last der letzten sechs Wochen ab, nicht die Leistungsfähigkeit. Die lockeren Werte sind schon wieder auf Septemberniveau |
+| Sweetspot-Puls 175 am 26.10. | Teils Rolle (Wärme, kein Fahrtwind), teils Nachwirkung der Erkrankung — nicht allein Formverlust |
 | CTL fällt von 65,6 auf 60,0 (03.10.) | Kraft zählt 0 % Fitness, dazu eine ausgelassene Langfahrt. Nach dem Nassfeld wieder 64,3 |
 | Garmin-VO2max steigt von 44 auf 47 | Stieg an zwei Tagen ohne Radfahrt — kein Signal vom Rad |
 | Sweetspot-Puls steigt von 167 auf 170–172 | Kraft am Vortag, nicht Formverlust; die Basis sind nur zwei Einheiten |
@@ -257,8 +264,9 @@ Seit dem 05.09. gibt es keine Messung. Ohne Gewichtsverlauf lässt sich nicht sa
 
 ## Was jetzt ansteht
 
-- **Bis 25.10.:** die Rolle in einer 90-Minuten-Einheit testen. Danach fällt die Heimfahrt mit dem Rad weg
-- **Jede Woche:** 48 Stunden zwischen Beinkraft und Key-Session, einmal wiegen
+- **KW 44–45:** Wiedereinstieg mit dem gekürzten Kalender in intervals.icu (Sweetspot 2 × 15, VO2 2 × 10 in 48 min). Erst wenn der Sweetspot-Puls wieder unter 170 liegt, auf die vollen Einheiten aus dem Plan gehen. Steigen Ruhepuls oder Puls bei gleicher Leistung wieder an, die Key-Session streichen — nach Krankheit gilt die Ampel strenger
+- **So 01.11.:** Langeinheit 2:30 h auf der Rolle — gleichzeitig der ausstehende Dauertest des Indoor-Systems
+- **Jede Woche:** 48 Stunden zwischen Beinkraft und Key-Session, einmal wiegen. Seit 05.09. gibt es keine Gewichtsmessung
 - **Kraft:** 45 kg halten, alle zwei Wochen 5 kg dazu, nie Gewicht und Satzzahl zugleich erhöhen
 - **Vor dem VO2-Block:** den 5-Minuten-Test unter gleichen Bedingungen wiederholen
 - **Bis zum Frühjahr:** Kettenblätter auf 46/33

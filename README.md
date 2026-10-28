@@ -7,7 +7,7 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 | Datei | |
 |---|---|
 | [`trainingsplan.md`](trainingsplan.md) | **Der Plan**, Woche für Woche bis zur Dolomitenradrundfahrt am 13.06.2027 |
-| [`analyse.md`](analyse.md) | Saisonanalyse 2026, Stand 06.10.2026: Befunde, Ötztaler-Rechnung, Roadmap, Verpflegung |
+| [`analyse.md`](analyse.md) | Saisonanalyse 2026, Stand 28.10.2026: Befunde, Ötztaler-Rechnung, Roadmap, Verpflegung |
 | [`bericht/rennrad_analyse.html`](bericht/rennrad_analyse.html) | Vollständiger Bericht mit allen Diagrammen, Stand 11.09.2026 — herunterladen und im Browser öffnen |
 | [`workouts/`](workouts/) | Workouts für die Rolle (ZWO, für MyWhoosh): jede Einheit des Winterplans und die Tests — Übersicht in [`workouts/README.md`](workouts/README.md) |
 | [`werkzeug/`](werkzeug/) | Skripte: Plan erzeugen, als Markdown/HTML ausgeben, in intervals.icu eintragen |
@@ -17,8 +17,8 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 
 | | |
 |---|---|
-| Stand (06.10.2026) | FTP 271 W · 76,5 kg · 3,54 W/kg · CTL 64,3 · 5 min 334 W · 60 min 246 W |
-| Nächster Termin | **So 25.10.2026** — Zeitumstellung; bis dahin die Rolle in einer 90-Minuten-Einheit testen |
+| Stand (28.10.2026) | FTP 271 W (vor der Pause) · 76,5 kg · 3,54 W/kg · CTL 43,1 nach 13 Tagen Krankheit · 5 min 334 W · 60 min 246 W |
+| Nächster Termin | **So 01.11.2026** — Langeinheit 2:30 h auf der Rolle, zugleich Dauertest des Indoor-Systems |
 | A-Rennen 2027 | **So 13.06.2027** — Dolomitenradrundfahrt Classic, 112 km / 1.870 hm |
 | Fernziel | Ötztaler Radmarathon unter 8 h, Zielversuch 2029–2031 |
 | Anforderung sub-8 | rund 365 W bei 70 kg = 5,25 W/kg |
@@ -36,7 +36,7 @@ Trainingsplan und Saisonanalyse — Comeback mit Ziel Ötztaler Radmarathon unte
 ## Termine mit Frist
 
 - **30.09.2026** — Frühbucherfrist der Dolomitenradrundfahrt (80 €) ist abgelaufen; falls noch offen, jetzt anmelden
-- **25.10.2026** — Zeitumstellung, danach fällt die Abendheimfahrt weg. Rollentrainer muss vorher stehen
+- **25.10.2026** — Zeitumstellung, die Abendheimfahrt ist weggefallen. Erledigt: Die Rolle läuft seit 23.10.
 - **Jänner 2027** — Ötztaler-Registrierung (5,90 €), dann jedes Jahr
 
 ## Hinweis

@@ -7,11 +7,14 @@ geschrieben, alle anderen erzeugt `werkzeug/make_workouts.py` — dort ändern, 
 
 | Einheit im Plan | Datei | Dauer | Vorgabe | TSS |
 |---|---|---|---|---|
-| VO2max 30/15 2x10 (KW44) | `vo2max_30-15_2x10.zwo` | 48 min | 2 × 10 × 30/15 bei 325 W | 53 |
-| VO2max 30/15 3x10 (KW45) | `vo2max_30-15_3x10.zwo` | 58:30 min | 3 × 10 × 30/15 bei 336 W | 72 |
-| VO2max 30/15 3x13 (KW46, 48) | `vo2max_30-15_3x13.zwo` | 65:15 min | 3 × 13 × 30/15 bei 336 W | 85 |
-| VO2max 30/15 3x13 (KW49–51) | `vo2max_30-15_3x13_340w.zwo` | 65:15 min | 3 × 13 × 30/15 bei 340 W | 87 |
-| VO2max 30/15 3x13 (KW01–07) | `vo2max_30-15_3x13_345w.zwo` | 65:15 min | 3 × 13 × 30/15 bei 345 W | 88 |
+| VO2max 30/15 2x10 (KW44) | `vo2max_30-15_2x10_325w.zwo` | 48 min | 2 × 10 × 30/15 bei 325 W | 53 |
+| VO2max 30/15 2x10 (KW45) | `vo2max_30-15_2x10_312w.zwo` | 48 min | 2 × 10 × 30/15 bei 312 W | 50 |
+| VO2max 30/15 3x10 (KW46) | `vo2max_30-15_3x10_312w.zwo` | 58:30 min | 3 × 10 × 30/15 bei 312 W | 65 |
+| VO2max 30/15 3x13 (KW48) | `vo2max_30-15_3x13_312w.zwo` | 65:15 min | 3 × 13 × 30/15 bei 312 W | 76 |
+| VO2max 30/15 3x13 (KW49) | `vo2max_30-15_3x13_317w.zwo` | 65:15 min | 3 × 13 × 30/15 bei 317 W | 78 |
+| VO2max 30/15 3x13 (KW50) | `vo2max_30-15_3x13_322w.zwo` | 65:15 min | 3 × 13 × 30/15 bei 322 W | 80 |
+| VO2max 30/15 3x13 (KW51) | `vo2max_30-15_3x13_327w.zwo` | 65:15 min | 3 × 13 × 30/15 bei 327 W | 82 |
+| VO2max 30/15 3x13 (KW01–07) | `vo2max_30-15_3x13_332w.zwo` | 65:15 min | 3 × 13 × 30/15 bei 332 W | 84 |
 | VO2max 5x4 min (KW03, 06) | `vo2max_5x4.zwo` | 66 min | 5 × 4 min bei 300 W | 80 |
 | VO2max 2x4 min (KW04) | `vo2max_2x4.zwo` | 42 min | 2 × 4 min bei 285 W | 41 |
 | Sweetspot 2x12 min | `sweetspot_2x12.zwo` | 54 min | 2 × 12 min bei 247 W | 56 |

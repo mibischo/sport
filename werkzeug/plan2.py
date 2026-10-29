@@ -63,15 +63,18 @@ def vo2(reps, dauer, pct, mins=75, watt=None):
 LANG_W = (295, 305)   # 4- bis 5-Minuten-Intervalle
 
 
-def r3015(saetze, wdh, watt=(330, 340), mins=75):
-    mitte = (watt[0] + watt[1]) // 2      # 325, 335, 340 oder 345 W
-    datei = "vo2max_30-15_%dx%d%s" % (saetze, wdh, "_%dw" % mitte if mitte > 336 else "")
+def r3015(saetze, wdh, watt, mins=75):
+    """30/15 mit fester Plateauleistung. Im ERG-Modus braucht die Rolle 2-3 s bis zur
+    Vorgabe; gemeint ist der Wert ab Sekunde 4, nicht der Schnitt der 30 s."""
+    datei = "vo2max_30-15_%dx%d_%dw" % (saetze, wdh, watt)
     return S("VO2max 30/15 %dx%d" % (saetze, wdh), mins, 0.88,
-             "Einfahren 20 min. %d Saetze mit je %d Wiederholungen: 30 s bei %d-%d W, dann 15 s "
+             "Einfahren 20 min. %d Saetze mit je %d Wiederholungen: 30 s bei %d W, dann 15 s "
              "bei 165 W weitertreten. 3 min Pause zwischen den Saetzen. Ausfahren 10 min. "
-             "Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 faellt "
-             "und du sie nicht mehr hochbekommst. Workout-Datei: workouts/%s.zwo"
-             % (saetze, wdh, watt[0], watt[1], datei), key=True)
+             "Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt "
+             "der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz "
+             "unter 85 faellt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle "
+             "Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/%s.zwo"
+             % (saetze, wdh, watt, datei), key=True)
 
 
 def ss(reps, dauer, mins=None):
@@ -208,28 +211,30 @@ add(2026, 43, "auf", [
     "muss dann stehen und getestet sein.")
 
 # ---------- Phase 2: Grundlage, 2 Keys ----------
-GR = [(44, r3015(2, 10, (320, 330)), ss(2, 20), lang(2, 30),
+GR = [(44, r3015(2, 10, 325), ss(2, 20), lang(2, 30),
        "Blockstart mit zwei Qualitaetseinheiten. VO2-Dosis bewusst klein — es geht um den Reiz, "
        "nicht um den Block. Die VO2-Einheiten laufen ab jetzt als 30/15 nach Roennestad. "
        "Ab hier gilt: vier Radtage pro Woche, nie weniger."),
-      (45, r3015(3, 10), ss(3, 15), lang(2, 45),
-       "Ein Satz mehr bei den 30/15. Langfahrt waechst um 15 min pro Woche."),
-      (46, r3015(3, 13), ss(3, 20), lang(3, 0),
+      (45, r3015(2, 10, 312), ss(3, 15), lang(2, 45),
+       "Nach der Krankheit (10.-22.10.) war 2x10 bei 325 W am 29.10. nach 18 Wiederholungen zu Ende, RPE 10. "
+       "Deshalb erst 2x10 bei 312 W sauber durchfahren, dann die Wiederholungen steigern und erst danach "
+       "die Leistung. Langfahrt waechst um 15 min pro Woche."),
+      (46, r3015(3, 10, 312), ss(3, 20), lang(3, 0),
        "Erste 3-Stunden-Fahrt des Winters. Kraft ist jetzt bei Maximallast — zusammen mit zwei "
        "harten Radeinheiten die dichteste Woche bisher. Wenn etwas weichen muss, ist es die "
        "lockere Stunde, nie eine Key-Session."),
-      (48, r3015(3, 13), ss(3, 20), lang(3, 0),
+      (48, r3015(3, 13, 312), ss(3, 20), lang(3, 0),
        "Wiederaufnahme. Vergleiche die Herzfrequenz der 3-h-Fahrt mit KW46 — sie sollte tiefer liegen."),
-      (49, r3015(3, 13, (335, 345)), schwelle(3, 12), lang(3, 15),
+      (49, r3015(3, 13, 317), schwelle(3, 12), lang(3, 15),
        "30/15: Umfang halten, Zielwatt um 5 W anheben. Key 2 wechselt von Sweetspot auf Schwelle."),
-      (50, r3015(3, 13, (335, 345)), schwelle(3, 12), lang(3, 30),
+      (50, r3015(3, 13, 322), schwelle(3, 12), lang(3, 30),
        "Historische Bruchstelle: letztes Jahr endete hier die Saison. Diese Woche wird nicht verhandelt.")]
 for w, k1, k2, lg, fok in GR:
     add(2026, w, "grund", [k1, k2, lg, locker(60), KRAFT(55, K_MAX), KRAFT(55, K_MAX)], fok)
 add(2026, 47, "rec", [ss(2, 12), z2(90), z2(75), locker(60), KRAFT(45, K_MAX)],
     "Entlastungswoche: Intensitaet runter, Volumen nur moderat. Rund 65 % der Belastungswoche - "
     "tiefer waere kontraproduktiv, weil die CTL sonst staerker faellt, als der Block sie aufbaut.")
-add(2026, 51, "grund", [r3015(3, 13, (335, 345)), schwelle(3, 12), lang(3, 0), locker(60),
+add(2026, 51, "grund", [r3015(3, 13, 327), schwelle(3, 12), lang(3, 0), locker(60),
                         KRAFT(55, K_MAX), KRAFT(55, K_MAX)],
     "Letzte volle Belastungswoche des Grundlagenblocks (14.-20.12.). Danach kommt die "
     "Weihnachtsentlastung - und in der Woche darauf der Test.")
@@ -259,19 +264,19 @@ add(2026, 53, "mess", [
     "waere der TSB bei -20 gewesen - dort misst man Muedigkeit, nicht Form.")
 
 # ---------- Phase 3: VO2-Block ----------
-VO = [(1, r3015(3, 13, (340, 350)), schwelle(3, 12), lang(2, 30),
-       "VO2-Block. Die 30/15 bleiben das Hauptformat. Zielwatt nur anheben, wenn in der Woche "
-       "davor alle Wiederholungen sauber waren."),
-      (2, r3015(3, 13, (340, 350)), schwelle(3, 12), lang(2, 30),
+VO = [(1, r3015(3, 13, 332), schwelle(3, 12), lang(2, 30),
+       "VO2-Block. Die 30/15 bleiben das Hauptformat, Startwert 332 W; nach dem Test am 29.12. "
+       "anpassen. Zielwatt nur anheben, wenn in der Woche davor alle Wiederholungen sauber waren."),
+      (2, r3015(3, 13, 332), schwelle(3, 12), lang(2, 30),
        "Gleiche Einheit wie in KW01. Wenn der letzte Satz nicht mehr auf Zielwatt geht, war die Vorgabe zu hoch."),
-      (3, r3015(3, 13, (340, 350)), vo2(5, 4, "", watt=LANG_W), lang(2, 45),
+      (3, r3015(3, 13, 332), vo2(5, 4, "", watt=LANG_W), lang(2, 45),
        "Beide Keys jetzt VO2 — die haerteste Woche des Blocks. Eine Einheit 30/15, eine mit "
        "langen Intervallen: die liegen naeher am 5-Min-Test und zeigen den Fortschritt direkter."),
-      (5, r3015(3, 13, (340, 350)), schwelle(3, 15), lang(2, 45),
+      (5, r3015(3, 13, 332), schwelle(3, 15), lang(2, 45),
        "Nach der Entlastung wieder 30/15, die Schwelle waechst auf 3x15 min."),
-      (6, r3015(3, 13, (340, 350)), vo2(5, 4, "", watt=LANG_W), lang(2, 45),
+      (6, r3015(3, 13, 332), vo2(5, 4, "", watt=LANG_W), lang(2, 45),
        "Februar. Letztes Jahr null Trainingstage in diesem Monat. Mindestziel: 16."),
-      (7, r3015(3, 13, (340, 350)), schwelle(3, 15), lang(3, 0),
+      (7, r3015(3, 13, 332), schwelle(3, 15), lang(3, 0),
        "Hoechste Belastung des Winters. Danach kommt nichts Haerteres mehr bis April.")]
 for w, k1, k2, lg, fok in VO:
     add(2027, w, "vo2", [k1, k2, lg, z2(60), locker(50), KRAFT(45, K_ERH)], fok)

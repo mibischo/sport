@@ -173,7 +173,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 2x10** — Einfahren 20 min. 2 Sätze mit je 10 Wiederholungen: 30 s bei 320-330 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_2x10.zwo
+**VO2max 30/15 2x10** — Einfahren 20 min. 2 Sätze mit je 10 Wiederholungen: 30 s bei 325 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_2x10_325w.zwo
 
 **Sweetspot 2x20 min** — Einfahren 20 min. 2x20 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6. Workout-Datei: workouts/sweetspot_2x20.zwo
 
@@ -185,18 +185,18 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 30/15 3x10 | 1:15 | 97 | **KEY** |
+| VO2max 30/15 2x10 | 1:15 | 97 | **KEY** |
 | Sweetspot 3x15 min | 1:20 | 96 | **KEY** |
 | Long Endurance 2:45 | 2:45 | 135 |  |
 | Recovery | 1:00 | 30 |  |
 | Krafttraining | 0:55 | 28 |  |
 | Krafttraining | 0:55 | 28 |  |
 
-> Ein Satz mehr bei den 30/15. Langfahrt wächst um 15 min pro Woche.
+> Nach der Krankheit (10.-22.10.) war 2x10 bei 325 W am 29.10. nach 18 Wiederholungen zu Ende, RPE 10. Deshalb erst 2x10 bei 312 W sauber durchfahren, dann die Wiederholungen steigern und erst danach die Leistung. Langfahrt wächst um 15 min pro Woche.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x10** — Einfahren 20 min. 3 Sätze mit je 10 Wiederholungen: 30 s bei 330-340 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x10.zwo
+**VO2max 30/15 2x10** — Einfahren 20 min. 2 Sätze mit je 10 Wiederholungen: 30 s bei 312 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_2x10_312w.zwo
 
 **Sweetspot 3x15 min** — Einfahren 20 min. 3x15 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6. Workout-Datei: workouts/sweetspot_3x15.zwo
 
@@ -208,7 +208,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 | Einheit | Dauer | TSS | |
 |---|---|---|---|
-| VO2max 30/15 3x13 | 1:15 | 97 | **KEY** |
+| VO2max 30/15 3x10 | 1:15 | 97 | **KEY** |
 | Sweetspot 3x20 min | 1:35 | 114 | **KEY** |
 | Long Endurance 3:00 | 3:00 | 147 |  |
 | Recovery | 1:00 | 30 |  |
@@ -219,7 +219,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 330-340 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
+**VO2max 30/15 3x10** — Einfahren 20 min. 3 Sätze mit je 10 Wiederholungen: 30 s bei 312 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x10_312w.zwo
 
 **Sweetspot 3x20 min** — Einfahren 20 min. 3x20 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6. Workout-Datei: workouts/sweetspot_3x20.zwo
 
@@ -262,7 +262,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 330-340 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 312 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_312w.zwo
 
 **Sweetspot 3x20 min** — Einfahren 20 min. 3x20 min bei 88-94 % FTP (238-255 W), 5 min Pause. Sollte sich zäh, aber kontrollierbar anfühlen - RPE 5-6. Workout-Datei: workouts/sweetspot_3x20.zwo
 
@@ -285,7 +285,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 335-345 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_340w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 317 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_317w.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min. Workout-Datei: workouts/schwelle_3x12.zwo
 
@@ -308,7 +308,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 335-345 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_340w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 322 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_322w.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min. Workout-Datei: workouts/schwelle_3x12.zwo
 
@@ -331,7 +331,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 335-345 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_340w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 327 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_327w.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min. Workout-Datei: workouts/schwelle_3x12.zwo
 
@@ -391,11 +391,11 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 | Recovery | 0:50 | 25 |  |
 | Krafttraining | 0:45 | 14 |  |
 
-> VO2-Block. Die 30/15 bleiben das Hauptformat. Zielwatt nur anheben, wenn in der Woche davor alle Wiederholungen sauber waren.
+> VO2-Block. Die 30/15 bleiben das Hauptformat, Startwert 332 W; nach dem Test am 29.12. anpassen. Zielwatt nur anheben, wenn in der Woche davor alle Wiederholungen sauber waren.
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_345w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 332 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_332w.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min. Workout-Datei: workouts/schwelle_3x12.zwo
 
@@ -418,7 +418,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_345w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 332 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_332w.zwo
 
 **Schwelle 3x12 min** — Einfahren 20 min. 3x12 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min. Workout-Datei: workouts/schwelle_3x12.zwo
 
@@ -441,7 +441,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_345w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 332 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_332w.zwo
 
 **VO2max 5x4 min** — Einfahren 20 min. 5x4 min bei 295-305 W, Pause 1:1 locker rollend. Ausfahren 10 min. Kadenz 95-105. Die Zielwatt stammen aus dem 5-Min-Test vom 12.09. (334 W). Workout-Datei: workouts/vo2max_5x4.zwo
 
@@ -484,7 +484,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_345w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 332 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_332w.zwo
 
 **Schwelle 3x15 min** — Einfahren 20 min. 3x15 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min. Workout-Datei: workouts/schwelle_3x15.zwo
 
@@ -507,7 +507,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_345w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 332 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_332w.zwo
 
 **VO2max 5x4 min** — Einfahren 20 min. 5x4 min bei 295-305 W, Pause 1:1 locker rollend. Ausfahren 10 min. Kadenz 95-105. Die Zielwatt stammen aus dem 5-Min-Test vom 12.09. (334 W). Workout-Datei: workouts/vo2max_5x4.zwo
 
@@ -530,7 +530,7 @@ Zwei Regeln gelten immer: zwischen zwei harten Einheiten liegt mindestens ein Ta
 
 <details><summary>Details zu den Schlüsseleinheiten</summary>
 
-**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 340-350 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Workout-Datei: workouts/vo2max_30-15_3x13_345w.zwo
+**VO2max 30/15 3x13** — Einfahren 20 min. 3 Sätze mit je 13 Wiederholungen: 30 s bei 332 W, dann 15 s bei 165 W weitertreten. 3 min Pause zwischen den Sätzen. Ausfahren 10 min. Im ERG-Modus, Kadenz 95-105; die Rolle braucht 2-3 s bis zur Vorgabe, der Schnitt der 30 s liegt deshalb rund 9 W darunter. Der Satz ist zu Ende, wenn die Kadenz unter 85 fällt und du sie nicht mehr hochbekommst. Steigern nur, wenn alle Wiederholungen sauber waren (RPE 8 oder weniger). Workout-Datei: workouts/vo2max_30-15_3x13_332w.zwo
 
 **Schwelle 3x15 min** — Einfahren 20 min. 3x15 min bei 96-100 % FTP (260-271 W), 5 min Pause. Ausfahren 10 min. Workout-Datei: workouts/schwelle_3x15.zwo
 

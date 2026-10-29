@@ -115,8 +115,8 @@ def vo2_lang(n, minuten, p, plan):
               'Flasche mit 40–60 g Kohlenhydraten.' % (n, minuten, ziel)))
 
 
-def r3015(saetze, wdh, watt, plan, zusatz=''):
-    datei = 'vo2max_30-15_%dx%d%s' % (saetze, wdh, zusatz)
+def r3015(saetze, wdh, watt, plan):
+    datei = 'vo2max_30-15_%dx%d_%dw' % (saetze, wdh, watt)
     schritte = einfahren('Gleich Satz 1: %d × 30/15 bei %d W. Trittfrequenz 95–105.' % (wdh, watt),
                          zusatz='Abbruch: Kadenz unter 85 und nicht mehr hochzubringen.',
                          letzte='15 Sekunden. In den Pausen weitertreten.')
@@ -253,10 +253,13 @@ def test_2x20():
 def alle():
     return [
         r3015(2, 10, 325, 'VO2max 30/15 2x10 (KW44)'),
-        r3015(3, 10, 336, 'VO2max 30/15 3x10 (KW45)'),
-        r3015(3, 13, 336, 'VO2max 30/15 3x13 (KW46, 48)'),
-        r3015(3, 13, 340, 'VO2max 30/15 3x13 (KW49–51)', '_340w'),
-        r3015(3, 13, 345, 'VO2max 30/15 3x13 (KW01–07)', '_345w'),
+        r3015(2, 10, 312, 'VO2max 30/15 2x10 (KW45)'),
+        r3015(3, 10, 312, 'VO2max 30/15 3x10 (KW46)'),
+        r3015(3, 13, 312, 'VO2max 30/15 3x13 (KW48)'),
+        r3015(3, 13, 317, 'VO2max 30/15 3x13 (KW49)'),
+        r3015(3, 13, 322, 'VO2max 30/15 3x13 (KW50)'),
+        r3015(3, 13, 327, 'VO2max 30/15 3x13 (KW51)'),
+        r3015(3, 13, 332, 'VO2max 30/15 3x13 (KW01–07)'),
         vo2_lang(5, 4, anteil(300), 'VO2max 5x4 min (KW03, 06)'),
         vo2_lang(2, 4, 1.05, 'VO2max 2x4 min (KW04)'),
         sweetspot(2, 12), sweetspot(2, 15), sweetspot(2, 20), sweetspot(3, 15), sweetspot(3, 20),

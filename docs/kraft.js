@@ -41,6 +41,8 @@
   const setsOf = it => (it.type === 'time' ? it.secs : it.reps) || [];
   const total = it => setsOf(it).reduce((a, b) => a + b, 0);
   const weighted = it => it.type === 'kg' && it.kg > 0;
+  // Gewicht je Satz; kgs gibt es nur, wenn sich das Gewicht innerhalb der Übung ändert
+  const kgsOf = it => (it.kgs && it.kgs.length === setsOf(it).length ? it.kgs : setsOf(it).map(() => it.kg));
 
   // [10, 10, 9, 9] -> [{ v: 10, n: 2 }, { v: 9, n: 2 }]
   function runs(list) {
@@ -51,23 +53,36 @@
     }
     return out;
   }
+  // aufeinanderfolgende Sätze mit gleichem Gewicht: [{ kg: 50, list: [10, 10] }, { kg: 55, list: [8] }]
+  function byKg(it) {
+    const out = [], ks = kgsOf(it);
+    setsOf(it).forEach((v, i) => {
+      const last = out[out.length - 1];
+      if (last && last.kg === ks[i]) last.list.push(v); else out.push({ kg: ks[i], list: [v] });
+    });
+    return out;
+  }
 
-  // Zeile der Notiz, so wie sie in intervals.icu steht: „Squat 55 3x10“
+  // Zeile der Notiz, so wie sie in intervals.icu steht: „Squat 55 3x10“, „Squat 50 2x10 55 1x8“
+  const noteSets = (it, list) => runs(list).map(g => `${g.n}x${it.type === 'time' ? fmtDur(g.v) : g.v}`).join(' ');
   function lineOf(it) {
     if (it.skip) return `${it.name} -`;
-    const sets = runs(setsOf(it)).map(g => `${g.n}x${it.type === 'time' ? fmtDur(g.v) : g.v}`).join(' ');
-    return weighted(it) ? `${it.name} ${fmtKg(it.kg)} ${sets}` : `${it.name} ${sets}`;
+    if (!weighted(it)) return `${it.name} ${noteSets(it, setsOf(it))}`;
+    return `${it.name} ${byKg(it).map(g => `${fmtKg(g.kg)} ${noteSets(it, g.list)}`).join(' ')}`;
   }
   const noteOf = s => s.items.map(lineOf).join('\n') + (s.note ? `\n\n${s.note}` : '');
 
-  // Dasselbe zum Lesen: „55 kg · 3 × 10“
-  const setsText = it => runs(setsOf(it)).map(g => `${g.n} × ${it.type === 'time' ? durText(g.v) : g.v}`).join(', ');
+  // Dasselbe zum Lesen: „55 kg · 3 × 10“, „50 kg · 2 × 10, 55 kg · 1 × 8“
+  const readSets = (it, list) => runs(list).map(g => `${g.n} × ${it.type === 'time' ? durText(g.v) : g.v}`).join(', ');
+  const setsText = it => readSets(it, setsOf(it));
+  const mixed = it => weighted(it) && byKg(it).length > 1;
   function sumOf(it) {
     if (it.skip) return 'ausgelassen';
-    return weighted(it) ? `${fmtKg(it.kg)} kg · ${setsText(it)}` : setsText(it);
+    return weighted(it) ? byKg(it).map(g => `${fmtKg(g.kg)} kg · ${readSets(it, g.list)}`).join(', ') : setsText(it);
   }
 
-  // Kennzahl für den Verlauf: Gewicht, sonst Summe der Wiederholungen oder Sekunden
+  // Kennzahl für den Verlauf: Gewicht (bei wechselndem Gewicht der schwerste Satz),
+  // sonst Summe der Wiederholungen oder Sekunden
   const metric = it => (weighted(it) ? it.kg : total(it));
   function metricParts(it, y) {
     if (weighted(it)) return [fmtKg(y), 'kg'];
@@ -85,24 +100,33 @@
   const SET = /^(\d{1,2})[x×](\d+(?:[.,]\d+)?)(min|s)?$/i;
   const WEIGHT = /^\d+(?:[.,]\d+)?(?:kg)?$/i;
 
-  // „Squat 55 2x10 2x9“ -> Eintrag ohne id; null, wenn die Zeile keine Übung ist
+  // „Squat 55 2x10 2x9“ oder „Squat 50 2x10 55 1x8“ -> Eintrag ohne id; null, wenn die Zeile keine Übung ist
   function parseLine(line) {
     const t = line.trim().split(/\s+/);
     if (t.length >= 2 && /^[-–—]$/.test(t[t.length - 1])) return { name: t.slice(0, -1).join(' '), skip: true };
     const first = t.findIndex(x => SET.test(x));
-    if (first < 1 || !t.slice(first).every(x => SET.test(x))) return null;
+    if (first < 1) return null;
     const hasKg = first >= 2 && WEIGHT.test(t[first - 1]);
-    const sets = t.slice(first).map(x => SET.exec(x));
-    const timed = sets.some(m => m[3]);
-    const list = [];
-    for (const m of sets) {
+    let kg = hasKg ? toNum(t[first - 1]) : 0;
+    const sets = [];
+    for (let i = first; i < t.length; i++) {
+      if (SET.test(t[i])) sets.push({ kg, m: SET.exec(t[i]) });
+      else if (hasKg && WEIGHT.test(t[i]) && SET.test(t[i + 1] || '')) kg = toNum(t[i]);   // neues Gewicht ab hier
+      else return null;
+    }
+    const timed = sets.some(s => s.m[3]);
+    const list = [], kgs = [];
+    for (const { kg: k, m } of sets) {
       const v = toNum(m[2]) * (timed && String(m[3]).toLowerCase() === 'min' ? 60 : 1);
-      for (let i = 0; i < +m[1] && list.length < MAX_SETS; i++) list.push(Math.max(1, Math.round(v)));
+      for (let i = 0; i < +m[1] && list.length < MAX_SETS; i++) { list.push(Math.max(1, Math.round(v))); kgs.push(k); }
     }
     if (!list.length) return null;
     const it = { name: t.slice(0, hasKg ? first - 1 : first).join(' '), skip: false, type: timed ? 'time' : hasKg ? 'kg' : 'bw' };
     if (timed) it.secs = list; else it.reps = list;
-    if (hasKg && !timed) it.kg = toNum(t[first - 1]);
+    if (hasKg && !timed) {
+      it.kg = Math.max(...kgs);
+      if (kgs.some(k => k !== kgs[0])) it.kgs = kgs;
+    }
     return it;
   }
 
@@ -140,6 +164,10 @@
     const it = { id: String(x.id || ''), name: x.name.trim().slice(0, 40), type, skip: !!x.skip };
     if (type === 'kg') it.kg = clamp(round2(Number(x.kg) || 0), 0, 500);
     if (type === 'time') it.secs = list(x.secs, 3600); else it.reps = list(x.reps, 999);
+    if (type === 'kg' && Array.isArray(x.kgs) && x.kgs.length === it.reps.length) {
+      const ks = x.kgs.map(k => clamp(round2(Number(k) || 0), 0, 500));
+      if (ks.some(k => k !== ks[0])) { it.kgs = ks; it.kg = Math.max(...ks); }
+    }
     return it.skip || setsOf(it).length ? it : null;
   }
   function cleanSession(s) {
@@ -184,21 +212,31 @@
     const d = DEF_EX.find(x => x.id === ex.id) || {};
     const n = d.sets || 3;
     return {
-      skip: false, split: false, kg: d.kg || 20,
+      skip: false, split: false, kg: d.kg || 20, kgs: Array(n).fill(d.kg || 20),
       reps: Array(n).fill(d.type !== 'time' && d.per ? d.per : 10),
       secs: Array(n).fill(d.type === 'time' && d.per ? d.per : 60)
     };
   }
+  // ein Gewicht je Satz, so viele wie Sätze mit Wiederholungen
+  function fitKgs(v) {
+    const n = v.reps.length;
+    v.kgs = (Array.isArray(v.kgs) ? v.kgs : []).slice(0, n);
+    while (v.kgs.length < n) v.kgs.push(v.kgs.length ? v.kgs[v.kgs.length - 1] : v.kg);
+  }
+  const differs = list => list.some(x => x !== list[0]);
   function fromEntry(ex, it, skip) {
     const v = blank(ex);
     if (it) {
       if (typeof it.kg === 'number') v.kg = it.kg;
       if (it.reps && it.reps.length) v.reps = it.reps.slice();
       if (it.secs && it.secs.length) v.secs = it.secs.slice();
+      v.kgs = it.kgs && it.reps && it.kgs.length === it.reps.length ? it.kgs.slice() : [];
     }
+    if (!v.kgs.length || !it) v.kgs = v.reps.map(() => v.kg);
+    fitKgs(v);
     v.skip = !!skip;
-    const list = ex.type === 'time' ? v.secs : v.reps;
-    v.split = list.some(x => x !== list[0]);
+    v.split = differs(ex.type === 'time' ? v.secs : v.reps) || (ex.type === 'kg' && differs(v.kgs));
+    if (ex.type === 'kg' && differs(v.kgs)) v.kg = v.kgs[0];
     return v;
   }
   // Werte für ein Datum: die gespeicherte Einheit, sonst je Übung der letzte Stand davor
@@ -225,6 +263,8 @@
       if (reps.length) e.items[ex.id].reps = reps;
       if (secs.length) e.items[ex.id].secs = secs;
       if (isFinite(+v.kg)) e.items[ex.id].kg = clamp(round2(+v.kg), 0, 500);
+      if (Array.isArray(v.kgs)) e.items[ex.id].kgs = v.kgs.map(k => clamp(round2(Number(k) || 0), 0, 500));
+      fitKgs(e.items[ex.id]);
       e.items[ex.id].skip = !!v.skip;
       e.items[ex.id].split = !!v.split;
     }
@@ -235,8 +275,13 @@
   const listOf = (ex, v) => (ex.type === 'time' ? v.secs : v.reps);
   function entryOf(ex, v) {
     const it = { id: ex.id, name: ex.name, type: ex.type, skip: v.skip };
-    if (ex.type === 'kg') it.kg = v.kg;
     if (ex.type === 'time') it.secs = v.secs.slice(); else it.reps = v.reps.slice();
+    if (ex.type === 'kg') {
+      // „Sätze einzeln“ an: Gewicht je Satz; aus: ein Gewicht für alle
+      const ks = v.split ? v.kgs.slice(0, it.reps.length) : it.reps.map(() => v.kg);
+      it.kg = ks.length ? Math.max(...ks) : v.kg;
+      if (differs(ks)) it.kgs = ks;
+    }
     return it;
   }
   const sessionFromEditor = () => ({ date: E.date, items: DB.exercises.map(ex => entryOf(ex, E.items[ex.id])), note: E.note.trim() });
@@ -279,7 +324,7 @@
 
   function exTemplate(ex) {
     const id = esc(ex.id), timed = ex.type === 'time';
-    const kg = ex.type !== 'kg' ? '' : `<div class="ctrl" role="group" aria-label="Gewicht">
+    const kg = ex.type !== 'kg' ? '' : `<div class="ctrl" data-row="kg" role="group" aria-label="Gewicht">
           <span class="label">Gewicht</span>
           <div class="ctrl-r">${stepper('kg', 1, '<label class="ct-g"><input class="ct-in" type="text" inputmode="decimal" data-f="kg" aria-label="Gewicht in Kilogramm"><small>kg</small></label>', 'Weniger Gewicht', 'Mehr Gewicht')}</div>
         </div>`;
@@ -300,10 +345,12 @@
           <span class="label">${timed ? 'Dauer je Satz' : 'Wiederholungen'}</span>
           <div class="ctrl-r">${per}</div>
         </div>
-        <div class="ctrl" data-row="split" role="group" aria-label="${timed ? 'Sekunden je Satz' : 'Wiederholungen je Satz'}" hidden>
+        ${ex.type === 'kg'
+          ? '<div class="ex-rows" data-row="split" role="group" aria-label="Gewicht und Wiederholungen je Satz" hidden></div>'
+          : `<div class="ctrl" data-row="split" role="group" aria-label="${timed ? 'Sekunden je Satz' : 'Wiederholungen je Satz'}" hidden>
           <span class="label">${timed ? 'Sekunden je Satz' : 'Wdh. je Satz'}</span>
           <div class="ex-sets"></div>
-        </div>
+        </div>`}
         <div class="ex-opts">
           <button type="button" class="chip sm" data-act="split" aria-pressed="false">Sätze einzeln</button>
           <button type="button" class="chip sm" data-act="skip" aria-pressed="false">Auslassen</button>
@@ -330,11 +377,32 @@
     q('[data-row="uni"]').hidden = v.split;
     q('[data-row="split"]').hidden = !v.split;
     if (timed) q('[data-o="per"]').textContent = clock(list[0]); else put(q('[data-f="per"]'), list[0]);
-    const box = q('.ex-sets');
-    if (box.children.length !== list.length) {
-      box.innerHTML = list.map((_, i) => `<input class="ct-in sm" type="text" inputmode="numeric" data-f="set" data-i="${i}" aria-label="Satz ${i + 1}">`).join('');
+    if (ex.type === 'kg') {
+      // je Satz eine Zeile: Gewicht × Wiederholungen
+      fitKgs(v);
+      q('[data-row="kg"]').hidden = v.split;
+      const rows = q('.ex-rows');
+      if (rows.children.length !== list.length) {
+        rows.innerHTML = list.map((_, i) => `<div class="ctrl">
+            <span class="label">Satz ${i + 1}</span>
+            <div class="ctrl-r">
+              <label class="ct-g"><input class="ct-in sm kg" type="text" inputmode="decimal" data-f="setkg" data-i="${i}" aria-label="Gewicht Satz ${i + 1} in Kilogramm"><small>kg</small></label>
+              <span class="ex-x" aria-hidden="true">×</span>
+              <input class="ct-in sm" type="text" inputmode="numeric" data-f="set" data-i="${i}" aria-label="Wiederholungen Satz ${i + 1}">
+            </div>
+          </div>`).join('');
+      }
+      [...rows.children].forEach((row, i) => {
+        put(row.querySelector('[data-f="setkg"]'), fmtKg(v.kgs[i]));
+        put(row.querySelector('[data-f="set"]'), list[i]);
+      });
+    } else {
+      const box = q('.ex-sets');
+      if (box.children.length !== list.length) {
+        box.innerHTML = list.map((_, i) => `<input class="ct-in sm" type="text" inputmode="numeric" data-f="set" data-i="${i}" aria-label="Satz ${i + 1}">`).join('');
+      }
+      [...box.children].forEach((inp, i) => put(inp, list[i]));
     }
-    [...box.children].forEach((inp, i) => put(inp, list[i]));
     q('[data-act="split"]').setAttribute('aria-pressed', String(v.split));
     q('[data-act="skip"]').setAttribute('aria-pressed', String(v.skip));
   }
@@ -416,7 +484,7 @@
       return `<figure class="tile" data-id="${esc(ex.id)}">
         <figcaption class="label">${esc(ex.name)}</figcaption>
         <p class="tile-val">${esc(val)}<small>${unit}</small></p>
-        <p class="tile-sub">${esc(setsText(last.it))}${delta ? `<br>${esc(delta)}` : ''}</p>
+        <p class="tile-sub">${esc(mixed(last.it) ? sumOf(last.it) : setsText(last.it))}${delta ? `<br>${esc(delta)}` : ''}</p>
         <svg class="spark" role="img" tabindex="0" aria-label="${esc(label)}"></svg>
         <p class="tile-read"></p>
       </figure>`;
@@ -572,11 +640,15 @@
     const date = sess && sess.dataset.date;
     switch (b.dataset.act) {
       case 'open': open = open === ex.id ? null : ex.id; renderEditor(); return;
-      case 'kg': v.kg = clamp(round2(v.kg + d * ((d > 0 ? v.kg >= 20 : v.kg > 20) ? 2.5 : 1)), 0, 500); break;
+      case 'kg':
+        v.kg = clamp(round2(v.kg + d * ((d > 0 ? v.kg >= 20 : v.kg > 20) ? 2.5 : 1)), 0, 500);
+        v.kgs = v.reps.map(() => v.kg);
+        break;
       case 'sets': {
         const list = listOf(ex, v);
         if (d > 0 && list.length < MAX_SETS) list.push(list[list.length - 1]);
         if (d < 0 && list.length > 1) list.pop();
+        fitKgs(v);   // ein neuer Satz übernimmt das Gewicht des letzten
         break;
       }
       case 'per': {
@@ -586,7 +658,9 @@
       }
       case 'split': {
         v.split = !v.split;
-        if (!v.split) { const list = listOf(ex, v); list.fill(list[0]); }
+        fitKgs(v);
+        if (v.split) v.kgs.fill(v.kg);
+        else { const list = listOf(ex, v); list.fill(list[0]); v.kg = v.kgs[0]; v.kgs.fill(v.kg); }
         break;
       }
       case 'skip': v.skip = !v.skip; break;
@@ -653,6 +727,10 @@
     const ex = DB.exercises.find(x => x.id === li.dataset.id), v = E.items[ex.id], x = toNum(el.value);
     if (el.dataset.f === 'kg') {
       v.kg = clamp(isFinite(x) ? round2(x) : 0, 0, 500);
+      v.kgs = v.reps.map(() => v.kg);
+    } else if (el.dataset.f === 'setkg') {
+      fitKgs(v);
+      v.kgs[+el.dataset.i] = clamp(isFinite(x) ? round2(x) : 0, 0, 500);
     } else {
       const list = listOf(ex, v), val = clamp(Math.round(isFinite(x) ? x : 0), 1, ex.type === 'time' ? 3600 : 999);
       if (el.dataset.f === 'per') list.fill(val); else list[+el.dataset.i] = val;

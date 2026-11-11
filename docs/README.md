@@ -27,11 +27,13 @@ Alle Zahlen sind Richtwerte. Mischverhältnis, Natriumquelle und Grenzen stehen 
 ## Krafttraining
 
 - **Einheit:** Die Werte der letzten Einheit sind vorbelegt. Eine Übung antippen, um Gewicht,
-  Sätze und Wiederholungen zu ändern; „Sätze einzeln“ erlaubt unterschiedliche Wiederholungen,
-  „Auslassen“ schreibt die Übung mit Strich in die Notiz.
+  Sätze und Wiederholungen zu ändern; „Sätze einzeln“ erlaubt je Satz eigene Wiederholungen und,
+  bei Übungen mit Gewicht, ein eigenes Gewicht. „Auslassen“ schreibt die Übung mit Strich in die
+  Notiz.
 - **Notiz:** „Speichern & kopieren“ legt den Text in die Zwischenablage, eine Zeile je Übung:
-  `Squat 55 3x10`, `Liegestütz 3x12`, `Plank 3x1min`, `Squat einbeinig -`.
-- **Verlauf:** je Übung der letzte Wert, die Veränderung seit der ersten gezeigten Einheit und
+  `Squat 55 3x10`, `Liegestütz 3x12`, `Plank 3x1min`, `Squat einbeinig -`. Wechselt das Gewicht,
+  steht es vor den Sätzen, für die es gilt: `Squat 50 2x10 55 1x8`.
+- **Verlauf:** je Übung der letzte Wert (bei wechselndem Gewicht der schwerste Satz), die Veränderung seit der ersten gezeigten Einheit und
   eine Kurve über die letzten zwölf Einheiten. Antippen zeigt die einzelne Einheit.
 - **Übungen:** hinzufügen, umbenennen, entfernen; drei Arten (mit Gewicht, ohne Gewicht, auf Zeit).
 - **Sichern und einfügen:** Die Einheiten liegen nur im Browser des Geräts. „Alles kopieren“
@@ -83,7 +85,7 @@ Trainingsplan und Analyse entstehen aus den Markdown-Dateien im Hauptverzeichnis
 python export_app.py
 ```
 
-Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v8'` hochzählen. Installierte
+Nach jeder Änderung in `sw.js` die Zeile `const VERSION = 'v9'` hochzählen. Installierte
 Geräte holen sich die neue Fassung beim nächsten Öffnen und zeigen sie beim übernächsten.
 
 ## Lokal ausprobieren

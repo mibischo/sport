@@ -305,6 +305,10 @@ input.date-in { width: auto; min-width: 150px; }
 .ex-body { display: grid; gap: 8px; padding: 2px 0 14px; }
 .ex-sets { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
 input.ct-in.sm { width: 48px; }
+.ex-rows { display: grid; gap: 2px; }
+.ex-rows .ctrl { min-height: 44px; }
+input.ct-in.sm.kg { width: 60px; }
+.ex-x { color: var(--ink-2); }
 .ex-opts { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; margin-top: 2px; }
 .btn-main {
   display: block; width: 100%; min-height: 50px; margin-top: 16px; padding: 0 16px;

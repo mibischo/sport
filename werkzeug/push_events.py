@@ -36,10 +36,10 @@ import make_workouts
 SCHRITTE = make_workouts.kalender()
 
 # Mo=1 ... So=7
-SLOT_KRAFT = [2, 5]   # Di, Fr: 48 h vor der naechsten Key-Session
-SLOT_KEY = [1, 4]     # Mo, Do
+SLOT_KRAFT = [1, 5]
+SLOT_KEY = [2, 4]
 SLOT_LANG = [6]
-SLOT_REST = [3, 7, 2, 5]   # Mi, So, dann Ausweichtage
+SLOT_REST = [3, 7, 1, 5]   # Mi, So, dann Ausweichtage
 
 
 def is_lang(s):

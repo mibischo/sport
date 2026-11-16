@@ -447,7 +447,6 @@ def icu_name(p):
 
 def icu_text(wk):
     """Workout-Text im Format von intervals.icu, aus denselben Schritten wie die ZWO-Datei."""
-    assert not any(s['t'] == 'frei' for s in wk['schritte']), 'Free Ride hat keine Entsprechung'
     zeilen, teil = [], None
     for s in wk['schritte']:
         neu = s['art'] if s['t'] == 'rampe' else 'Main Set'
@@ -459,6 +458,9 @@ def icu_text(wk):
         if s['t'] == 'rampe':
             name = 'Einfahren' if s['art'] == 'Warmup' else 'Ausfahren'
             zeilen.append('- %s %s ramp %s-%s' % (name, icu_dauer(s['dauer']), icu_prozent(s['von']), icu_prozent(s['bis'])))
+        elif s['t'] == 'frei':
+            # Free Ride: ERG aus, der Fahrer bestimmt die Leistung (Maximaltests)
+            zeilen.append('- Test %s freeride' % icu_dauer(s['dauer']))
         elif s['t'] == 'halten':
             zeilen.append('- %s %s %s' % (icu_name(s['p']), icu_dauer(s['dauer']), icu_prozent(s['p'])))
         else:
@@ -473,9 +475,8 @@ def icu_text(wk):
 
 
 def kalender():
-    """Datei -> Schritttext für alle Einheiten ohne Free Ride (die Tests bleiben Datei)."""
-    return dict((wk['datei'], icu_text(wk)) for wk in alle()
-                if not any(s['t'] == 'frei' for s in wk['schritte']))
+    """Datei -> Schritttext für alle Einheiten; Free-Ride-Abschnitte werden zu 'freeride'-Schritten."""
+    return dict((wk['datei'], icu_text(wk)) for wk in alle())
 
 
 def main():

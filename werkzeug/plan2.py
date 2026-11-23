@@ -243,7 +243,7 @@ GR = [(45, r3015(2, 10, 312), ss(3, 15), lang(2, 45),
        "lockere Stunde, nie eine Key-Session."),
       (48, r3015(3, 13, 312), ss(3, 20), lang(3, 0),
        "Wiederaufnahme. Vergleiche die Herzfrequenz der 3-h-Fahrt mit KW46 — sie sollte tiefer liegen."),
-      (49, r3015(3, 13, 317), schwelle(3, 12), lang(3, 15),
+      (49, r3015(3, 13, 312), schwelle(3, 12), lang(3, 15),
        "30/15: Umfang halten, Zielwatt um 5 W anheben. Key 2 wechselt von Sweetspot auf Schwelle."),
       (50, r3015(3, 13, 322), schwelle(3, 12), lang(3, 30),
        "Historische Bruchstelle: letztes Jahr endete hier die Saison. Diese Woche wird nicht verhandelt.")]

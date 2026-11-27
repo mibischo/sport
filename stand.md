@@ -30,7 +30,7 @@ Hackenschmidt (gym80): **Schlitten 15 kg** (im Studio erfragt). Gewichte immer a
 
 | Übung | Letzter Stand | Nächster Schritt |
 |---|---|---|
-| Hackenschmidt | 5RM-Test 24.11.: +120 sauber, +130 am Limit. 1RM ≈ 158 kg gesamt. 27.11.: +120 kg 4×4, „genau gepasst“, RPE 5 | 01.12.: +120 kg 4×5, danach +125 |
+| Hackenschmidt | 5RM-Test 24.11.: +120 sauber, +130 am Limit. 1RM ≈ 158 kg gesamt. 27.11.: +120 kg 4×5, „genau gepasst“, RPE 5 | 01.12.: +125 kg 4×5 |
 | RDL | 60 kg 3×5, nicht schwer (27.11.) | 65 kg 3×5 |
 | Einbeinige Kniebeuge (Bulgarian) | 2×18 kg 3×6, nicht schwer (27.11.) | 2×20 kg 3×6, symmetrische Last |
 | Leg Curl | 25 kg 3×10 (27.11.); 30 kg war zu schwer | 3×12, dann 30 kg |

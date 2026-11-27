@@ -2,7 +2,7 @@
 
 Wird nach jeder Auswertung aktualisiert. Die Regeln und Abläufe dazu stehen im Skill „trainingssteuerung“; die lange Saisonanalyse in `analyse.md`.
 
-Stand: 26.11.2026
+Stand: 27.11.2026
 
 ## Kennzahlen
 
@@ -30,10 +30,10 @@ Hackenschmidt (gym80): **Schlitten 15 kg** (im Studio erfragt). Gewichte immer a
 
 | Übung | Letzter Stand | Nächster Schritt |
 |---|---|---|
-| Hackenschmidt | 5RM-Test 24.11.: +120 sauber, +130 am Limit. 1RM ≈ 158 kg gesamt | Maximalkraft: +120 kg 4×5 (27.11.), dann +125 |
-| RDL | 55 kg 3×6, leicht (24.11.) | 60 kg 3×5 |
-| Einbeinige Kniebeuge (Bulgarian) | 2×16 kg 3×6 (24.11.) | 2×18 kg 3×6, symmetrische Last |
-| Leg Curl | 25 kg 3×10; 30 kg war zu schwer | erst 3×12, dann 30 kg |
+| Hackenschmidt | 5RM-Test 24.11.: +120 sauber, +130 am Limit. 1RM ≈ 158 kg gesamt. 27.11.: +120 kg 4×4, „genau gepasst“, RPE 5 | 01.12.: +120 kg 4×5, danach +125 |
+| RDL | 60 kg 3×5, nicht schwer (27.11.) | 65 kg 3×5 |
+| Einbeinige Kniebeuge (Bulgarian) | 2×18 kg 3×6, nicht schwer (27.11.) | 2×20 kg 3×6, symmetrische Last |
+| Leg Curl | 25 kg 3×10 (27.11.); 30 kg war zu schwer | 3×12, dann 30 kg |
 | Beinpresse | 128 kg 3×10 (10.11.) | derzeit durch Hackenschmidt ersetzt |
 | Langhantel-Kniebeuge | ausgesetzt seit 27.10. (Rücken) | frühestens Dezember, dann Front Squat auf Box |
 
@@ -55,7 +55,8 @@ Hackenschmidt (gym80): **Schlitten 15 kg** (im Studio erfragt). Gewichte immer a
 
 ## Termine
 
-- 27.11. Kraft (Maximalkraft), 27.–29.11. Ausflug (Venedig), 29.11. optional locker
+- 27.–29.11. Ausflug (Venedig), 29.11. optional locker
+- Liegestütz/Plank fallen aus Zeitgründen oft weg (Einheiten um 5 Uhr, ca. 50 min)
 - 30.11. VO2 3×13 @312 · 01.12. Kraft Maximalkraft Woche 2
 - 24.12. Vollmond (Schlaf beobachten)
 - 29.12. FTP-Test 2×20
